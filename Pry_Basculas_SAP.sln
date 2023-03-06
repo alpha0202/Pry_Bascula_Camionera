@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33214.272
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pry_Basculas_SAP", "Pry_Basculas_SAP\Pry_Basculas_SAP.csproj", "{26D0DF31-F039-4230-A7C6-A827FC4247F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegracionSAP_Dll", "IntegracionSAP_Dll\IntegracionSAP_Dll.csproj", "{B859D1C9-4E64-461F-B0DE-EF4440C128A6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26D0DF31-F039-4230-A7C6-A827FC4247F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26D0DF31-F039-4230-A7C6-A827FC4247F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26D0DF31-F039-4230-A7C6-A827FC4247F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26D0DF31-F039-4230-A7C6-A827FC4247F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B859D1C9-4E64-461F-B0DE-EF4440C128A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B859D1C9-4E64-461F-B0DE-EF4440C128A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B859D1C9-4E64-461F-B0DE-EF4440C128A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B859D1C9-4E64-461F-B0DE-EF4440C128A6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4B4360EC-94DA-4D75-A8E2-32B5AB319256}
+	EndGlobalSection
+EndGlobal
