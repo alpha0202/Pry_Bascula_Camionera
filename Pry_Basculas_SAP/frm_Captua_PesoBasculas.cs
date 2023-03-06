@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace Pry_Basculas_SAP
 {
-    public partial class frm_Captua_PesoBasculas : DevExpress.XtraEditors.XtraForm
+    public partial class frm_Captua_PesoBasculas : XtraForm
     {
         List<Parametros> LstParametros = new List<Parametros>();
         UserActiveDirectory usuarioAD = new UserActiveDirectory();
@@ -122,7 +122,7 @@ namespace Pry_Basculas_SAP
             if (enviarData == "" || sendData == "")
                 _ConfirmaCaptura = "ok";
             frmVista_PesajesActivos frmPesajesAct = new frmVista_PesajesActivos();
-            DataTable dtNew = Datos.SPObtenerDataTable("SP_Cargue_PlaneacionesPesajes");
+           // DataTable dtNew = Datos.SPObtenerDataTable("SP_Cargue_PlaneacionesPesajes");
           
             frmPesajesAct.ConfirmacionCaptura(_ConfirmaCaptura);
 
