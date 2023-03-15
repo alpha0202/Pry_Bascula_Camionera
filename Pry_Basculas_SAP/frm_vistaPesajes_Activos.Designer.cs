@@ -29,69 +29,64 @@ namespace Pry_Basculas_SAP
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVista_PesajesActivos));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions6 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject21 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject22 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject23 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject24 = new DevExpress.Utils.SerializableAppearanceObject();
             this.gcPesajesActivosSAP = new DevExpress.XtraGrid.GridControl();
             this.gvVista_ListadoActivo = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.id_pesaje = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.estado_cons_servicio = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.tipo_proceso = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.tipo_pesaje = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.proceso = new DevExpress.XtraGrid.Columns.GridColumn();
             this.fecha_proceso = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.doc_comercial = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.pedido_traslado = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.doc_transporte = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ent_salida_sap = new DevExpress.XtraGrid.Columns.GridColumn();
             this.material_sap = new DevExpress.XtraGrid.Columns.GridColumn();
             this.placa_cabezote = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.plac_trailer = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.fecha_carga = new DevExpress.XtraGrid.Columns.GridColumn();
             this.conductor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.centro_logistico = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.num_bascula = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cantidad_umb = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.umb = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cantidad_ump = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ump = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cant_pesada_real_umb = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cant_pesada_real_ump = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.lote_sap = new DevExpress.XtraGrid.Columns.GridColumn();
             this.almacen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tiquete_bascula = new DevExpress.XtraGrid.Columns.GridColumn();
             this.peso1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.date_capt1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.peso2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.date_capt2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.tiempo_total_capturas = new DevExpress.XtraGrid.Columns.GridColumn();
             this.peso_neto = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.user_pesaje1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.user_pesaje2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.AccionPesaje = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEjecutarPesaje = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.AccionConfirmar = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonConfirmar = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.ESTADO = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.estado_proceso = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnEndForm = new DevExpress.XtraEditors.SimpleButton();
+            this.btnConsultarPlaca = new DevExpress.XtraEditors.SimpleButton();
+            this.pnlDatosUser = new DevExpress.XtraEditors.PanelControl();
+            this.lblGetBascula = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.lblGetUsuario = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gcPesajesActivosSAP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvVista_ListadoActivo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEjecutarPesaje)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonConfirmar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlDatosUser)).BeginInit();
+            this.pnlDatosUser.SuspendLayout();
             this.SuspendLayout();
             // 
             // gcPesajesActivosSAP
             // 
-            this.gcPesajesActivosSAP.Location = new System.Drawing.Point(12, 23);
+            this.gcPesajesActivosSAP.Location = new System.Drawing.Point(12, 133);
             this.gcPesajesActivosSAP.MainView = this.gvVista_ListadoActivo;
             this.gcPesajesActivosSAP.Name = "gcPesajesActivosSAP";
             this.gcPesajesActivosSAP.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEjecutarPesaje,
             this.repositoryItemButtonConfirmar});
-            this.gcPesajesActivosSAP.Size = new System.Drawing.Size(1810, 492);
+            this.gcPesajesActivosSAP.Size = new System.Drawing.Size(1758, 549);
             this.gcPesajesActivosSAP.TabIndex = 0;
             this.gcPesajesActivosSAP.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvVista_ListadoActivo});
@@ -103,45 +98,40 @@ namespace Pry_Basculas_SAP
             this.gvVista_ListadoActivo.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.gvVista_ListadoActivo.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.id_pesaje,
-            this.estado_cons_servicio,
-            this.tipo_proceso,
-            this.tipo_pesaje,
+            this.proceso,
             this.fecha_proceso,
-            this.doc_comercial,
-            this.pedido_traslado,
-            this.doc_transporte,
-            this.ent_salida_sap,
             this.material_sap,
             this.placa_cabezote,
-            this.plac_trailer,
-            this.fecha_carga,
             this.conductor,
             this.centro_logistico,
-            this.num_bascula,
-            this.cantidad_umb,
-            this.umb,
-            this.cantidad_ump,
-            this.ump,
-            this.cant_pesada_real_umb,
-            this.cant_pesada_real_ump,
-            this.lote_sap,
             this.almacen,
             this.tiquete_bascula,
             this.peso1,
+            this.date_capt1,
             this.peso2,
+            this.date_capt2,
+            this.tiempo_total_capturas,
             this.peso_neto,
-            this.user_pesaje1,
-            this.user_pesaje2,
             this.AccionPesaje,
-            this.AccionConfirmar});
+            this.AccionConfirmar,
+            this.ESTADO,
+            this.estado_proceso});
             this.gvVista_ListadoActivo.GridControl = this.gcPesajesActivosSAP;
+            this.gvVista_ListadoActivo.GroupCount = 1;
+            this.gvVista_ListadoActivo.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "estado", null, "")});
             this.gvVista_ListadoActivo.Name = "gvVista_ListadoActivo";
             this.gvVista_ListadoActivo.OptionsSelection.MultiSelect = true;
             this.gvVista_ListadoActivo.OptionsSelection.ShowCheckBoxSelectorInColumnHeader = DevExpress.Utils.DefaultBoolean.False;
-            this.gvVista_ListadoActivo.OptionsView.ShowGroupPanel = false;
+            this.gvVista_ListadoActivo.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.ESTADO, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.gvVista_ListadoActivo.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gvVista_ListadoActivo_RowStyle);
+            this.gvVista_ListadoActivo.DoubleClick += new System.EventHandler(this.gvVista_ListadoActivo_DoubleClick);
             // 
             // id_pesaje
             // 
+            this.id_pesaje.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.id_pesaje.AppearanceCell.Options.UseFont = true;
             this.id_pesaje.AppearanceCell.Options.UseTextOptions = true;
             this.id_pesaje.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.id_pesaje.AppearanceHeader.Options.UseTextOptions = true;
@@ -152,112 +142,41 @@ namespace Pry_Basculas_SAP
             this.id_pesaje.OptionsColumn.AllowEdit = false;
             this.id_pesaje.Visible = true;
             this.id_pesaje.VisibleIndex = 0;
-            this.id_pesaje.Width = 65;
+            this.id_pesaje.Width = 89;
             // 
-            // estado_cons_servicio
+            // proceso
             // 
-            this.estado_cons_servicio.AppearanceCell.Options.UseTextOptions = true;
-            this.estado_cons_servicio.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.estado_cons_servicio.AppearanceHeader.Options.UseTextOptions = true;
-            this.estado_cons_servicio.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.estado_cons_servicio.Caption = "ESTADO_CONSUMO";
-            this.estado_cons_servicio.FieldName = "estado_consumo_servicio";
-            this.estado_cons_servicio.Name = "estado_cons_servicio";
-            this.estado_cons_servicio.OptionsColumn.AllowEdit = false;
-            this.estado_cons_servicio.Visible = true;
-            this.estado_cons_servicio.VisibleIndex = 1;
-            this.estado_cons_servicio.Width = 100;
-            // 
-            // tipo_proceso
-            // 
-            this.tipo_proceso.AppearanceCell.Options.UseTextOptions = true;
-            this.tipo_proceso.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.tipo_proceso.AppearanceHeader.Options.UseTextOptions = true;
-            this.tipo_proceso.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.tipo_proceso.Caption = "TIPO_PROCESO";
-            this.tipo_proceso.FieldName = "tipo_proceso";
-            this.tipo_proceso.Name = "tipo_proceso";
-            this.tipo_proceso.OptionsColumn.AllowEdit = false;
-            this.tipo_proceso.Visible = true;
-            this.tipo_proceso.VisibleIndex = 2;
-            this.tipo_proceso.Width = 65;
-            // 
-            // tipo_pesaje
-            // 
-            this.tipo_pesaje.AppearanceCell.Options.UseTextOptions = true;
-            this.tipo_pesaje.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.tipo_pesaje.AppearanceHeader.Options.UseTextOptions = true;
-            this.tipo_pesaje.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.tipo_pesaje.Caption = "TIPO_PESAJE";
-            this.tipo_pesaje.FieldName = "tipo_pesaje";
-            this.tipo_pesaje.Name = "tipo_pesaje";
-            this.tipo_pesaje.OptionsColumn.AllowEdit = false;
-            this.tipo_pesaje.Visible = true;
-            this.tipo_pesaje.VisibleIndex = 3;
-            this.tipo_pesaje.Width = 65;
+            this.proceso.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.proceso.AppearanceCell.Options.UseFont = true;
+            this.proceso.Caption = "TIPO_PROCESO";
+            this.proceso.FieldName = "proceso";
+            this.proceso.Name = "proceso";
+            this.proceso.OptionsColumn.AllowEdit = false;
+            this.proceso.Visible = true;
+            this.proceso.VisibleIndex = 1;
             // 
             // fecha_proceso
             // 
+            this.fecha_proceso.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fecha_proceso.AppearanceCell.Options.UseFont = true;
             this.fecha_proceso.AppearanceCell.Options.UseTextOptions = true;
             this.fecha_proceso.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.fecha_proceso.AppearanceHeader.Options.UseTextOptions = true;
             this.fecha_proceso.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.fecha_proceso.Caption = "FECHA_PROCESO";
-            this.fecha_proceso.DisplayFormat.FormatString = "d/M/yyyy";
+            this.fecha_proceso.DisplayFormat.FormatString = "d-M-yyyy";
             this.fecha_proceso.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.fecha_proceso.FieldName = "fecha_proceso";
             this.fecha_proceso.Name = "fecha_proceso";
             this.fecha_proceso.OptionsColumn.AllowEdit = false;
             this.fecha_proceso.Visible = true;
-            this.fecha_proceso.VisibleIndex = 4;
-            this.fecha_proceso.Width = 65;
-            // 
-            // doc_comercial
-            // 
-            this.doc_comercial.AppearanceHeader.Options.UseTextOptions = true;
-            this.doc_comercial.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.doc_comercial.Caption = "DOC_COMERCIAL";
-            this.doc_comercial.FieldName = "doc_comercial";
-            this.doc_comercial.Name = "doc_comercial";
-            this.doc_comercial.OptionsColumn.AllowEdit = false;
-            this.doc_comercial.Visible = true;
-            this.doc_comercial.VisibleIndex = 5;
-            this.doc_comercial.Width = 65;
-            // 
-            // pedido_traslado
-            // 
-            this.pedido_traslado.AppearanceHeader.Options.UseTextOptions = true;
-            this.pedido_traslado.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.pedido_traslado.Caption = "PEDIDO_TRASLADO";
-            this.pedido_traslado.FieldName = "pedido_traslado";
-            this.pedido_traslado.Name = "pedido_traslado";
-            this.pedido_traslado.OptionsColumn.AllowEdit = false;
-            this.pedido_traslado.Visible = true;
-            this.pedido_traslado.VisibleIndex = 6;
-            this.pedido_traslado.Width = 65;
-            // 
-            // doc_transporte
-            // 
-            this.doc_transporte.Caption = "DOC_TRANSPORTE";
-            this.doc_transporte.FieldName = "doc_transporte";
-            this.doc_transporte.Name = "doc_transporte";
-            this.doc_transporte.OptionsColumn.AllowEdit = false;
-            this.doc_transporte.Visible = true;
-            this.doc_transporte.VisibleIndex = 7;
-            this.doc_transporte.Width = 65;
-            // 
-            // ent_salida_sap
-            // 
-            this.ent_salida_sap.Caption = "ENT_SALIDA_SAP";
-            this.ent_salida_sap.FieldName = "ent_salida_sap";
-            this.ent_salida_sap.Name = "ent_salida_sap";
-            this.ent_salida_sap.OptionsColumn.AllowEdit = false;
-            this.ent_salida_sap.Visible = true;
-            this.ent_salida_sap.VisibleIndex = 8;
-            this.ent_salida_sap.Width = 65;
+            this.fecha_proceso.VisibleIndex = 2;
+            this.fecha_proceso.Width = 89;
             // 
             // material_sap
             // 
+            this.material_sap.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.material_sap.AppearanceCell.Options.UseFont = true;
             this.material_sap.AppearanceHeader.Options.UseTextOptions = true;
             this.material_sap.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.material_sap.Caption = "MATERIAL_SAP";
@@ -265,11 +184,13 @@ namespace Pry_Basculas_SAP
             this.material_sap.Name = "material_sap";
             this.material_sap.OptionsColumn.AllowEdit = false;
             this.material_sap.Visible = true;
-            this.material_sap.VisibleIndex = 9;
-            this.material_sap.Width = 65;
+            this.material_sap.VisibleIndex = 3;
+            this.material_sap.Width = 89;
             // 
             // placa_cabezote
             // 
+            this.placa_cabezote.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.placa_cabezote.AppearanceCell.Options.UseFont = true;
             this.placa_cabezote.AppearanceHeader.Options.UseTextOptions = true;
             this.placa_cabezote.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.placa_cabezote.Caption = "PLACA_CABEZOTE";
@@ -277,39 +198,13 @@ namespace Pry_Basculas_SAP
             this.placa_cabezote.Name = "placa_cabezote";
             this.placa_cabezote.OptionsColumn.AllowEdit = false;
             this.placa_cabezote.Visible = true;
-            this.placa_cabezote.VisibleIndex = 10;
-            this.placa_cabezote.Width = 65;
-            // 
-            // plac_trailer
-            // 
-            this.plac_trailer.AppearanceHeader.Options.UseTextOptions = true;
-            this.plac_trailer.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.plac_trailer.Caption = "PLACA_TRAILER";
-            this.plac_trailer.FieldName = "plac_trailer";
-            this.plac_trailer.Name = "plac_trailer";
-            this.plac_trailer.OptionsColumn.AllowEdit = false;
-            this.plac_trailer.Visible = true;
-            this.plac_trailer.VisibleIndex = 11;
-            this.plac_trailer.Width = 65;
-            // 
-            // fecha_carga
-            // 
-            this.fecha_carga.AppearanceCell.Options.UseTextOptions = true;
-            this.fecha_carga.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.fecha_carga.AppearanceHeader.Options.UseTextOptions = true;
-            this.fecha_carga.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.fecha_carga.Caption = "FECHA_CARGA";
-            this.fecha_carga.DisplayFormat.FormatString = "d/M/yyyy";
-            this.fecha_carga.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.fecha_carga.FieldName = "fecha_carga";
-            this.fecha_carga.Name = "fecha_carga";
-            this.fecha_carga.OptionsColumn.AllowEdit = false;
-            this.fecha_carga.Visible = true;
-            this.fecha_carga.VisibleIndex = 12;
-            this.fecha_carga.Width = 65;
+            this.placa_cabezote.VisibleIndex = 4;
+            this.placa_cabezote.Width = 89;
             // 
             // conductor
             // 
+            this.conductor.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.conductor.AppearanceCell.Options.UseFont = true;
             this.conductor.AppearanceCell.Options.UseTextOptions = true;
             this.conductor.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.conductor.AppearanceHeader.Options.UseTextOptions = true;
@@ -319,11 +214,15 @@ namespace Pry_Basculas_SAP
             this.conductor.Name = "conductor";
             this.conductor.OptionsColumn.AllowEdit = false;
             this.conductor.Visible = true;
-            this.conductor.VisibleIndex = 13;
-            this.conductor.Width = 65;
+            this.conductor.VisibleIndex = 5;
+            this.conductor.Width = 62;
             // 
             // centro_logistico
             // 
+            this.centro_logistico.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.centro_logistico.AppearanceCell.Options.UseFont = true;
+            this.centro_logistico.AppearanceCell.Options.UseTextOptions = true;
+            this.centro_logistico.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.centro_logistico.AppearanceHeader.Options.UseTextOptions = true;
             this.centro_logistico.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.centro_logistico.Caption = "CENTRO_LOGISTICO";
@@ -331,116 +230,13 @@ namespace Pry_Basculas_SAP
             this.centro_logistico.Name = "centro_logistico";
             this.centro_logistico.OptionsColumn.AllowEdit = false;
             this.centro_logistico.Visible = true;
-            this.centro_logistico.VisibleIndex = 14;
-            this.centro_logistico.Width = 65;
-            // 
-            // num_bascula
-            // 
-            this.num_bascula.AppearanceHeader.Options.UseTextOptions = true;
-            this.num_bascula.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.num_bascula.Caption = "NUMERO_BASCULA";
-            this.num_bascula.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.num_bascula.FieldName = "num_bascula";
-            this.num_bascula.Name = "num_bascula";
-            this.num_bascula.OptionsColumn.AllowEdit = false;
-            this.num_bascula.Visible = true;
-            this.num_bascula.VisibleIndex = 15;
-            this.num_bascula.Width = 65;
-            // 
-            // cantidad_umb
-            // 
-            this.cantidad_umb.AppearanceHeader.Options.UseTextOptions = true;
-            this.cantidad_umb.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.cantidad_umb.Caption = "CANTIDAD_UMB";
-            this.cantidad_umb.DisplayFormat.FormatString = "\"0.00\"";
-            this.cantidad_umb.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.cantidad_umb.FieldName = "cantidad_umb";
-            this.cantidad_umb.Name = "cantidad_umb";
-            this.cantidad_umb.OptionsColumn.AllowEdit = false;
-            this.cantidad_umb.Visible = true;
-            this.cantidad_umb.VisibleIndex = 16;
-            this.cantidad_umb.Width = 65;
-            // 
-            // umb
-            // 
-            this.umb.AppearanceCell.Options.UseTextOptions = true;
-            this.umb.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.umb.AppearanceHeader.Options.UseTextOptions = true;
-            this.umb.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.umb.Caption = "UMB";
-            this.umb.FieldName = "umb";
-            this.umb.Name = "umb";
-            this.umb.OptionsColumn.AllowEdit = false;
-            this.umb.Visible = true;
-            this.umb.VisibleIndex = 17;
-            this.umb.Width = 65;
-            // 
-            // cantidad_ump
-            // 
-            this.cantidad_ump.AppearanceHeader.Options.UseTextOptions = true;
-            this.cantidad_ump.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.cantidad_ump.Caption = "CANTIDAD_UMP";
-            this.cantidad_ump.DisplayFormat.FormatString = "\"0.00\"";
-            this.cantidad_ump.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.cantidad_ump.FieldName = "cantidad_ump";
-            this.cantidad_ump.Name = "cantidad_ump";
-            this.cantidad_ump.OptionsColumn.AllowEdit = false;
-            this.cantidad_ump.Visible = true;
-            this.cantidad_ump.VisibleIndex = 18;
-            this.cantidad_ump.Width = 65;
-            // 
-            // ump
-            // 
-            this.ump.AppearanceCell.Options.UseTextOptions = true;
-            this.ump.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.ump.AppearanceHeader.Options.UseTextOptions = true;
-            this.ump.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.ump.Caption = "UMP";
-            this.ump.FieldName = "ump";
-            this.ump.Name = "ump";
-            this.ump.OptionsColumn.AllowEdit = false;
-            this.ump.Visible = true;
-            this.ump.VisibleIndex = 19;
-            this.ump.Width = 65;
-            // 
-            // cant_pesada_real_umb
-            // 
-            this.cant_pesada_real_umb.AppearanceCell.Options.UseTextOptions = true;
-            this.cant_pesada_real_umb.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.cant_pesada_real_umb.AppearanceHeader.Options.UseTextOptions = true;
-            this.cant_pesada_real_umb.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.cant_pesada_real_umb.Caption = "CANTIDAD_PESADA_REAL_UMB";
-            this.cant_pesada_real_umb.FieldName = "cant_pesada_real_umb";
-            this.cant_pesada_real_umb.Name = "cant_pesada_real_umb";
-            this.cant_pesada_real_umb.OptionsColumn.AllowEdit = false;
-            this.cant_pesada_real_umb.Visible = true;
-            this.cant_pesada_real_umb.VisibleIndex = 22;
-            // 
-            // cant_pesada_real_ump
-            // 
-            this.cant_pesada_real_ump.AppearanceHeader.Options.UseTextOptions = true;
-            this.cant_pesada_real_ump.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.cant_pesada_real_ump.Caption = "CANTIDAD_PESADA_REAL_UMP";
-            this.cant_pesada_real_ump.FieldName = "peso_neto";
-            this.cant_pesada_real_ump.Name = "cant_pesada_real_ump";
-            this.cant_pesada_real_ump.OptionsColumn.AllowEdit = false;
-            this.cant_pesada_real_ump.Visible = true;
-            this.cant_pesada_real_ump.VisibleIndex = 24;
-            // 
-            // lote_sap
-            // 
-            this.lote_sap.AppearanceCell.Options.UseTextOptions = true;
-            this.lote_sap.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.lote_sap.Caption = "LOTE_SAP";
-            this.lote_sap.FieldName = "lote_sap";
-            this.lote_sap.Name = "lote_sap";
-            this.lote_sap.OptionsColumn.AllowEdit = false;
-            this.lote_sap.Visible = true;
-            this.lote_sap.VisibleIndex = 20;
-            this.lote_sap.Width = 65;
+            this.centro_logistico.VisibleIndex = 6;
+            this.centro_logistico.Width = 96;
             // 
             // almacen
             // 
+            this.almacen.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.almacen.AppearanceCell.Options.UseFont = true;
             this.almacen.AppearanceCell.Options.UseTextOptions = true;
             this.almacen.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.almacen.AppearanceHeader.Options.UseTextOptions = true;
@@ -450,10 +246,13 @@ namespace Pry_Basculas_SAP
             this.almacen.Name = "almacen";
             this.almacen.OptionsColumn.AllowEdit = false;
             this.almacen.Visible = true;
-            this.almacen.VisibleIndex = 21;
+            this.almacen.VisibleIndex = 7;
+            this.almacen.Width = 79;
             // 
             // tiquete_bascula
             // 
+            this.tiquete_bascula.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tiquete_bascula.AppearanceCell.Options.UseFont = true;
             this.tiquete_bascula.AppearanceHeader.Options.UseTextOptions = true;
             this.tiquete_bascula.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.tiquete_bascula.Caption = "TIQUETE_BASCULA";
@@ -461,10 +260,13 @@ namespace Pry_Basculas_SAP
             this.tiquete_bascula.Name = "tiquete_bascula";
             this.tiquete_bascula.OptionsColumn.AllowEdit = false;
             this.tiquete_bascula.Visible = true;
-            this.tiquete_bascula.VisibleIndex = 23;
+            this.tiquete_bascula.VisibleIndex = 8;
+            this.tiquete_bascula.Width = 74;
             // 
             // peso1
             // 
+            this.peso1.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.peso1.AppearanceCell.Options.UseFont = true;
             this.peso1.AppearanceCell.Options.UseTextOptions = true;
             this.peso1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.peso1.AppearanceHeader.Options.UseTextOptions = true;
@@ -477,10 +279,31 @@ namespace Pry_Basculas_SAP
             this.peso1.Name = "peso1";
             this.peso1.OptionsColumn.AllowEdit = false;
             this.peso1.Visible = true;
-            this.peso1.VisibleIndex = 27;
+            this.peso1.VisibleIndex = 9;
+            this.peso1.Width = 76;
+            // 
+            // date_capt1
+            // 
+            this.date_capt1.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.date_capt1.AppearanceCell.Options.UseFont = true;
+            this.date_capt1.AppearanceCell.Options.UseTextOptions = true;
+            this.date_capt1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.date_capt1.Caption = "FECHA_CAPTURA 1";
+            this.date_capt1.FieldName = "date_capt1";
+            this.date_capt1.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Right;
+            this.date_capt1.Name = "date_capt1";
+            this.date_capt1.OptionsColumn.AllowEdit = false;
+            this.date_capt1.OptionsColumn.AllowFocus = false;
+            this.date_capt1.OptionsFilter.AllowAutoFilter = false;
+            this.date_capt1.OptionsFilter.AllowFilter = false;
+            this.date_capt1.Visible = true;
+            this.date_capt1.VisibleIndex = 10;
+            this.date_capt1.Width = 101;
             // 
             // peso2
             // 
+            this.peso2.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.peso2.AppearanceCell.Options.UseFont = true;
             this.peso2.AppearanceCell.Options.UseTextOptions = true;
             this.peso2.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.peso2.AppearanceHeader.Options.UseTextOptions = true;
@@ -491,43 +314,79 @@ namespace Pry_Basculas_SAP
             this.peso2.Name = "peso2";
             this.peso2.OptionsColumn.AllowEdit = false;
             this.peso2.Visible = true;
-            this.peso2.VisibleIndex = 28;
+            this.peso2.VisibleIndex = 11;
+            this.peso2.Width = 78;
+            // 
+            // date_capt2
+            // 
+            this.date_capt2.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.date_capt2.AppearanceCell.Options.UseFont = true;
+            this.date_capt2.AppearanceCell.Options.UseTextOptions = true;
+            this.date_capt2.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.date_capt2.Caption = "FECHA_CAPTURA 2";
+            this.date_capt2.DisplayFormat.FormatString = "d";
+            this.date_capt2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.date_capt2.FieldName = "date_capt2";
+            this.date_capt2.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Right;
+            this.date_capt2.Name = "date_capt2";
+            this.date_capt2.OptionsColumn.AllowEdit = false;
+            this.date_capt2.OptionsColumn.AllowFocus = false;
+            this.date_capt2.OptionsFilter.AllowAutoFilter = false;
+            this.date_capt2.OptionsFilter.AllowFilter = false;
+            this.date_capt2.Visible = true;
+            this.date_capt2.VisibleIndex = 12;
+            this.date_capt2.Width = 84;
+            // 
+            // tiempo_total_capturas
+            // 
+            this.tiempo_total_capturas.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tiempo_total_capturas.AppearanceCell.Options.UseFont = true;
+            this.tiempo_total_capturas.AppearanceCell.Options.UseTextOptions = true;
+            this.tiempo_total_capturas.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.tiempo_total_capturas.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.tiempo_total_capturas.AppearanceHeader.Options.UseFont = true;
+            this.tiempo_total_capturas.Caption = "TIEMPO_CAPTURA(MIN)";
+            this.tiempo_total_capturas.DisplayFormat.FormatString = "0";
+            this.tiempo_total_capturas.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.tiempo_total_capturas.FieldName = "tiempo_total_capturas";
+            this.tiempo_total_capturas.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Right;
+            this.tiempo_total_capturas.Name = "tiempo_total_capturas";
+            this.tiempo_total_capturas.OptionsColumn.AllowEdit = false;
+            this.tiempo_total_capturas.OptionsColumn.AllowFocus = false;
+            this.tiempo_total_capturas.OptionsFilter.AllowAutoFilter = false;
+            this.tiempo_total_capturas.OptionsFilter.AllowFilter = false;
+            this.tiempo_total_capturas.Visible = true;
+            this.tiempo_total_capturas.VisibleIndex = 14;
+            this.tiempo_total_capturas.Width = 76;
             // 
             // peso_neto
             // 
+            this.peso_neto.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.peso_neto.AppearanceCell.Options.UseFont = true;
+            this.peso_neto.AppearanceCell.Options.UseTextOptions = true;
+            this.peso_neto.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.peso_neto.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.peso_neto.AppearanceHeader.Options.UseFont = true;
             this.peso_neto.AppearanceHeader.Options.UseTextOptions = true;
             this.peso_neto.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.peso_neto.Caption = "PESO_NETO";
+            this.peso_neto.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.peso_neto.FieldName = "peso_neto";
             this.peso_neto.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Right;
             this.peso_neto.Name = "peso_neto";
             this.peso_neto.OptionsFilter.AllowAutoFilter = false;
             this.peso_neto.OptionsFilter.AllowFilter = false;
             this.peso_neto.Visible = true;
-            this.peso_neto.VisibleIndex = 29;
-            // 
-            // user_pesaje1
-            // 
-            this.user_pesaje1.Caption = "USUARIO PESAJE 1";
-            this.user_pesaje1.FieldName = "usuario_pesaje1";
-            this.user_pesaje1.Name = "user_pesaje1";
-            this.user_pesaje1.OptionsColumn.AllowEdit = false;
-            this.user_pesaje1.Visible = true;
-            this.user_pesaje1.VisibleIndex = 25;
-            // 
-            // user_pesaje2
-            // 
-            this.user_pesaje2.Caption = "USUARIO PESAJE 2";
-            this.user_pesaje2.FieldName = "usuario_pesaje2";
-            this.user_pesaje2.Name = "user_pesaje2";
-            this.user_pesaje2.OptionsColumn.AllowEdit = false;
-            this.user_pesaje2.Visible = true;
-            this.user_pesaje2.VisibleIndex = 26;
+            this.peso_neto.VisibleIndex = 13;
+            this.peso_neto.Width = 78;
             // 
             // AccionPesaje
             // 
+            this.AccionPesaje.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AccionPesaje.AppearanceCell.Options.UseFont = true;
             this.AccionPesaje.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.AccionPesaje.AppearanceHeader.Options.UseFont = true;
+            this.AccionPesaje.AppearanceHeader.Options.UseForeColor = true;
             this.AccionPesaje.AppearanceHeader.Options.UseTextOptions = true;
             this.AccionPesaje.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.AccionPesaje.Caption = "REALIZAR PESAJE";
@@ -537,14 +396,15 @@ namespace Pry_Basculas_SAP
             this.AccionPesaje.OptionsFilter.AllowAutoFilter = false;
             this.AccionPesaje.OptionsFilter.AllowFilter = false;
             this.AccionPesaje.Visible = true;
-            this.AccionPesaje.VisibleIndex = 30;
+            this.AccionPesaje.VisibleIndex = 15;
+            this.AccionPesaje.Width = 78;
             // 
             // repositoryItemButtonEjecutarPesaje
             // 
             this.repositoryItemButtonEjecutarPesaje.AutoHeight = false;
-            editorButtonImageOptions5.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions5.Image")));
+            editorButtonImageOptions1.Image = global::Pry_Basculas_SAP.Properties.Resources.weightedpies_32x32;
             this.repositoryItemButtonEjecutarPesaje.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEjecutarPesaje.Name = "repositoryItemButtonEjecutarPesaje";
             this.repositoryItemButtonEjecutarPesaje.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repositoryItemButtonEjecutarPesaje.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEjecutarPesaje_ButtonClick);
@@ -553,6 +413,7 @@ namespace Pry_Basculas_SAP
             // 
             this.AccionConfirmar.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.AccionConfirmar.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.AccionConfirmar.AppearanceHeader.Options.UseBackColor = true;
             this.AccionConfirmar.AppearanceHeader.Options.UseFont = true;
             this.AccionConfirmar.AppearanceHeader.Options.UseForeColor = true;
             this.AccionConfirmar.Caption = "CONFIRMAR";
@@ -560,46 +421,140 @@ namespace Pry_Basculas_SAP
             this.AccionConfirmar.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Right;
             this.AccionConfirmar.Name = "AccionConfirmar";
             this.AccionConfirmar.Visible = true;
-            this.AccionConfirmar.VisibleIndex = 31;
+            this.AccionConfirmar.VisibleIndex = 16;
+            this.AccionConfirmar.Width = 93;
             // 
             // repositoryItemButtonConfirmar
             // 
             this.repositoryItemButtonConfirmar.AutoHeight = false;
-            editorButtonImageOptions6.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions6.Image")));
+            editorButtonImageOptions2.Image = global::Pry_Basculas_SAP.Properties.Resources.apply_32x32;
             this.repositoryItemButtonConfirmar.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject21, serializableAppearanceObject22, serializableAppearanceObject23, serializableAppearanceObject24, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonConfirmar.Name = "repositoryItemButtonConfirmar";
             this.repositoryItemButtonConfirmar.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repositoryItemButtonConfirmar.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonConfirmar_ButtonClick);
             // 
+            // ESTADO
+            // 
+            this.ESTADO.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ESTADO.AppearanceCell.Options.UseFont = true;
+            this.ESTADO.Caption = "ESTADO";
+            this.ESTADO.FieldName = "estado";
+            this.ESTADO.Name = "ESTADO";
+            this.ESTADO.Visible = true;
+            this.ESTADO.VisibleIndex = 17;
+            // 
+            // estado_proceso
+            // 
+            this.estado_proceso.Caption = "state";
+            this.estado_proceso.FieldName = "estado";
+            this.estado_proceso.Name = "estado_proceso";
+            this.estado_proceso.OptionsColumn.AllowEdit = false;
+            this.estado_proceso.OptionsColumn.AllowFocus = false;
+            this.estado_proceso.OptionsFilter.AllowAutoFilter = false;
+            this.estado_proceso.OptionsFilter.AllowFilter = false;
+            // 
             // btnEndForm
             // 
-            this.btnEndForm.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnEndForm.ImageOptions.Image = global::Pry_Basculas_SAP.Properties.Resources.forward_32x321;
             this.btnEndForm.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
             this.btnEndForm.ImageOptions.ImageToTextIndent = -15;
-            this.btnEndForm.Location = new System.Drawing.Point(1688, 672);
+            this.btnEndForm.Location = new System.Drawing.Point(1648, 688);
             this.btnEndForm.Name = "btnEndForm";
-            this.btnEndForm.Size = new System.Drawing.Size(134, 52);
+            this.btnEndForm.Size = new System.Drawing.Size(122, 52);
             this.btnEndForm.TabIndex = 1;
             this.btnEndForm.Text = "Terminar";
             this.btnEndForm.Click += new System.EventHandler(this.btnEndForm_Click);
+            // 
+            // btnConsultarPlaca
+            // 
+            this.btnConsultarPlaca.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConsultarPlaca.Appearance.Options.UseFont = true;
+            this.btnConsultarPlaca.Location = new System.Drawing.Point(12, 688);
+            this.btnConsultarPlaca.Name = "btnConsultarPlaca";
+            this.btnConsultarPlaca.Size = new System.Drawing.Size(122, 52);
+            this.btnConsultarPlaca.TabIndex = 2;
+            this.btnConsultarPlaca.Text = "Consultar Placa ";
+            this.btnConsultarPlaca.Click += new System.EventHandler(this.btnConsultarPlaca_Click);
+            // 
+            // pnlDatosUser
+            // 
+            this.pnlDatosUser.Appearance.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlDatosUser.Appearance.BorderColor = System.Drawing.Color.Gray;
+            this.pnlDatosUser.Appearance.Options.UseBackColor = true;
+            this.pnlDatosUser.Appearance.Options.UseBorderColor = true;
+            this.pnlDatosUser.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pnlDatosUser.Controls.Add(this.lblGetBascula);
+            this.pnlDatosUser.Controls.Add(this.labelControl3);
+            this.pnlDatosUser.Controls.Add(this.lblGetUsuario);
+            this.pnlDatosUser.Controls.Add(this.labelControl1);
+            this.pnlDatosUser.Location = new System.Drawing.Point(12, 48);
+            this.pnlDatosUser.Name = "pnlDatosUser";
+            this.pnlDatosUser.Size = new System.Drawing.Size(573, 49);
+            this.pnlDatosUser.TabIndex = 3;
+            // 
+            // lblGetBascula
+            // 
+            this.lblGetBascula.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGetBascula.Appearance.Options.UseFont = true;
+            this.lblGetBascula.Location = new System.Drawing.Point(339, 17);
+            this.lblGetBascula.Name = "lblGetBascula";
+            this.lblGetBascula.Size = new System.Drawing.Size(16, 14);
+            this.lblGetBascula.TabIndex = 3;
+            this.lblGetBascula.Text = "**";
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Location = new System.Drawing.Point(278, 17);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(55, 14);
+            this.labelControl3.TabIndex = 2;
+            this.labelControl3.Text = "BASCULA:";
+            // 
+            // lblGetUsuario
+            // 
+            this.lblGetUsuario.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGetUsuario.Appearance.Options.UseFont = true;
+            this.lblGetUsuario.Location = new System.Drawing.Point(94, 17);
+            this.lblGetUsuario.Name = "lblGetUsuario";
+            this.lblGetUsuario.Size = new System.Drawing.Size(16, 14);
+            this.lblGetUsuario.TabIndex = 1;
+            this.lblGetUsuario.Text = "**";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Location = new System.Drawing.Point(29, 17);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(59, 14);
+            this.labelControl1.TabIndex = 0;
+            this.labelControl1.Text = "USUARIO: ";
             // 
             // frmVista_PesajesActivos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1834, 749);
+            this.ClientSize = new System.Drawing.Size(1782, 806);
+            this.Controls.Add(this.pnlDatosUser);
+            this.Controls.Add(this.btnConsultarPlaca);
             this.Controls.Add(this.btnEndForm);
             this.Controls.Add(this.gcPesajesActivosSAP);
             this.IconOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("frmVista_PesajesActivos.IconOptions.LargeImage")));
             this.Name = "frmVista_PesajesActivos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LISTADO PESAJES ACTIVOS EN SAP";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmVista_PesajesActivos_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gcPesajesActivosSAP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvVista_ListadoActivo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEjecutarPesaje)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonConfirmar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlDatosUser)).EndInit();
+            this.pnlDatosUser.ResumeLayout(false);
+            this.pnlDatosUser.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -610,39 +565,32 @@ namespace Pry_Basculas_SAP
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEjecutarPesaje;
         private DevExpress.XtraGrid.Views.Grid.GridView gvVista_ListadoActivo;
         private DevExpress.XtraGrid.Columns.GridColumn id_pesaje;
-        private DevExpress.XtraGrid.Columns.GridColumn tipo_proceso;
-        private DevExpress.XtraGrid.Columns.GridColumn tipo_pesaje;
         private DevExpress.XtraGrid.Columns.GridColumn fecha_proceso;
-        private DevExpress.XtraGrid.Columns.GridColumn pedido_traslado;
-        private DevExpress.XtraGrid.Columns.GridColumn doc_transporte;
-        private DevExpress.XtraGrid.Columns.GridColumn ent_salida_sap;
         private DevExpress.XtraGrid.Columns.GridColumn material_sap;
         private DevExpress.XtraGrid.Columns.GridColumn placa_cabezote;
-        private DevExpress.XtraGrid.Columns.GridColumn plac_trailer;
-        private DevExpress.XtraGrid.Columns.GridColumn fecha_carga;
         private DevExpress.XtraGrid.Columns.GridColumn conductor;
         private DevExpress.XtraGrid.Columns.GridColumn centro_logistico;
-        private DevExpress.XtraGrid.Columns.GridColumn num_bascula;
-        private DevExpress.XtraGrid.Columns.GridColumn cantidad_umb;
-        private DevExpress.XtraGrid.Columns.GridColumn umb;
-        private DevExpress.XtraGrid.Columns.GridColumn cantidad_ump;
-        private DevExpress.XtraGrid.Columns.GridColumn ump;
-        private DevExpress.XtraGrid.Columns.GridColumn lote_sap;
         private DevExpress.XtraGrid.Columns.GridColumn almacen;
-        private DevExpress.XtraGrid.Columns.GridColumn estado_cons_servicio;
         private DevExpress.XtraGrid.Columns.GridColumn AccionPesaje;
-        private DevExpress.XtraGrid.Columns.GridColumn cant_pesada_real_umb;
-        private DevExpress.XtraGrid.Columns.GridColumn cant_pesada_real_ump;
         private DevExpress.XtraGrid.Columns.GridColumn tiquete_bascula;
-        private DevExpress.XtraGrid.Columns.GridColumn doc_comercial;
         private DevExpress.XtraGrid.Columns.GridColumn peso1;
         private DevExpress.XtraGrid.Columns.GridColumn peso2;
-        private DevExpress.XtraGrid.Columns.GridColumn user_pesaje1;
-        private DevExpress.XtraGrid.Columns.GridColumn user_pesaje2;
         private DevExpress.XtraGrid.Columns.GridColumn AccionConfirmar;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonConfirmar;
         private DevExpress.XtraGrid.Columns.GridColumn peso_neto;
         private DevExpress.XtraEditors.SimpleButton btnEndForm;
+        private DevExpress.XtraEditors.SimpleButton btnConsultarPlaca;
+        private DevExpress.XtraGrid.Columns.GridColumn date_capt1;
+        private DevExpress.XtraGrid.Columns.GridColumn date_capt2;
+        private DevExpress.XtraGrid.Columns.GridColumn tiempo_total_capturas;
+        private DevExpress.XtraEditors.PanelControl pnlDatosUser;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.LabelControl lblGetUsuario;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraGrid.Columns.GridColumn proceso;
+        private DevExpress.XtraEditors.LabelControl lblGetBascula;
+        private DevExpress.XtraGrid.Columns.GridColumn ESTADO;
+        private DevExpress.XtraGrid.Columns.GridColumn estado_proceso;
     }
 }
 

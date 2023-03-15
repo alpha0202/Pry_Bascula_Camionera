@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using CapaData;
 
+
 namespace IntegracionSAP_Dll
 {
-    class MetodosIntegracion
+    public class MetodosIntegracion
     {
         DataTable resultDt1 = new DataTable();
         DataTable resultDt2 = new DataTable();
 
+        public MetodosIntegracion()
+        {
+
+        }
 
         public MetodosIntegracion(DataTable dt1, DataTable dt2)
         {
@@ -66,7 +71,66 @@ namespace IntegracionSAP_Dll
         }
 
 
+        #region Metodos consulta SAP para basculas
+        public DataTable CargarSaldos(string CL, string Material)
+        {
+            RfcDestinationManager.RegisterDestinationConfiguration(new rfc_Connector());
+            RfcDestination prd = RfcDestinationManager.GetDestination("SE37");
+            RfcRepository repo = prd.Repository;
+            IRfcFunction soBapi = repo.CreateFunction("Z_MDFN_SALDOS");
+            soBapi.SetValue("P_WERKS", CL); //1208
+            soBapi.SetValue("P_LGORT", "");
+            soBapi.SetValue("P_MATNR", Material); //"000000000000200000"
+            soBapi.Invoke(prd);
+            IRfcTable IT_KNA1 = soBapi.GetTable("IT_SALDOS");
+            DataSet DtSetSaldos = new DataSet();
+            DtSetSaldos.Tables.Add(ConvertToDotNetTable(IT_KNA1));
+            DataTable resultDt_Saldos = DtSetSaldos.Tables[0];
 
+
+
+            return resultDt_Saldos;
+
+        }
+
+        public DataTable CargarData_PesajesActivos()
+        {
+            RfcDestinationManager.RegisterDestinationConfiguration(new rfc_Connector());
+            RfcDestination prd = RfcDestinationManager.GetDestination("SE37");
+            RfcRepository repo = prd.Repository;
+            IRfcFunction soBapi = repo.CreateFunction("Z_MDFN_BASCULA");
+            soBapi.Invoke(prd);
+            IRfcTable IT_KNA1 = soBapi.GetTable("IT_TABLE");
+            DataSet dsListadoAct = new DataSet();
+            dsListadoAct.Tables.Add(ConvertToDotNetTable(IT_KNA1));
+            DataTable resultDt_ListadoAct = dsListadoAct.Tables[0];
+
+            return resultDt_ListadoAct;
+
+        }
+
+        public DataTable FiltrarData_PlacaCabezote(string Placa)
+        {
+            RfcDestinationManager.RegisterDestinationConfiguration(new rfc_Connector());
+            RfcDestination prd = RfcDestinationManager.GetDestination("SE37");
+            RfcRepository repo = prd.Repository;
+            IRfcFunction soBapi = repo.CreateFunction("Z_MDFN_BASCULA");
+            soBapi.SetValue("PLACA", Placa); //1208
+            soBapi.Invoke(prd);
+            IRfcTable IT_KNA1 = soBapi.GetTable("IT_TABLE");
+            DataSet dsFiltroPlaca = new DataSet();
+            dsFiltroPlaca.Tables.Add(ConvertToDotNetTable(IT_KNA1));
+            DataTable resultDt_FiltroPlaca = dsFiltroPlaca.Tables[0];
+
+            return resultDt_FiltroPlaca;
+
+        }
+
+
+
+
+
+        #endregion
 
 
         static (DataTable, DataTable) readdata()

@@ -99,8 +99,9 @@ namespace CapaData
         //static String SqlConnectionString = @"Data Source= 10.252.0.158;Initial Catalog=CONTROLDEINGRESOS_NET;User Id=sa;Password=0bleaconMora";
         //static String SqlConnectionString = @"Data Source= 10.252.0.159;Initial Catalog=HORASEXTRAS_V2;User Id=sa;Password=0bleaconMora";
         //public static String SqlConnectionString = SqlConnectionString;// @"Data Source= 10.252.0.158\ALIAR;Initial Catalog=CEDIALIAR;User Id=SWAliar;Password=Con@x1on";
+        static String SqlConnectionString = @"Data Source= 10.252.0.158\ALIAR;Initial Catalog=BASCULAS_SAP;User Id=sa;Password=0bleaconMora";
         /***FRIGORIFICO**/
-        static String SqlConnectionString = @"Data Source= 10.252.0.158;Initial Catalog=INTERFACES_SAP;User Id=sa;Password=0bleaconMora";
+        //static String SqlConnectionString = @"Data Source= 10.252.0.158;Initial Catalog=INTERFACES_SAP;User Id=sa;Password=0bleaconMora";
         #region Variables
 
 
