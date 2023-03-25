@@ -1,6 +1,8 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraLayout;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -42,18 +44,23 @@ namespace Pry_Basculas_SAP.Class
             }
         }
 
-
+        //Métodos para validar la entrda de placas vehículos.
         public static  string ValidarPlaca_Cabezote(string placa)
         {
             try
             {
-                 string placaClean;
+                
                 if (string.IsNullOrWhiteSpace(placa)) 
                 {
-                    throw new Exception("Campo de placa vacío."); 
+                    throw new Exception("DEBE DIGITAR LA PLACA."); 
                 }
 
-                else if (placa.Trim().Length >7) { throw new Exception("Supera la cantidad de caracteres de una placa."); }
+                else if (placa.Trim().Length >7) { 
+                    
+                    throw new Exception("SUPERA LA CANTIDAD DE CARACTERES DE UNA PLACA."); 
+                    
+                
+                }
 
                 //placa = placa.Insert(3,"-").Trim();
 
@@ -82,9 +89,11 @@ namespace Pry_Basculas_SAP.Class
                     //// Verifica se os 3 primeiros caracteres são letras e se os 4 últimos são números.
                     //var padraoNormal = new Regex("[a-zA-Z]{3}[0-9]{3}");
                     //return padraoNormal.IsMatch(placa);
+
+                    throw new Exception("PLACA DEBE EMPEZAR CON LETRA");
                 }
 
-                placa = placa.Insert(3, "-").Trim();
+                //return placa = placa.Insert(3, "-").Trim();
 
             }
             catch (Exception ex)
@@ -93,10 +102,12 @@ namespace Pry_Basculas_SAP.Class
                 XtraMessageBox.Show(ex.Message, "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return string.Empty;
             }
-            return placa;
+            //return placa;
         }
 
 
+
+       
 
     }
 }

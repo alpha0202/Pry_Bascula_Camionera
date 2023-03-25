@@ -19,9 +19,9 @@ namespace RFC_SAP_Interface
 
         public RfcConfigParameters GetParameters(string destinationName)
         {
-            //if ("SE37".Equals(destinationName))
-            //{
-           
+            if ("SE37".Equals(destinationName))
+            {
+
                 RfcConfigParameters parms = new RfcConfigParameters();
                 parms.Add(RfcConfigParameters.AppServerHost, "10.253.2.27");
                 parms.Add(RfcConfigParameters.SystemNumber, "00");
@@ -36,15 +36,12 @@ namespace RFC_SAP_Interface
                 parms.Add(RfcConfigParameters.PoolSize, "10");
                 parms.Add(RfcConfigParameters.MessageServerHost, "10.253.2.27");
                 return parms;
-            
-               
-         
-               
-            //}
-            //else
-            //{
-            //    return null;
-            //}
+                
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

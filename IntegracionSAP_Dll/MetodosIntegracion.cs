@@ -1,4 +1,5 @@
 ﻿using RFC_SAP_Interface;
+using DevExpress.XtraEditors;
 using SAP.Middleware.Connector;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CapaData;
 
+using System.Windows.Forms;
 
 namespace IntegracionSAP_Dll
 {
@@ -15,7 +17,7 @@ namespace IntegracionSAP_Dll
     {
         DataTable resultDt1 = new DataTable();
         DataTable resultDt2 = new DataTable();
-
+        rfc_Connector rfc_Connector = new rfc_Connector();
         public MetodosIntegracion()
         {
 
@@ -72,57 +74,247 @@ namespace IntegracionSAP_Dll
 
 
         #region Metodos consulta SAP para basculas
-        public DataTable CargarSaldos(string CL, string Material)
+        public DataTable CargarSaldos(string CL, string lote, string Material)
         {
-            RfcDestinationManager.RegisterDestinationConfiguration(new rfc_Connector());
-            RfcDestination prd = RfcDestinationManager.GetDestination("SE37");
-            RfcRepository repo = prd.Repository;
-            IRfcFunction soBapi = repo.CreateFunction("Z_MDFN_SALDOS");
-            soBapi.SetValue("P_WERKS", CL); //1208
-            soBapi.SetValue("P_LGORT", "");
-            soBapi.SetValue("P_MATNR", Material); //"000000000000200000"
-            soBapi.Invoke(prd);
-            IRfcTable IT_KNA1 = soBapi.GetTable("IT_SALDOS");
-            DataSet DtSetSaldos = new DataSet();
-            DtSetSaldos.Tables.Add(ConvertToDotNetTable(IT_KNA1));
-            DataTable resultDt_Saldos = DtSetSaldos.Tables[0];
+                DataTable resultDt_Saldos = new DataTable();
+            try
+            {
+                if (string.IsNullOrEmpty(CL.Trim()))
+                {
+                    throw new Exception("No se puede realizar petición sin en el parámetro CENTRO LOGÍSTICO.");
+                    
+                }
+                else
+                {
+
+                    RfcDestinationManager.RegisterDestinationConfiguration(rfc_Connector);
+                    RfcDestination prd = RfcDestinationManager.GetDestination("SE37");
+                    RfcRepository repo = prd.Repository;
+                    IRfcFunction soBapi = repo.CreateFunction("Z_MDFN_SALDOS");
+                    soBapi.SetValue("P_WERKS", CL); //1208 importante
+                    soBapi.SetValue("P_CHARG", ""); //lote, puede faltar este dato
+                    soBapi.SetValue("P_LGORT", ""); //almacen
+                    soBapi.SetValue("P_MATNR", Material); //"000000000000200000"
+                    soBapi.Invoke(prd);
+                    IRfcTable IT_KNA1 = soBapi.GetTable("IT_SALDOS");
+                    DataSet DtSetSaldos = new DataSet();
+                    DtSetSaldos.Tables.Add(ConvertToDotNetTable(IT_KNA1));
+                    resultDt_Saldos = DtSetSaldos.Tables[0];
 
 
 
-            return resultDt_Saldos;
+                    return resultDt_Saldos;
+
+
+                }
+
+              
+            }
+            catch(Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "ADVERTENCIA", MessageBoxButtons.OK);
+                return resultDt_Saldos;
+
+            }
+
+            finally
+            {
+                try
+                {   //se debe quitar el registro de la conexión si se desea realizar una nueva consulta
+                    RfcDestinationManager.UnregisterDestinationConfiguration(rfc_Connector);
+                }
+                catch (Exception) { throw; }
+            }
+        }
+
+
+        //Consultar descripción del material
+        public string DescripcionMaterial(string codMaterial) 
+        {
+            try
+            {
+                RfcDestinationManager.RegisterDestinationConfiguration(rfc_Connector);
+                RfcDestination prd = RfcDestinationManager.GetDestination("SE37");
+                RfcRepository repo = prd.Repository;
+                IRfcFunction soBapi = repo.CreateFunction("Z_MDFN_MATERIAL");
+                soBapi.SetValue("V_MATNR", codMaterial); //"000000000000100017" cod material para recibir su descripción.            
+                soBapi.Invoke(prd);
+                string res = (string)soBapi.GetValue("V_MAKTX");
+              
+
+                return res;
+            }
+            finally
+            {
+                try
+                {   //se debe quitar el registro de la conexión si se desea realizar una nueva consulta
+                    RfcDestinationManager.UnregisterDestinationConfiguration(rfc_Connector);
+                }
+                catch (Exception) { throw; }
+            }
+
 
         }
 
+
+        //metodo para ajuste de inventarios 
+        public DataTable AjustarInventario(string CL, string lgort, string Material, string charg, string menge, string mei, string netoCalculado, string cw)
+        {
+            try
+            {
+                RfcDestinationManager.RegisterDestinationConfiguration(rfc_Connector);
+                RfcDestination prd = RfcDestinationManager.GetDestination("SE37");
+                RfcRepository repo = prd.Repository;
+                IRfcFunction soBapi = repo.CreateFunction("Z_MDFN_AJUSTEINV_BASCULAS");
+                soBapi.SetValue("V_WERKS", CL); //1208 centro logístico
+                soBapi.SetValue("V_LGORT", "1000");  //almacen (no viene actualmente)
+                IRfcTable dtParametros = soBapi.GetTable("IT_MAT");
+
+                dtParametros.Append();
+                dtParametros.SetValue("ZEILE", 1); //CONSECUTIVO PROPIO 
+                dtParametros.SetValue("MATNR", Material); // COD MATERIAL
+                dtParametros.SetValue("CHARG", charg); //LOTE SI LO MANEJA
+                dtParametros.SetValue("MENGE", netoCalculado); //UNIDADES
+                dtParametros.SetValue("MEINS", cw); //UNID MEDIDA UNIDADES (UN
+                dtParametros.SetValue("/CWM/MENGE", 0); //PESAJE FINAL(NETO KG)
+                dtParametros.SetValue("/CWM/MEINS", ""); // UMP(UNID MEDIDADE DEL PESAJE KG)
+                soBapi.SetValue("IT_MAT", dtParametros);
+                
+                soBapi.Invoke(prd);
+                IRfcTable IT_KNA1 = soBapi.GetTable("IT_LOG");
+                //var res = soBapi.GetValue("V_IBLNR");
+
+                DataSet dsAjuste = new DataSet();
+                dsAjuste.Tables.Add(ConvertToDotNetTable(IT_KNA1));
+                DataTable resultDt_Ajuste = dsAjuste.Tables[0];
+
+
+
+                return resultDt_Ajuste;
+
+
+            }
+            finally
+            {
+                try
+                {   //se debe quitar el registro de la conexión si se desea realizar una nueva consulta
+                    RfcDestinationManager.UnregisterDestinationConfiguration(rfc_Connector);
+                }
+                catch (Exception) { throw; }
+            }
+        }
+
+        //enviar información a SAP 
+        public Object RetornarDatos(string idPesaje, string tiqueteBascula, string umb,  string netoCalculado)
+        {
+            try
+            {
+                RfcDestinationManager.RegisterDestinationConfiguration(rfc_Connector);
+                RfcDestination prd = RfcDestinationManager.GetDestination("SE37");
+                RfcRepository repo = prd.Repository;
+                IRfcFunction soBapi = repo.CreateFunction("ZSD_FM_SCALE_MONITOR_RECEIVER");
+                //soBapi.SetValue("V_WERKS", CL); //1208 centro logístico
+                //soBapi.SetValue("V_LGORT", "1000");  //almacen (no viene actualmente)
+                IRfcTable dtParametros = soBapi.GetTable("IT_REQUEST");
+
+                dtParametros.Append();
+                dtParametros.SetValue("IDPESAJE", idPesaje); //ID PESAJE 
+                dtParametros.SetValue("ZTQ_BASC", tiqueteBascula); // ETIQUETA DE BASCULA
+                dtParametros.SetValue("LKIMG_REAL", umb); // CANTIDAD PESADA REAL EN UMB
+                dtParametros.SetValue("PIKMG_REAL", netoCalculado); // CANTIDAD PESADA REAL EN UMP (PESO NETO)
+                dtParametros.SetValue("STATUS", "02"); //ESTADO DE CONSUMO --> SE CAMBIA A 01 O´ 02
+              
+                soBapi.SetValue("IT_REQUEST", dtParametros);
+
+                soBapi.Invoke(prd);
+                //IRfcTable IT_KNA1 = soBapi.GetTable("IT_LOG");
+                var res = soBapi.GetValue("EX_V_SUBRC");
+
+                //DataSet dsAjuste = new DataSet();
+                //dsAjuste.Tables.Add(ConvertToDotNetTable(IT_KNA1));
+                //DataTable resultDt_Ajuste = dsAjuste.Tables[0];
+
+                return res ;
+
+            }
+            finally
+            {
+                try
+                {   //se debe quitar el registro de la conexión si se desea realizar una nueva consulta
+                    RfcDestinationManager.UnregisterDestinationConfiguration(rfc_Connector);
+                }
+                catch (Exception) { throw; }
+            }
+        }
+
+
+
+
         public DataTable CargarData_PesajesActivos()
         {
-            RfcDestinationManager.RegisterDestinationConfiguration(new rfc_Connector());
-            RfcDestination prd = RfcDestinationManager.GetDestination("SE37");
-            RfcRepository repo = prd.Repository;
-            IRfcFunction soBapi = repo.CreateFunction("Z_MDFN_BASCULA");
-            soBapi.Invoke(prd);
-            IRfcTable IT_KNA1 = soBapi.GetTable("IT_TABLE");
-            DataSet dsListadoAct = new DataSet();
-            dsListadoAct.Tables.Add(ConvertToDotNetTable(IT_KNA1));
-            DataTable resultDt_ListadoAct = dsListadoAct.Tables[0];
+            
+            try
+            {
+                RfcDestinationManager.RegisterDestinationConfiguration(rfc_Connector);
+                RfcDestination prd = RfcDestinationManager.GetDestination("SE37");
+                RfcRepository repo = prd.Repository;
+                IRfcFunction soBapi = repo.CreateFunction("Z_MDFN_BASCULA");
+                soBapi.Invoke(prd);
+                IRfcTable IT_KNA1 = soBapi.GetTable("IT_TABLE");
+                DataSet dsListadoAct = new DataSet();
+                dsListadoAct.Tables.Add(ConvertToDotNetTable(IT_KNA1));
+                DataTable resultDt_ListadoAct = dsListadoAct.Tables[0];
+           
 
-            return resultDt_ListadoAct;
+                return resultDt_ListadoAct;
+
+            }
+            catch (Exception){throw;}
+            finally
+            {
+                try
+                {   //se debe quitar el registro de la conexión si se desea realizar una nueva consulta
+                    RfcDestinationManager.UnregisterDestinationConfiguration(rfc_Connector);
+                }
+                catch (Exception) {throw;}
+            }
 
         }
 
         public DataTable FiltrarData_PlacaCabezote(string Placa)
         {
-            RfcDestinationManager.RegisterDestinationConfiguration(new rfc_Connector());
-            RfcDestination prd = RfcDestinationManager.GetDestination("SE37");
-            RfcRepository repo = prd.Repository;
-            IRfcFunction soBapi = repo.CreateFunction("Z_MDFN_BASCULA");
-            soBapi.SetValue("PLACA", Placa); //1208
-            soBapi.Invoke(prd);
-            IRfcTable IT_KNA1 = soBapi.GetTable("IT_TABLE");
-            DataSet dsFiltroPlaca = new DataSet();
-            dsFiltroPlaca.Tables.Add(ConvertToDotNetTable(IT_KNA1));
-            DataTable resultDt_FiltroPlaca = dsFiltroPlaca.Tables[0];
 
-            return resultDt_FiltroPlaca;
+
+            try
+            {
+                RfcDestinationManager.RegisterDestinationConfiguration(rfc_Connector);
+                RfcDestination prd = RfcDestinationManager.GetDestination("SE37");
+                RfcRepository repo = prd.Repository;
+                IRfcFunction soBapi = repo.CreateFunction("Z_MDFN_BASCULA");
+                soBapi.SetValue("PLACA", Placa); //1208
+                soBapi.Invoke(prd);
+                IRfcTable IT_KNA1 = soBapi.GetTable("IT_TABLE");
+                DataSet dsFiltroPlaca = new DataSet();
+                dsFiltroPlaca.Tables.Add(ConvertToDotNetTable(IT_KNA1));
+                DataTable resultDt_FiltroPlaca = dsFiltroPlaca.Tables[0];
+
+                return resultDt_FiltroPlaca;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                try
+                {   //se debe quitar el registro de la conexión si se desea realizar una nueva consulta
+                    RfcDestinationManager.UnregisterDestinationConfiguration(rfc_Connector);
+                }
+                catch (Exception) { throw; }
+            }
 
         }
 

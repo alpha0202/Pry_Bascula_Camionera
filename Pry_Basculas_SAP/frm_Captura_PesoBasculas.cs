@@ -20,45 +20,55 @@ namespace Pry_Basculas_SAP
     {
         List<Parametros> LstParametros = new List<Parametros>();
         UserActiveDirectory usuarioAD = new UserActiveDirectory();
+        UtilitiesSP utilidadesSP = new UtilitiesSP();
 
         private string _idPesaje;
-        private decimal _cantidadUMB;
-        private decimal _cantidadUMP;
-        private decimal _numeroBascula;
+        private string _cantidadUMB;
+        private string _cantidadUMP;
+        private string _undUMB;
+        private string _undUMP;
+        private string _numeroBascula;
         private string _PlacaCabezote;
         private string _tipoProceso;
         private string _tipoPesaje;
         private string _procesoDetalle;
         private string _printTicket;
         private string _ConfirmaCaptura;
+        private DataRow _dataRow;
          
 
         public frm_Captura_PesoBasculas()
         {
-            //frmVista_PesajesActivos frmPesajesAct = new frmVista_PesajesActivos();
+            
                  
             InitializeComponent();
           
         }
 
 
-        public void MostrarDatos_Formulario(string id_pesaje, decimal cant_umb, decimal cant_ump, decimal numBascula, string tipoProc, string tipoPesaje, string procDetalle, string placa)
+        public void MostrarDatos_Formulario(string id_pesaje, string cant_umb, string cant_ump, string numBascula, string tipoProc, string tipoPesaje, string procDetalle, string placa, string undUMB, string undUMP, DataRow row)
         {
 
             _idPesaje = id_pesaje;
-            _cantidadUMB = cant_umb;
-            _cantidadUMP = cant_ump;
-            _numeroBascula = numBascula;
+            _cantidadUMB = cant_umb.Trim();
+            _cantidadUMP = cant_ump.Trim();
+            _undUMB = undUMB;
+            _undUMP = undUMP;
+            _numeroBascula = numBascula.Trim();
             _tipoProceso = tipoProc;
             _tipoPesaje = tipoPesaje;
             _procesoDetalle = procDetalle;
             _PlacaCabezote = placa;
+            _dataRow = row;
+
 
             txtIdPesaje.Text = _idPesaje;
             txtTipoProceso.Text = _procesoDetalle;
-            txtUmb.Text = _cantidadUMB.ToString();
-            txtUmp.Text = _cantidadUMP.ToString();
-            txtPlaca.Text = _PlacaCabezote;
+            txtUmb.Text = _cantidadUMB.ToString().Trim();
+            txt_undUMB.Text = _undUMB.Trim();
+            txt_undUMP.Text = _undUMP.Trim();
+            txtUmp.Text = _cantidadUMP.ToString().Trim();
+            txtPlaca.Text = _PlacaCabezote.Trim();
             txtNumBascula.Text = _numeroBascula.ToString(); ;
 
         }
@@ -189,9 +199,7 @@ namespace Pry_Basculas_SAP
 
                     }
 
-
                 }
-
 
             }
 
@@ -201,6 +209,7 @@ namespace Pry_Basculas_SAP
             // DataTable dtNew = Datos.SPObtenerDataTable("SP_Cargue_PlaneacionesPesajes");
 
             frmListasAct.ConfirmacionCaptura(_ConfirmaCaptura);
+            utilidadesSP.GuardarData_Capturada(_dataRow);
            
 
 
@@ -229,9 +238,10 @@ namespace Pry_Basculas_SAP
                     lblPesoNeto.Text = dt.Rows[0]["peso_neto"].ToString();
                     btnCapturarPeso.Enabled = false;
                     txtPesoCapturado.Enabled = false;
+                    btn_guardarCaptura.Enabled = false;
                     grbInfoCaptura.BackColor = Color.MediumSeaGreen;
 
-                    XtraMessageBox.Show($"OPERACIÓN DE CAPTURA CULMINADA, PENDIENTE POR CONFIRMACIÓN. \r\nPoceso {_idPesaje} - {_procesoDetalle} ", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBox.Show($"OPERACIÓN DE CAPTURA CULMINADA, PENDIENTE POR CONFIRMACIÓN. \r\nProceso {_idPesaje} - {_procesoDetalle} ", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
 
@@ -259,12 +269,38 @@ namespace Pry_Basculas_SAP
             VerificarCapturasPesos();
         }
 
-        private void frm_Captua_PesoBasculas_FormClosing(object sender, FormClosingEventArgs e)
+        //private void frm_Captua_PesoBasculas_FormClosing(object sender, FormClosingEventArgs e)
+        //{
+        //    this.Hide();
+        //   //frmVista_PesajesActivos frmListasAct = new frmVista_PesajesActivos();
+        //    //frmPesajesAct.ShowDialog();
+        //    //frmPesajesAct.Dispose();
+        //}
+
+        private void btn_guardarCaptura_Click(object sender, EventArgs e)
         {
-            this.Hide();
-           //frmVista_PesajesActivos frmListasAct = new frmVista_PesajesActivos();
-            //frmPesajesAct.ShowDialog();
-            //frmPesajesAct.Dispose();
+            if (XtraMessageBox.Show("¿Está seguro de guardar la captura del pesaje?", "CONFIRMACIÓN", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, (DevExpress.Utils.DefaultBoolean)MessageBoxDefaultButton.Button1) == DialogResult.OK)
+            {
+                var peso1Cap = txtPesoCapturado.Text;
+                if (string.IsNullOrWhiteSpace(peso1Cap))
+                {
+                    XtraMessageBox.Show($"SE DEBE ESTABLER EL PESO A CAPTURAR. ", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                else
+                {
+                    //frmVista_PesajesActivos frmListasAct = new frmVista_PesajesActivos();
+                    GuardarCaptura_Pesaje(peso1Cap);
+                    txtPesoCapturado.Text = string.Empty;
+                    //this.Dispose();
+                    this.Hide();
+                    //frmListasAct.ShowDialog();
+                    //frmListasAct.Dispose();
+
+                }
+
+
+            }
         }
     }
 }

@@ -15,32 +15,36 @@ namespace Pry_Basculas_SAP
 {
     public partial class frm_DetalleSelectedRow : XtraForm
     {
-      private string _idPesajeSelected; 
+      private string _idPesajeSelected;
+        private string _tipoSeleccion;
 
 
 
-        public frm_DetalleSelectedRow(string idPesajeSel)
+        public frm_DetalleSelectedRow(string idPesajeSel, string tipoSeleccion)
         {
 
-            _idPesajeSelected = idPesajeSel;
             InitializeComponent();
+            _idPesajeSelected = idPesajeSel;
+            _tipoSeleccion = tipoSeleccion;
         }
 
         private void frm_DetalleSelectedRow_Load(object sender, EventArgs e)
         {
-            CargueDetalleSeleccionado();
+            CargueDetalleSeleccionado(_idPesajeSelected,_tipoSeleccion);
         }
 
 
-        private void CargueDetalleSeleccionado()
+        private void CargueDetalleSeleccionado(string idPesaje, string tipoSeleccion)
         {
             try
             {
                 List<Parametros> LstParametros = new List<Parametros>();
 
-                LstParametros.Add(new Parametros("@id_pesaje", _idPesajeSelected, SqlDbType.VarChar));
-                DataTable dt = Datos.SPObtenerDataTable("SP_Cargue_DetalleSeleccionado_Pesajes", LstParametros);
+                LstParametros.Add(new Parametros("@idPesaje", idPesaje, SqlDbType.VarChar));
+                LstParametros.Add(new Parametros("@tipoSeleccion", tipoSeleccion, SqlDbType.VarChar));
+                DataTable dt = Datos.SPObtenerDataTable("SP_Detalle_FilaSeleccionada", LstParametros);
                 grd_ControlDetalle.DataSource = dt;
+                gdv_VistaDetalle.OptionsView.ColumnAutoWidth = false;
                 grd_ControlDetalle.ForceInitialize();
                 gdv_VistaDetalle.BestFitColumns();
 
@@ -54,6 +58,8 @@ namespace Pry_Basculas_SAP
 
         }
 
+
+     
         private void gdv_VistaDetalle_MasterRowExpanded(object sender, CustomMasterRowEventArgs e)
         {
             GridView view = sender as GridView;

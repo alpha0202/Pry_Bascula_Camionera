@@ -51,14 +51,29 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v19.2" />
+    <Reference Include="DevExpress.Charts.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v19.2" />
+    <Reference Include="DevExpress.DataAccess.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v19.2.Export, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v19.2" />
     <Reference Include="DevExpress.Sparkline.v19.2.Core" />
+    <Reference Include="DevExpress.Utils.v19.2.UI, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v19.2" />
     <Reference Include="DevExpress.Printing.v19.2.Core" />
+    <Reference Include="DevExpress.XtraGauges.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v19.2.Extensions, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -102,8 +117,16 @@
     <Compile Include="Class\Basculas.cs" />
     <Compile Include="Class\EnumTipoPesajes.cs" />
     <Compile Include="Class\Impresoras.cs" />
+    <Compile Include="Class\Personalizaciones.cs" />
     <Compile Include="Class\Printer.cs" />
     <Compile Include="Class\Utilities.cs" />
+    <Compile Include="Class\UtilitiesSP.cs" />
+    <Compile Include="frm_Administracion_pesaje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Administracion_pesaje.Designer.cs">
+      <DependentUpon>frm_Administracion_pesaje.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_Captura_PesoBasculas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,11 +139,23 @@
     <Compile Include="frm_Filtrar_placa.Designer.cs">
       <DependentUpon>frm_Filtrar_placa.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_Report_ProcesosCerrados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Report_ProcesosCerrados.Designer.cs">
+      <DependentUpon>frm_Report_ProcesosCerrados.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_vistaPesajes_Activos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_vistaPesajes_Activos.Designer.cs">
       <DependentUpon>frm_vistaPesajes_Activos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Impresion\XtraReport_EtiquetaBascula.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Impresion\XtraReport_EtiquetaBascula.Designer.cs">
+      <DependentUpon>XtraReport_EtiquetaBascula.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -131,14 +166,23 @@
     <Compile Include="frm_DetalleSelectedRow.Designer.cs">
       <DependentUpon>frm_DetalleSelectedRow.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frm_Administracion_pesaje.resx">
+      <DependentUpon>frm_Administracion_pesaje.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_Captura_PesoBasculas.resx">
       <DependentUpon>frm_Captura_PesoBasculas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Filtrar_placa.resx">
       <DependentUpon>frm_Filtrar_placa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_Report_ProcesosCerrados.resx">
+      <DependentUpon>frm_Report_ProcesosCerrados.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_vistaPesajes_Activos.resx">
       <DependentUpon>frm_vistaPesajes_Activos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Impresion\XtraReport_EtiquetaBascula.resx">
+      <DependentUpon>XtraReport_EtiquetaBascula.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -198,6 +242,25 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\apply_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newtablestyle.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deferred.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\managerules.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bluedatabarsolid.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\aliar_src\aliarlogo1.fw.png" />
+    <Content Include="Resources\aliar_src\LOGO LA FAZENDA.fw.png" />
+    <Content Include="Resources\aliar_src\LOGO LA FAZENDA.png" />
+    <Content Include="Resources\aliar_src\Logo.jpg" />
+    <Content Include="Resources\aliar_src\Logo1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
