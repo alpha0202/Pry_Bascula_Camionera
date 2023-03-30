@@ -91,6 +91,46 @@ namespace Pry_Basculas_SAP.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap boreport2_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("boreport2_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap boreport2_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("boreport2_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap boreport2_32x321 {
+            get {
+                object obj = ResourceManager.GetObject("boreport2_32x321", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap checkbuttons_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("checkbuttons_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo DevExpress.Utils.Svg.SvgImage.
         /// </summary>
         internal static DevExpress.Utils.Svg.SvgImage deferred {
@@ -147,6 +187,36 @@ namespace Pry_Basculas_SAP.Properties {
             get {
                 object obj = ResourceManager.GetObject("newtablestyle", resourceCulture);
                 return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap printlayoutview_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("printlayoutview_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap report_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("report_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap walking_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("walking_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

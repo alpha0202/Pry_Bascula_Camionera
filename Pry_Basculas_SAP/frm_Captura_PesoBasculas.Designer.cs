@@ -31,12 +31,14 @@ namespace Pry_Basculas_SAP
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Captura_PesoBasculas));
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.btn_guardarCaptura = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.txt_undUMB = new DevExpress.XtraEditors.TextEdit();
             this.txt_undUMP = new DevExpress.XtraEditors.TextEdit();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.txtTipoProceso = new DevExpress.XtraEditors.TextEdit();
+            this.btnSalir = new DevExpress.XtraEditors.SimpleButton();
             this.grbInfoCaptura = new System.Windows.Forms.GroupBox();
             this.lblPesoNeto = new DevExpress.XtraEditors.LabelControl();
             this.lblCapt1 = new DevExpress.XtraEditors.LabelControl();
@@ -56,8 +58,6 @@ namespace Pry_Basculas_SAP
             this.txtUmb = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtPesoCapturado = new DevExpress.XtraEditors.TextEdit();
-            this.btn_guardarCaptura = new DevExpress.XtraEditors.SimpleButton();
-            this.btnSalir = new DevExpress.XtraEditors.SimpleButton();
             this.btnCapturarPeso = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -105,6 +105,18 @@ namespace Pry_Basculas_SAP
             this.groupControl1.Size = new System.Drawing.Size(837, 383);
             this.groupControl1.TabIndex = 3;
             this.groupControl1.Text = "groupControl1";
+            // 
+            // btn_guardarCaptura
+            // 
+            this.btn_guardarCaptura.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_guardarCaptura.Appearance.Options.UseFont = true;
+            this.btn_guardarCaptura.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_guardarCaptura.ImageOptions.Image")));
+            this.btn_guardarCaptura.Location = new System.Drawing.Point(592, 323);
+            this.btn_guardarCaptura.Name = "btn_guardarCaptura";
+            this.btn_guardarCaptura.Size = new System.Drawing.Size(129, 40);
+            this.btn_guardarCaptura.TabIndex = 24;
+            this.btn_guardarCaptura.Text = "Guardar";
+            this.btn_guardarCaptura.Click += new System.EventHandler(this.btn_guardarCaptura_Click);
             // 
             // labelControl12
             // 
@@ -174,6 +186,21 @@ namespace Pry_Basculas_SAP
             this.txtTipoProceso.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.txtTipoProceso.Size = new System.Drawing.Size(211, 22);
             this.txtTipoProceso.TabIndex = 18;
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnSalir.Appearance.Options.UseFont = true;
+            this.btnSalir.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.False;
+            this.btnSalir.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.ImageOptions.Image")));
+            this.btnSalir.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
+            this.btnSalir.ImageOptions.ImageToTextIndent = -8;
+            this.btnSalir.Location = new System.Drawing.Point(730, 323);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(73, 41);
+            this.btnSalir.TabIndex = 17;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // grbInfoCaptura
             // 
@@ -381,9 +408,9 @@ namespace Pry_Basculas_SAP
             // 
             // txtPesoCapturado
             // 
-            this.txtPesoCapturado.Location = new System.Drawing.Point(47, 50);
+            this.txtPesoCapturado.Location = new System.Drawing.Point(47, 54);
             this.txtPesoCapturado.Name = "txtPesoCapturado";
-            this.txtPesoCapturado.Properties.Appearance.Font = new System.Drawing.Font("Cascadia Code", 92F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesoCapturado.Properties.Appearance.Font = new System.Drawing.Font("Cascadia Code", 55.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesoCapturado.Properties.Appearance.FontSizeDelta = 4;
             this.txtPesoCapturado.Properties.Appearance.Options.UseFont = true;
             this.txtPesoCapturado.Properties.Appearance.Options.UseTextOptions = true;
@@ -391,35 +418,8 @@ namespace Pry_Basculas_SAP
             this.txtPesoCapturado.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.txtPesoCapturado.Properties.DisplayFormat.FormatString = "0.00";
             this.txtPesoCapturado.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.txtPesoCapturado.Size = new System.Drawing.Size(369, 172);
+            this.txtPesoCapturado.Size = new System.Drawing.Size(369, 106);
             this.txtPesoCapturado.TabIndex = 2;
-            // 
-            // btn_guardarCaptura
-            // 
-            this.btn_guardarCaptura.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_guardarCaptura.Appearance.Options.UseFont = true;
-            this.btn_guardarCaptura.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_guardarCaptura.ImageOptions.Image")));
-            this.btn_guardarCaptura.Location = new System.Drawing.Point(592, 323);
-            this.btn_guardarCaptura.Name = "btn_guardarCaptura";
-            this.btn_guardarCaptura.Size = new System.Drawing.Size(129, 40);
-            this.btn_guardarCaptura.TabIndex = 24;
-            this.btn_guardarCaptura.Text = "Guardar";
-            this.btn_guardarCaptura.Click += new System.EventHandler(this.btn_guardarCaptura_Click);
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.btnSalir.Appearance.Options.UseFont = true;
-            this.btnSalir.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.False;
-            this.btnSalir.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.ImageOptions.Image")));
-            this.btnSalir.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
-            this.btnSalir.ImageOptions.ImageToTextIndent = -8;
-            this.btnSalir.Location = new System.Drawing.Point(730, 323);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(73, 41);
-            this.btnSalir.TabIndex = 17;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnCapturarPeso
             // 

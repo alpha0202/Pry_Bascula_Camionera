@@ -139,10 +139,10 @@
     <Compile Include="frm_Filtrar_placa.Designer.cs">
       <DependentUpon>frm_Filtrar_placa.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_Report_ProcesosCerrados.cs">
+    <Compile Include="Reportes\frm_Report_ProcesosCerrados.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_Report_ProcesosCerrados.Designer.cs">
+    <Compile Include="Reportes\frm_Report_ProcesosCerrados.Designer.cs">
       <DependentUpon>frm_Report_ProcesosCerrados.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_vistaPesajes_Activos.cs">
@@ -166,6 +166,12 @@
     <Compile Include="frm_DetalleSelectedRow.Designer.cs">
       <DependentUpon>frm_DetalleSelectedRow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\frm_Report_Reportes_cerrados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\frm_Report_Reportes_cerrados.Designer.cs">
+      <DependentUpon>frm_Report_Reportes_cerrados.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frm_Administracion_pesaje.resx">
       <DependentUpon>frm_Administracion_pesaje.cs</DependentUpon>
     </EmbeddedResource>
@@ -175,7 +181,7 @@
     <EmbeddedResource Include="frm_Filtrar_placa.resx">
       <DependentUpon>frm_Filtrar_placa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_Report_ProcesosCerrados.resx">
+    <EmbeddedResource Include="Reportes\frm_Report_ProcesosCerrados.resx">
       <DependentUpon>frm_Report_ProcesosCerrados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_vistaPesajes_Activos.resx">
@@ -197,6 +203,9 @@
     </Compile>
     <EmbeddedResource Include="frm_DetalleSelectedRow.resx">
       <DependentUpon>frm_DetalleSelectedRow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\frm_Report_Reportes_cerrados.resx">
+      <DependentUpon>frm_Report_Reportes_cerrados.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
@@ -261,6 +270,13 @@
     <Content Include="Resources\aliar_src\LOGO LA FAZENDA.png" />
     <Content Include="Resources\aliar_src\Logo.jpg" />
     <Content Include="Resources\aliar_src\Logo1.jpg" />
+    <None Include="Resources\walking_32x32.png" />
+    <None Include="Resources\checkbuttons_32x32.png" />
+    <None Include="Resources\boreport2_32x321.png" />
+    <None Include="Resources\printlayoutview_32x32.png" />
+    <None Include="Resources\boreport2_16x16.png" />
+    <None Include="Resources\boreport2_32x32.png" />
+    <None Include="Resources\report_32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

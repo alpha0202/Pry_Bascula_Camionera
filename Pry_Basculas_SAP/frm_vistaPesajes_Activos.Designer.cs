@@ -47,6 +47,7 @@ namespace Pry_Basculas_SAP
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVista_PesajesActivos));
             this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
+            this.btn_GetOut = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.grc_ControlFiltrado = new DevExpress.XtraGrid.GridControl();
@@ -98,8 +99,8 @@ namespace Pry_Basculas_SAP
             this.date_capt1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.peso2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.date_capt2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.neto = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tiempo_total_capturas = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.peso_neto = new DevExpress.XtraGrid.Columns.GridColumn();
             this.AccionPesaje = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEjecutarPesaje = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.AccionConfirmar = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -119,6 +120,7 @@ namespace Pry_Basculas_SAP
             this.btn_CapManual = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.btn_AbrirReporte = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_AbrirCerrados = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -126,6 +128,7 @@ namespace Pry_Basculas_SAP
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.btn_AbrirAdmin = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.defaultBarAndDockingController1 = new DevExpress.XtraBars.DefaultBarAndDockingController(this.components);
             this.xtraScrollableControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grc_ControlFiltrado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grv_VistaFiltrado)).BeginInit();
@@ -139,6 +142,7 @@ namespace Pry_Basculas_SAP
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEjecutarPesaje)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonConfirmar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.defaultBarAndDockingController1.Controller)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraScrollableControl1
@@ -146,6 +150,7 @@ namespace Pry_Basculas_SAP
             this.xtraScrollableControl1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.xtraScrollableControl1.Appearance.Options.UseBackColor = true;
             this.xtraScrollableControl1.AutoScroll = false;
+            this.xtraScrollableControl1.Controls.Add(this.btn_GetOut);
             this.xtraScrollableControl1.Controls.Add(this.labelControl4);
             this.xtraScrollableControl1.Controls.Add(this.labelControl2);
             this.xtraScrollableControl1.Controls.Add(this.grc_ControlFiltrado);
@@ -158,6 +163,21 @@ namespace Pry_Basculas_SAP
             this.xtraScrollableControl1.Name = "xtraScrollableControl1";
             this.xtraScrollableControl1.Size = new System.Drawing.Size(1308, 699);
             this.xtraScrollableControl1.TabIndex = 5;
+            // 
+            // btn_GetOut
+            // 
+            this.btn_GetOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_GetOut.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_GetOut.Appearance.Options.UseFont = true;
+            this.btn_GetOut.ImageOptions.Image = global::Pry_Basculas_SAP.Properties.Resources.walking_32x32;
+            this.btn_GetOut.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
+            this.btn_GetOut.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.btn_GetOut.Location = new System.Drawing.Point(1152, 621);
+            this.btn_GetOut.Name = "btn_GetOut";
+            this.btn_GetOut.Size = new System.Drawing.Size(144, 42);
+            this.btn_GetOut.TabIndex = 11;
+            this.btn_GetOut.Text = "SALIR";
+            this.btn_GetOut.Click += new System.EventHandler(this.btn_GetOut_Click);
             // 
             // labelControl4
             // 
@@ -227,6 +247,8 @@ namespace Pry_Basculas_SAP
             // 
             // gridColumn1
             // 
+            this.gridColumn1.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridColumn1.AppearanceCell.Options.UseFont = true;
             this.gridColumn1.Caption = "ID PESAJE";
             this.gridColumn1.FieldName = "IDPESAJE";
             this.gridColumn1.Name = "gridColumn1";
@@ -469,9 +491,9 @@ namespace Pry_Basculas_SAP
             this.pnlDatosUser.Controls.Add(this.labelControl3);
             this.pnlDatosUser.Controls.Add(this.lblGetUsuario);
             this.pnlDatosUser.Controls.Add(this.labelControl1);
-            this.pnlDatosUser.Location = new System.Drawing.Point(0, 0);
+            this.pnlDatosUser.Location = new System.Drawing.Point(-3, 0);
             this.pnlDatosUser.Name = "pnlDatosUser";
-            this.pnlDatosUser.Size = new System.Drawing.Size(1308, 59);
+            this.pnlDatosUser.Size = new System.Drawing.Size(1311, 60);
             this.pnlDatosUser.TabIndex = 5;
             // 
             // panelControl1
@@ -483,7 +505,7 @@ namespace Pry_Basculas_SAP
             this.panelControl1.Controls.Add(this.lbl_date);
             this.panelControl1.Controls.Add(this.lbl_segundos);
             this.panelControl1.Controls.Add(this.lbl_hora);
-            this.panelControl1.Location = new System.Drawing.Point(1007, 1);
+            this.panelControl1.Location = new System.Drawing.Point(1010, 2);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(298, 55);
             this.panelControl1.TabIndex = 8;
@@ -611,8 +633,8 @@ namespace Pry_Basculas_SAP
             this.date_capt1,
             this.peso2,
             this.date_capt2,
+            this.neto,
             this.tiempo_total_capturas,
-            this.peso_neto,
             this.AccionPesaje,
             this.AccionConfirmar,
             this.estado,
@@ -687,7 +709,7 @@ namespace Pry_Basculas_SAP
             this.fecha_proceso.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.fecha_proceso.AppearanceHeader.Options.UseTextOptions = true;
             this.fecha_proceso.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.fecha_proceso.Caption = "FECHA_PROCESO";
+            this.fecha_proceso.Caption = "FEC_PROCESO";
             this.fecha_proceso.DisplayFormat.FormatString = "d-M-yyyy";
             this.fecha_proceso.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.fecha_proceso.FieldName = "FPROCESO";
@@ -716,6 +738,9 @@ namespace Pry_Basculas_SAP
             this.descr_material.Caption = "DESC MATERIAL";
             this.descr_material.FieldName = "MAKT";
             this.descr_material.Name = "descr_material";
+            this.descr_material.OptionsColumn.AllowEdit = false;
+            this.descr_material.OptionsFilter.AllowAutoFilter = false;
+            this.descr_material.OptionsFilter.AllowFilter = false;
             this.descr_material.Visible = true;
             this.descr_material.VisibleIndex = 4;
             this.descr_material.Width = 87;
@@ -762,6 +787,8 @@ namespace Pry_Basculas_SAP
             this.centro_logistico.FieldName = "WERKS";
             this.centro_logistico.Name = "centro_logistico";
             this.centro_logistico.OptionsColumn.AllowEdit = false;
+            this.centro_logistico.OptionsFilter.AllowAutoFilter = false;
+            this.centro_logistico.OptionsFilter.AllowFilter = false;
             this.centro_logistico.Visible = true;
             this.centro_logistico.VisibleIndex = 7;
             this.centro_logistico.Width = 110;
@@ -778,6 +805,8 @@ namespace Pry_Basculas_SAP
             this.almacen.FieldName = "almacen";
             this.almacen.Name = "almacen";
             this.almacen.OptionsColumn.AllowEdit = false;
+            this.almacen.OptionsFilter.AllowAutoFilter = false;
+            this.almacen.OptionsFilter.AllowFilter = false;
             this.almacen.Visible = true;
             this.almacen.VisibleIndex = 8;
             this.almacen.Width = 71;
@@ -804,7 +833,7 @@ namespace Pry_Basculas_SAP
             this.peso1.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.peso1.AppearanceCell.Options.UseFont = true;
             this.peso1.AppearanceCell.Options.UseTextOptions = true;
-            this.peso1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.peso1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.peso1.AppearanceHeader.Options.UseTextOptions = true;
             this.peso1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.peso1.Caption = "PESO 1";
@@ -814,6 +843,8 @@ namespace Pry_Basculas_SAP
             this.peso1.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Right;
             this.peso1.Name = "peso1";
             this.peso1.OptionsColumn.AllowEdit = false;
+            this.peso1.OptionsFilter.AllowAutoFilter = false;
+            this.peso1.OptionsFilter.AllowFilter = false;
             this.peso1.Visible = true;
             this.peso1.VisibleIndex = 10;
             this.peso1.Width = 101;
@@ -824,12 +855,13 @@ namespace Pry_Basculas_SAP
             this.date_capt1.AppearanceCell.Options.UseFont = true;
             this.date_capt1.AppearanceCell.Options.UseTextOptions = true;
             this.date_capt1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.date_capt1.Caption = "FECHA_CAPTURA 1";
+            this.date_capt1.Caption = "FECHA_CAP 1";
+            this.date_capt1.DisplayFormat.FormatString = "d/MM/yyyy hh:mm tt";
+            this.date_capt1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.date_capt1.FieldName = "date_capt1";
             this.date_capt1.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Right;
             this.date_capt1.Name = "date_capt1";
             this.date_capt1.OptionsColumn.AllowEdit = false;
-            this.date_capt1.OptionsColumn.AllowFocus = false;
             this.date_capt1.OptionsFilter.AllowAutoFilter = false;
             this.date_capt1.OptionsFilter.AllowFilter = false;
             this.date_capt1.Visible = true;
@@ -841,7 +873,7 @@ namespace Pry_Basculas_SAP
             this.peso2.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.peso2.AppearanceCell.Options.UseFont = true;
             this.peso2.AppearanceCell.Options.UseTextOptions = true;
-            this.peso2.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.peso2.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.peso2.AppearanceHeader.Options.UseTextOptions = true;
             this.peso2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.peso2.Caption = "PESO 2";
@@ -851,6 +883,8 @@ namespace Pry_Basculas_SAP
             this.peso2.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Right;
             this.peso2.Name = "peso2";
             this.peso2.OptionsColumn.AllowEdit = false;
+            this.peso2.OptionsFilter.AllowAutoFilter = false;
+            this.peso2.OptionsFilter.AllowFilter = false;
             this.peso2.Visible = true;
             this.peso2.VisibleIndex = 12;
             this.peso2.Width = 61;
@@ -861,8 +895,8 @@ namespace Pry_Basculas_SAP
             this.date_capt2.AppearanceCell.Options.UseFont = true;
             this.date_capt2.AppearanceCell.Options.UseTextOptions = true;
             this.date_capt2.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.date_capt2.Caption = "FECHA_CAPTURA 2";
-            this.date_capt2.DisplayFormat.FormatString = "d";
+            this.date_capt2.Caption = "FECHA_CAP 2";
+            this.date_capt2.DisplayFormat.FormatString = "d/MM/yyyy hh:mm tt";
             this.date_capt2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.date_capt2.FieldName = "date_capt2";
             this.date_capt2.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Right;
@@ -871,7 +905,31 @@ namespace Pry_Basculas_SAP
             this.date_capt2.OptionsColumn.AllowFocus = false;
             this.date_capt2.OptionsFilter.AllowAutoFilter = false;
             this.date_capt2.OptionsFilter.AllowFilter = false;
+            this.date_capt2.Visible = true;
+            this.date_capt2.VisibleIndex = 13;
             this.date_capt2.Width = 103;
+            // 
+            // neto
+            // 
+            this.neto.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.neto.AppearanceCell.Options.UseFont = true;
+            this.neto.AppearanceCell.Options.UseTextOptions = true;
+            this.neto.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.neto.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.neto.AppearanceHeader.Options.UseFont = true;
+            this.neto.AppearanceHeader.Options.UseTextOptions = true;
+            this.neto.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.neto.Caption = "PESO NETO";
+            this.neto.DisplayFormat.FormatString = "0.000";
+            this.neto.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.neto.FieldName = "peso_neto";
+            this.neto.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Right;
+            this.neto.Name = "neto";
+            this.neto.OptionsColumn.AllowEdit = false;
+            this.neto.OptionsFilter.AllowAutoFilter = false;
+            this.neto.OptionsFilter.AllowFilter = false;
+            this.neto.Visible = true;
+            this.neto.VisibleIndex = 14;
             // 
             // tiempo_total_capturas
             // 
@@ -881,7 +939,7 @@ namespace Pry_Basculas_SAP
             this.tiempo_total_capturas.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.tiempo_total_capturas.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.tiempo_total_capturas.AppearanceHeader.Options.UseFont = true;
-            this.tiempo_total_capturas.Caption = "TIEMPO_CAPTURA(MIN)";
+            this.tiempo_total_capturas.Caption = "TIEMPOS(MIN)";
             this.tiempo_total_capturas.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.tiempo_total_capturas.FieldName = "tiempo_total_capturas";
             this.tiempo_total_capturas.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Right;
@@ -891,30 +949,8 @@ namespace Pry_Basculas_SAP
             this.tiempo_total_capturas.OptionsFilter.AllowAutoFilter = false;
             this.tiempo_total_capturas.OptionsFilter.AllowFilter = false;
             this.tiempo_total_capturas.Visible = true;
-            this.tiempo_total_capturas.VisibleIndex = 14;
+            this.tiempo_total_capturas.VisibleIndex = 15;
             this.tiempo_total_capturas.Width = 143;
-            // 
-            // peso_neto
-            // 
-            this.peso_neto.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.peso_neto.AppearanceCell.Options.UseFont = true;
-            this.peso_neto.AppearanceCell.Options.UseTextOptions = true;
-            this.peso_neto.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.peso_neto.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.peso_neto.AppearanceHeader.Options.UseFont = true;
-            this.peso_neto.AppearanceHeader.Options.UseTextOptions = true;
-            this.peso_neto.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.peso_neto.Caption = "PESO_NETO";
-            this.peso_neto.DisplayFormat.FormatString = "0.000";
-            this.peso_neto.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.peso_neto.FieldName = "peso_neto";
-            this.peso_neto.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Right;
-            this.peso_neto.Name = "peso_neto";
-            this.peso_neto.OptionsFilter.AllowAutoFilter = false;
-            this.peso_neto.OptionsFilter.AllowFilter = false;
-            this.peso_neto.Visible = true;
-            this.peso_neto.VisibleIndex = 13;
-            this.peso_neto.Width = 71;
             // 
             // AccionPesaje
             // 
@@ -932,7 +968,7 @@ namespace Pry_Basculas_SAP
             this.AccionPesaje.OptionsFilter.AllowAutoFilter = false;
             this.AccionPesaje.OptionsFilter.AllowFilter = false;
             this.AccionPesaje.Visible = true;
-            this.AccionPesaje.VisibleIndex = 15;
+            this.AccionPesaje.VisibleIndex = 16;
             this.AccionPesaje.Width = 107;
             // 
             // repositoryItemButtonEjecutarPesaje
@@ -956,8 +992,10 @@ namespace Pry_Basculas_SAP
             this.AccionConfirmar.ColumnEdit = this.repositoryItemButtonConfirmar;
             this.AccionConfirmar.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Right;
             this.AccionConfirmar.Name = "AccionConfirmar";
+            this.AccionConfirmar.OptionsFilter.AllowAutoFilter = false;
+            this.AccionConfirmar.OptionsFilter.AllowFilter = false;
             this.AccionConfirmar.Visible = true;
-            this.AccionConfirmar.VisibleIndex = 16;
+            this.AccionConfirmar.VisibleIndex = 17;
             this.AccionConfirmar.Width = 92;
             // 
             // repositoryItemButtonConfirmar
@@ -977,8 +1015,10 @@ namespace Pry_Basculas_SAP
             this.estado.Caption = "ESTADO";
             this.estado.FieldName = "estado";
             this.estado.Name = "estado";
+            this.estado.OptionsFilter.AllowAutoFilter = false;
+            this.estado.OptionsFilter.AllowFilter = false;
             this.estado.Visible = true;
-            this.estado.VisibleIndex = 0;
+            this.estado.VisibleIndex = 1;
             this.estado.Width = 67;
             // 
             // status
@@ -1025,6 +1065,7 @@ namespace Pry_Basculas_SAP
             // 
             this.btnConsultarPlaca.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConsultarPlaca.Appearance.Options.UseFont = true;
+            this.btnConsultarPlaca.ImageOptions.Image = global::Pry_Basculas_SAP.Properties.Resources.checkbuttons_32x32;
             this.btnConsultarPlaca.Location = new System.Drawing.Point(13, 622);
             this.btnConsultarPlaca.Name = "btnConsultarPlaca";
             this.btnConsultarPlaca.Size = new System.Drawing.Size(144, 42);
@@ -1053,8 +1094,9 @@ namespace Pry_Basculas_SAP
             this.btn_AbrirReporte,
             this.barSubItem2,
             this.btn_CapManual,
-            this.barButtonItem1});
-            this.barManager1.MaxItemId = 7;
+            this.barButtonItem1,
+            this.btn_AbrirCerrados});
+            this.barManager1.MaxItemId = 8;
             // 
             // bar1
             // 
@@ -1075,6 +1117,7 @@ namespace Pry_Basculas_SAP
             // barSubItem2
             // 
             this.barSubItem2.Caption = "Administración";
+            this.barSubItem2.Enabled = false;
             this.barSubItem2.Id = 4;
             this.barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btn_CapManual)});
@@ -1089,18 +1132,28 @@ namespace Pry_Basculas_SAP
             // 
             // barSubItem1
             // 
-            this.barSubItem1.Caption = "Reporte";
+            this.barSubItem1.Caption = "Reportes";
             this.barSubItem1.Id = 2;
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.btn_AbrirReporte)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btn_AbrirReporte),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btn_AbrirCerrados)});
             this.barSubItem1.Name = "barSubItem1";
             // 
             // btn_AbrirReporte
             // 
-            this.btn_AbrirReporte.Caption = "Procesos Cerrados";
+            this.btn_AbrirReporte.Caption = "Imprimir tiquetes procesos";
             this.btn_AbrirReporte.Id = 3;
+            this.btn_AbrirReporte.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_AbrirReporte.ImageOptions.Image")));
             this.btn_AbrirReporte.Name = "btn_AbrirReporte";
             this.btn_AbrirReporte.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_AbrirReporte_ItemClick);
+            // 
+            // btn_AbrirCerrados
+            // 
+            this.btn_AbrirCerrados.Caption = "Procesos Cerrados";
+            this.btn_AbrirCerrados.Id = 7;
+            this.btn_AbrirCerrados.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_AbrirCerrados.ImageOptions.Image")));
+            this.btn_AbrirCerrados.Name = "btn_AbrirCerrados";
+            this.btn_AbrirCerrados.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_AbrirCerrados_ItemClick);
             // 
             // barButtonItem1
             // 
@@ -1155,6 +1208,9 @@ namespace Pry_Basculas_SAP
             this.barButtonItem2.Id = 1;
             this.barButtonItem2.Name = "barButtonItem2";
             // 
+            // defaultBarAndDockingController1
+            // 
+            // 
             // frmVista_PesajesActivos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1172,7 +1228,6 @@ namespace Pry_Basculas_SAP
             this.Text = "LISTADO PESAJES ACTIVOS EN SAP";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmVista_PesajesActivos_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmVista_PesajesActivos_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.xtraScrollableControl1.ResumeLayout(false);
             this.xtraScrollableControl1.PerformLayout();
@@ -1190,6 +1245,7 @@ namespace Pry_Basculas_SAP
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEjecutarPesaje)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonConfirmar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.defaultBarAndDockingController1.Controller)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1219,7 +1275,6 @@ namespace Pry_Basculas_SAP
         private DevExpress.XtraGrid.Columns.GridColumn peso2;
         private DevExpress.XtraGrid.Columns.GridColumn date_capt2;
         private DevExpress.XtraGrid.Columns.GridColumn tiempo_total_capturas;
-        private DevExpress.XtraGrid.Columns.GridColumn peso_neto;
         private DevExpress.XtraGrid.Columns.GridColumn AccionPesaje;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEjecutarPesaje;
         private DevExpress.XtraGrid.Columns.GridColumn AccionConfirmar;
@@ -1276,6 +1331,10 @@ namespace Pry_Basculas_SAP
         private DevExpress.XtraBars.BarSubItem barSubItem2;
         private DevExpress.XtraBars.BarButtonItem btn_CapManual;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraGrid.Columns.GridColumn neto;
+        private DevExpress.XtraBars.BarButtonItem btn_AbrirCerrados;
+        private DevExpress.XtraEditors.SimpleButton btn_GetOut;
+        private DevExpress.XtraBars.DefaultBarAndDockingController defaultBarAndDockingController1;
     }
 }
 
