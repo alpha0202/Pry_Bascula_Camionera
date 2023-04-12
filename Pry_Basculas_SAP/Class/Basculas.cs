@@ -532,7 +532,7 @@ namespace Pry_Basculas_SAP.Class
 
             if (lSt_Sarta.Length >= 16)
             {
-                lSt_Sarta = Strings.Mid(lSt_Sarta, 1, 16);
+                //lSt_Sarta = Strings.Mid(lSt_Sarta, 1, 16);
                 //c# equivalente
                 lSt_Sarta = lSt_Sarta.Substring(1, 16);
             }
@@ -542,15 +542,21 @@ namespace Pry_Basculas_SAP.Class
             //recorrido de la sarta para sacar la parte numérica del dato completo.
             for (int i = 1, loopTo = lSt_Sarta.Length; i <= loopTo; i++)
             {
-                lSt_Caracter = Strings.Mid(lSt_Sarta, i, 1);
-                //lSt_Caracter = lSt_Sarta.Substring(i, 1);
+                //lSt_Caracter = Strings.Mid(lSt_Sarta, i, 1);
+                lSt_Caracter = lSt_Sarta.Substring(i, 1);
                 if (!string.IsNullOrEmpty(lSt_Valor.Trim()) && string.IsNullOrEmpty(lSt_Caracter.Trim()))
                     break;
-                if (Information.IsNumeric(lSt_Caracter) || lSt_Caracter == ".")
+                if (EsNumero(lSt_Caracter) || lSt_Caracter == ".")
                 {
-                    // If IsNumeric(lSt_Caracter) Then
+                    
                     lSt_Valor = lSt_Valor + lSt_Caracter;
                 }
+
+                //if (Information.IsNumeric(lSt_Caracter) || lSt_Caracter == ".")
+                //{
+                //    // If IsNumeric(lSt_Caracter) Then
+                //    lSt_Valor = lSt_Valor + lSt_Caracter;
+                //}
             }
 
             mySerialPort.Close();
@@ -602,6 +608,11 @@ namespace Pry_Basculas_SAP.Class
         //    return dt;
         //}
 
+        public static bool EsNumero(string valor)
+        {
+            int result;
+            return int.TryParse(valor, out result);
+        }
 
     }
 }

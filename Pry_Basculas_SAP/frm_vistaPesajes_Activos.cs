@@ -267,6 +267,61 @@ namespace Pry_Basculas_SAP
 
 
 
+        //iniciar proceso captura desde registros activos.
+        private void repositoryItemButton_IniciarProceso_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            frm_Captura_PesoBasculas frmCaptura = new frm_Captura_PesoBasculas();
+            ArrayList rows = new ArrayList();
+            string idPesaje;
+            string cantidadUmb;
+            string cantidadUmp;
+            string undUmb;
+            string undUmp;
+            //decimal numBascula;
+            string tipoProceso;
+            string descProceso;
+
+            string tipoPesaje;
+            string placaVehiculo;
+
+            Int32[] selectedRowHandles = grv_VistaFiltrado.GetSelectedRows();
+            for (int i = 0; i < selectedRowHandles.Length; i++)
+            {
+                int selectedRowHandle = selectedRowHandles[i];
+                if (selectedRowHandle >= 0)
+                    rows.Add(grv_VistaFiltrado.GetDataRow(selectedRowHandle));
+
+                DataRow row = rows[i] as DataRow;
+
+                idPesaje = row.Field<string>("IDPESAJE");
+                cantidadUmb = row.Field<string>("LFIMG");
+                cantidadUmp = row.Field<string>("PIKMG");
+                undUmb = row.Field<string>("MEINS");
+                undUmp = row.Field<string>("UMP");
+                //numBascula = row.Field<decimal>("num_bascula");
+                descProceso = row.Field<string>("proceso");
+                tipoProceso = row.Field<string>("TPROCESO");
+                tipoPesaje = row.Field<string>("TPESAJE");
+                placaVehiculo = row.Field<string>("ADD01").Trim();
+
+                //new frm_Captua_PesoBasculas(idPesaje, cantidadUmb, cantidadUmp, numBascula, placaVehiculo);
+                frmCaptura.MostrarDatos_Formulario(idPesaje, cantidadUmb, cantidadUmp, numeroBascula, tipoProceso, tipoPesaje, descProceso, placaVehiculo, undUmb, undUmp, row);
+
+            }
+
+            rows.Clear();
+
+            frmCaptura.StartPosition = FormStartPosition.CenterScreen;
+            frmCaptura.ShowDialog();
+            CargueListadosPesajes();
+            RecargarGridListadoPesajes();
+           
+            frmCaptura.Dispose();
+
+
+
+        }
+
 
         //boton de la grilla para capturar pesos.
         private void repositoryItemButtonEjecutarPesaje_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -317,61 +372,7 @@ namespace Pry_Basculas_SAP
             frmCaptura.StartPosition = FormStartPosition.CenterScreen;
             frmCaptura.ShowDialog();
             CargueListadosPesajes();
-            frmCaptura.Dispose();
-
-
-        }
-
-        //iniciar proceso de registros activos.
-        private void repositoryItemButton_IniciarProceso_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            frm_Captura_PesoBasculas frmCaptura = new frm_Captura_PesoBasculas();
-            ArrayList rows = new ArrayList();
-            string idPesaje;
-            string cantidadUmb;
-            string cantidadUmp;
-            string undUmb;
-            string undUmp;
-            //decimal numBascula;
-            string tipoProceso;
-            string descProceso;
-
-            string tipoPesaje;
-            string placaVehiculo;
-
-            Int32[] selectedRowHandles = grv_VistaFiltrado.GetSelectedRows();
-            for (int i = 0; i < selectedRowHandles.Length; i++)
-            {
-                int selectedRowHandle = selectedRowHandles[i];
-                if (selectedRowHandle >= 0)
-                    rows.Add(grv_VistaFiltrado.GetDataRow(selectedRowHandle));
-
-                DataRow row = rows[i] as DataRow;
-
-                idPesaje = row.Field<string>("IDPESAJE");
-                cantidadUmb = row.Field<string>("LFIMG");
-                cantidadUmp = row.Field<string>("PIKMG");
-                undUmb = row.Field<string>("MEINS");
-                undUmp = row.Field<string>("UMP");
-                //numBascula = row.Field<decimal>("num_bascula");
-                descProceso = row.Field<string>("proceso");
-                tipoProceso = row.Field<string>("TPROCESO");
-                tipoPesaje = row.Field<string>("TPESAJE");
-                placaVehiculo = row.Field<string>("ADD01").Trim();
-
-                //new frm_Captua_PesoBasculas(idPesaje, cantidadUmb, cantidadUmp, numBascula, placaVehiculo);
-                frmCaptura.MostrarDatos_Formulario(idPesaje, cantidadUmb, cantidadUmp, numeroBascula, tipoProceso, tipoPesaje, descProceso, placaVehiculo, undUmb, undUmp, row);
-
-            }
-
-            rows.Clear();
-
-            frmCaptura.StartPosition = FormStartPosition.CenterScreen;
-            frmCaptura.ShowDialog();
-            CargueListadosPesajes();
-            RecargarGridListadoPesajes();
-            frmCaptura.Dispose();
-
+            //frmCaptura.Dispose();
 
 
         }
@@ -391,7 +392,7 @@ namespace Pry_Basculas_SAP
             string lfimg;
             string ump;
             string charg;
-            string lgort = "";
+            string lgort="";
             decimal netoSelected;
             decimal validarExceso = 0;
             DataRow celdasSelected = gvVista_ListadoActivo.GetDataRow(gvVista_ListadoActivo.FocusedRowHandle);
@@ -418,6 +419,7 @@ namespace Pry_Basculas_SAP
                 return;
             }
 
+            //CONSULTAR EL INVENTARIO DEL MATERIAL
             DataTable inventario = metodosIntegracion.CargarSaldos(centroLog, charg, materialSelected);
 
             if (inventario.Rows.Count == 0)
@@ -428,16 +430,18 @@ namespace Pry_Basculas_SAP
 
             //validar si existe inventario
             //string  saldoInv = inventario.Rows[0]["LABST"].ToString();
+            //decimal netoPesado = decimal.Parse(netoSelected);
+            decimal netoPesado = netoSelected;
             decimal saldoMaterialInv = decimal.Parse(inventario.Rows[0]["LABST"].ToString());
 
 
 
-            if (netoSelected <= saldoMaterialInv)
+            if (netoPesado <= saldoMaterialInv)
             {
                 //Retornar datos de captura reales a SAP.
-                object result = metodosIntegracion.RetornarDatos(idPesajeSelected, tiqueteSelected, lfimg, netoSelected.ToString().Trim());
+                DataTable result = metodosIntegracion.RetornarDatos(idPesajeSelected, tiqueteSelected, lfimg, netoSelected.ToString().Trim());
 
-                if (result.ToString() == "0")
+                if (result is null)
                 {
 
                     LstParametros.Add(new Parametros("@ID_PESAJE", idPesajeSelected, SqlDbType.VarChar));
@@ -463,6 +467,11 @@ namespace Pry_Basculas_SAP
                     }
 
                 }
+                else
+                {
+
+                    var enviarError = Datos.SPGetEscalar("SP_Guardar_log_ErroresRetorno", LstParametros);
+                }
                 LstParametros.Clear();
                 CargueListadosPesajes();
             }
@@ -476,8 +485,10 @@ namespace Pry_Basculas_SAP
 
                 validarExceso = saldoMaterialInv + (saldoMaterialInv * (paramExeceso / 100));
 
-                if (validarExceso >= netoSelected)
-                {
+                if (validarExceso >= netoPesado)
+                {  
+                   
+                    DataTable ajusteInv = metodosIntegracion.AjustarInventario(centroLog, lgort, materialSelected, charg, lfimg, meins, netoPesado.ToString(), ump);
 
                     LstParametros.Add(new Parametros("@ID_PESAJE", idPesajeSelected, SqlDbType.VarChar));
                     LstParametros.Add(new Parametros("@TIQUETE_BASCULA", tiqueteSelected, SqlDbType.VarChar));
@@ -503,8 +514,10 @@ namespace Pry_Basculas_SAP
                 }
                 else
                 {
-                    XtraMessageBox.Show($"EL MATERIAL {materialSelected} - {descMaterialSelected}, \r\nCON PESO NETO {netoSelected},\r\nNO CUMPLE CON EL PORCENTAJE DE EXCESO {validarExceso}\r\n, SE PROCEDE A REALIZAR UN AJUSTE DE INVENTARIO.", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DataTable ajusteInv = metodosIntegracion.AjustarInventario(centroLog, lgort, materialSelected, charg, lfimg, meins, netoSelected.ToString(), ump);
+                    XtraMessageBox.Show($"EL MATERIAL {materialSelected} - {descMaterialSelected}, \r\nCON PESO NETO {netoSelected},\r\nNO CUMPLE CON EL PORCENTAJE DE EXCESO {validarExceso}\r \r\nSE PROCEDE A REALIZAR UN AJUSTE DE INVENTARIO.", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //no se hace nada 
+
+
                     CargueListadosPesajes();
                 }
 
@@ -711,11 +724,6 @@ namespace Pry_Basculas_SAP
 
 
 
-        private void btn_CapManual_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            frm_Administracion_pesaje frm_Administracion_Pesaje = new frm_Administracion_pesaje();
-            frm_Administracion_Pesaje.Show(Owner);
-        }
 
 
         //abrir listado de procesos para imprimir tiquete
@@ -724,6 +732,7 @@ namespace Pry_Basculas_SAP
             frm_Report_ProcesosCerrados frm_reporte = new frm_Report_ProcesosCerrados();
             frm_reporte.Show(Owner);
         }
+
 
         //abrir reporte de procesos cerrados.
         private void btn_AbrirCerrados_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -734,7 +743,13 @@ namespace Pry_Basculas_SAP
 
 
 
+        private void btn_CapManual_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frm_Administracion_pesaje frm_Administracion_Pesaje = new frm_Administracion_pesaje();
+            frm_Administracion_Pesaje.Show(Owner);
+        }
 
+        //Mostrar información de los tipos de estados.
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
@@ -743,6 +758,12 @@ namespace Pry_Basculas_SAP
         }
 
 
+        private void btn_ChangeTrans_Click(object sender, EventArgs e)
+        {
+            frm_Cambiar_transportista transpor = new frm_Cambiar_transportista();
+            transpor.ShowDialog(Owner);
+            transpor.Dispose();
+        }
 
 
 

@@ -41,25 +41,27 @@ namespace Pry_Basculas_SAP.Reportes
             this.tip_proceso = new DevExpress.XtraGrid.Columns.GridColumn();
             this.t_pesaje = new DevExpress.XtraGrid.Columns.GridColumn();
             this.desc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.doc_comer = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.doc_comp = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.doc_trans = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.fecha_proceso = new DevExpress.XtraGrid.Columns.GridColumn();
             this.cd_mate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.desc_mate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.placa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.conductor = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tiquete = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.print_formato = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButton_ImprimirFormato = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            this.doc_comer = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.doc_comp = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.doc_trans = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraScrollableControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grc_ControlReportCerrrado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grv_VistaReportCerrado)).BeginInit();
@@ -106,6 +108,8 @@ namespace Pry_Basculas_SAP.Reportes
             this.placa,
             this.gridColumn1,
             this.conductor,
+            this.gridColumn10,
+            this.gridColumn9,
             this.gridColumn2,
             this.tiquete,
             this.gridColumn3,
@@ -129,7 +133,7 @@ namespace Pry_Basculas_SAP.Reportes
             this.id.OptionsFilter.AllowAutoFilter = false;
             this.id.Visible = true;
             this.id.VisibleIndex = 0;
-            this.id.Width = 49;
+            this.id.Width = 58;
             // 
             // tip_proceso
             // 
@@ -160,7 +164,56 @@ namespace Pry_Basculas_SAP.Reportes
             this.desc.OptionsFilter.AllowAutoFilter = false;
             this.desc.Visible = true;
             this.desc.VisibleIndex = 1;
-            this.desc.Width = 55;
+            this.desc.Width = 85;
+            // 
+            // doc_comer
+            // 
+            this.doc_comer.Caption = "DOC COMERCIAL";
+            this.doc_comer.FieldName = "VBELN";
+            this.doc_comer.Name = "doc_comer";
+            this.doc_comer.OptionsColumn.AllowEdit = false;
+            this.doc_comer.OptionsColumn.AllowFocus = false;
+            this.doc_comer.OptionsFilter.AllowAutoFilter = false;
+            this.doc_comer.OptionsFilter.AllowFilter = false;
+            this.doc_comer.Visible = true;
+            this.doc_comer.VisibleIndex = 3;
+            this.doc_comer.Width = 92;
+            // 
+            // doc_comp
+            // 
+            this.doc_comp.Caption = "DOC COMPRA";
+            this.doc_comp.FieldName = "EBELN";
+            this.doc_comp.Name = "doc_comp";
+            this.doc_comp.OptionsColumn.AllowEdit = false;
+            this.doc_comp.OptionsColumn.AllowFocus = false;
+            this.doc_comp.OptionsFilter.AllowAutoFilter = false;
+            this.doc_comp.Visible = true;
+            this.doc_comp.VisibleIndex = 4;
+            this.doc_comp.Width = 76;
+            // 
+            // doc_trans
+            // 
+            this.doc_trans.Caption = "DOC TRANSPORTE";
+            this.doc_trans.FieldName = "TKNUM";
+            this.doc_trans.Name = "doc_trans";
+            this.doc_trans.OptionsColumn.AllowEdit = false;
+            this.doc_trans.OptionsColumn.AllowFocus = false;
+            this.doc_trans.OptionsFilter.AllowAutoFilter = false;
+            this.doc_trans.Visible = true;
+            this.doc_trans.VisibleIndex = 5;
+            this.doc_trans.Width = 99;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "CENTRO LOG";
+            this.gridColumn7.FieldName = "WERKS";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.OptionsColumn.AllowEdit = false;
+            this.gridColumn7.OptionsColumn.AllowFocus = false;
+            this.gridColumn7.OptionsFilter.AllowAutoFilter = false;
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 6;
+            this.gridColumn7.Width = 72;
             // 
             // fecha_proceso
             // 
@@ -172,7 +225,7 @@ namespace Pry_Basculas_SAP.Reportes
             this.fecha_proceso.OptionsFilter.AllowAutoFilter = false;
             this.fecha_proceso.Visible = true;
             this.fecha_proceso.VisibleIndex = 2;
-            this.fecha_proceso.Width = 60;
+            this.fecha_proceso.Width = 92;
             // 
             // cd_mate
             // 
@@ -184,7 +237,7 @@ namespace Pry_Basculas_SAP.Reportes
             this.cd_mate.OptionsFilter.AllowAutoFilter = false;
             this.cd_mate.Visible = true;
             this.cd_mate.VisibleIndex = 7;
-            this.cd_mate.Width = 54;
+            this.cd_mate.Width = 83;
             // 
             // desc_mate
             // 
@@ -196,7 +249,7 @@ namespace Pry_Basculas_SAP.Reportes
             this.desc_mate.OptionsFilter.AllowAutoFilter = false;
             this.desc_mate.Visible = true;
             this.desc_mate.VisibleIndex = 8;
-            this.desc_mate.Width = 49;
+            this.desc_mate.Width = 58;
             // 
             // placa
             // 
@@ -208,7 +261,7 @@ namespace Pry_Basculas_SAP.Reportes
             this.placa.OptionsFilter.AllowAutoFilter = false;
             this.placa.Visible = true;
             this.placa.VisibleIndex = 9;
-            this.placa.Width = 62;
+            this.placa.Width = 95;
             // 
             // gridColumn1
             // 
@@ -220,7 +273,7 @@ namespace Pry_Basculas_SAP.Reportes
             this.gridColumn1.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 10;
-            this.gridColumn1.Width = 51;
+            this.gridColumn1.Width = 79;
             // 
             // conductor
             // 
@@ -233,7 +286,18 @@ namespace Pry_Basculas_SAP.Reportes
             this.conductor.OptionsFilter.AllowFilter = false;
             this.conductor.Visible = true;
             this.conductor.VisibleIndex = 11;
-            this.conductor.Width = 49;
+            this.conductor.Width = 72;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "TRANSPORTISTA";
+            this.gridColumn9.FieldName = "AGENTE";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.OptionsColumn.AllowEdit = false;
+            this.gridColumn9.OptionsFilter.AllowFilter = false;
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 13;
+            this.gridColumn9.Width = 91;
             // 
             // gridColumn2
             // 
@@ -245,8 +309,8 @@ namespace Pry_Basculas_SAP.Reportes
             this.gridColumn2.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn2.OptionsFilter.AllowFilter = false;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 12;
-            this.gridColumn2.Width = 49;
+            this.gridColumn2.VisibleIndex = 14;
+            this.gridColumn2.Width = 53;
             // 
             // tiquete
             // 
@@ -258,8 +322,8 @@ namespace Pry_Basculas_SAP.Reportes
             this.tiquete.OptionsFilter.AllowAutoFilter = false;
             this.tiquete.OptionsFilter.AllowFilter = false;
             this.tiquete.Visible = true;
-            this.tiquete.VisibleIndex = 13;
-            this.tiquete.Width = 64;
+            this.tiquete.VisibleIndex = 15;
+            this.tiquete.Width = 99;
             // 
             // gridColumn3
             // 
@@ -273,8 +337,20 @@ namespace Pry_Basculas_SAP.Reportes
             this.gridColumn3.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn3.OptionsFilter.AllowFilter = false;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 14;
-            this.gridColumn3.Width = 88;
+            this.gridColumn3.VisibleIndex = 16;
+            this.gridColumn3.Width = 173;
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "CONFIRMADO POR";
+            this.gridColumn8.FieldName = "usuario_confirmacion";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.OptionsColumn.AllowEdit = false;
+            this.gridColumn8.OptionsColumn.AllowFocus = false;
+            this.gridColumn8.OptionsFilter.AllowAutoFilter = false;
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 19;
+            this.gridColumn8.Width = 101;
             // 
             // gridColumn4
             // 
@@ -288,8 +364,8 @@ namespace Pry_Basculas_SAP.Reportes
             this.gridColumn4.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn4.OptionsFilter.AllowFilter = false;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 15;
-            this.gridColumn4.Width = 90;
+            this.gridColumn4.VisibleIndex = 17;
+            this.gridColumn4.Width = 127;
             // 
             // gridColumn5
             // 
@@ -303,8 +379,8 @@ namespace Pry_Basculas_SAP.Reportes
             this.gridColumn5.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn5.OptionsFilter.AllowFilter = false;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 16;
-            this.gridColumn5.Width = 91;
+            this.gridColumn5.VisibleIndex = 18;
+            this.gridColumn5.Width = 128;
             // 
             // gridColumn6
             // 
@@ -316,8 +392,8 @@ namespace Pry_Basculas_SAP.Reportes
             this.gridColumn6.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn6.OptionsFilter.AllowFilter = false;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 18;
-            this.gridColumn6.Width = 64;
+            this.gridColumn6.VisibleIndex = 20;
+            this.gridColumn6.Width = 65;
             // 
             // print_formato
             // 
@@ -341,66 +417,15 @@ namespace Pry_Basculas_SAP.Reportes
             this.repositoryItemButton_ImprimirFormato.Name = "repositoryItemButton_ImprimirFormato";
             this.repositoryItemButton_ImprimirFormato.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
-            // doc_comer
+            // gridColumn10
             // 
-            this.doc_comer.Caption = "DOC COMERCIAL";
-            this.doc_comer.FieldName = "VBELN";
-            this.doc_comer.Name = "doc_comer";
-            this.doc_comer.OptionsColumn.AllowEdit = false;
-            this.doc_comer.OptionsColumn.AllowFocus = false;
-            this.doc_comer.OptionsFilter.AllowAutoFilter = false;
-            this.doc_comer.OptionsFilter.AllowFilter = false;
-            this.doc_comer.Visible = true;
-            this.doc_comer.VisibleIndex = 3;
-            this.doc_comer.Width = 60;
-            // 
-            // doc_comp
-            // 
-            this.doc_comp.Caption = "DOC COMPRA";
-            this.doc_comp.FieldName = "EBELN";
-            this.doc_comp.Name = "doc_comp";
-            this.doc_comp.OptionsColumn.AllowEdit = false;
-            this.doc_comp.OptionsColumn.AllowFocus = false;
-            this.doc_comp.OptionsFilter.AllowAutoFilter = false;
-            this.doc_comp.Visible = true;
-            this.doc_comp.VisibleIndex = 4;
-            this.doc_comp.Width = 49;
-            // 
-            // doc_trans
-            // 
-            this.doc_trans.Caption = "DOC TRANSPORTE";
-            this.doc_trans.FieldName = "TKNUM";
-            this.doc_trans.Name = "doc_trans";
-            this.doc_trans.OptionsColumn.AllowEdit = false;
-            this.doc_trans.OptionsColumn.AllowFocus = false;
-            this.doc_trans.OptionsFilter.AllowAutoFilter = false;
-            this.doc_trans.Visible = true;
-            this.doc_trans.VisibleIndex = 5;
-            this.doc_trans.Width = 64;
-            // 
-            // gridColumn7
-            // 
-            this.gridColumn7.Caption = "CENTRO LOG";
-            this.gridColumn7.FieldName = "WERKS";
-            this.gridColumn7.Name = "gridColumn7";
-            this.gridColumn7.OptionsColumn.AllowEdit = false;
-            this.gridColumn7.OptionsColumn.AllowFocus = false;
-            this.gridColumn7.OptionsFilter.AllowAutoFilter = false;
-            this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 6;
-            this.gridColumn7.Width = 49;
-            // 
-            // gridColumn8
-            // 
-            this.gridColumn8.Caption = "CONFIRMADO POR";
-            this.gridColumn8.FieldName = "usuario_confirmacion";
-            this.gridColumn8.Name = "gridColumn8";
-            this.gridColumn8.OptionsColumn.AllowEdit = false;
-            this.gridColumn8.OptionsColumn.AllowFocus = false;
-            this.gridColumn8.OptionsFilter.AllowAutoFilter = false;
-            this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 17;
-            this.gridColumn8.Width = 71;
+            this.gridColumn10.Caption = "NIT TRANSPORTISTA";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.OptionsColumn.AllowEdit = false;
+            this.gridColumn10.OptionsFilter.AllowAutoFilter = false;
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 12;
+            this.gridColumn10.Width = 111;
             // 
             // frm_Report_Reportes_cerrados
             // 
@@ -449,5 +474,7 @@ namespace Pry_Basculas_SAP.Reportes
         private DevExpress.XtraGrid.Columns.GridColumn doc_trans;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
     }
 }

@@ -74,6 +74,8 @@ namespace IntegracionSAP_Dll
 
 
         #region Metodos consulta SAP para basculas
+
+        //método consultar los saldos de los materiales.
         public DataTable CargarSaldos(string CL, string lote, string Material)
         {
                 DataTable resultDt_Saldos = new DataTable();
@@ -92,7 +94,7 @@ namespace IntegracionSAP_Dll
                     RfcRepository repo = prd.Repository;
                     IRfcFunction soBapi = repo.CreateFunction("Z_MDFN_SALDOS");
                     soBapi.SetValue("P_WERKS", CL); //1208 importante
-                    soBapi.SetValue("P_CHARG", ""); //lote, puede faltar este dato
+                    soBapi.SetValue("P_CHARG", lote); //lote, puede faltar este dato
                     soBapi.SetValue("P_LGORT", ""); //almacen
                     soBapi.SetValue("P_MATNR", Material); //"000000000000200000"
                     soBapi.Invoke(prd);
@@ -205,11 +207,20 @@ namespace IntegracionSAP_Dll
             }
         }
 
-        //enviar información a SAP 
-        public Object RetornarDatos(string idPesaje, string tiqueteBascula, string umb,  string netoCalculado)
+        //enviar información de retorno a SAP 
+        public DataTable RetornarDatos(string idPesaje, string tiqueteBascula, string umb,  string netoCalculado)
         {
+            string statusNum = "02";
             try
             {
+                if(tiqueteBascula == "01" && netoCalculado == "0,000")
+                {
+                    statusNum = "01";
+                    tiqueteBascula = "";
+                    umb = "0,000";
+                      
+                }
+               
                 RfcDestinationManager.RegisterDestinationConfiguration(rfc_Connector);
                 RfcDestination prd = RfcDestinationManager.GetDestination("SE37");
                 RfcRepository repo = prd.Repository;
@@ -223,19 +234,19 @@ namespace IntegracionSAP_Dll
                 dtParametros.SetValue("ZTQ_BASC", tiqueteBascula); // ETIQUETA DE BASCULA
                 dtParametros.SetValue("LKIMG_REAL", umb); // CANTIDAD PESADA REAL EN UMB
                 dtParametros.SetValue("PIKMG_REAL", netoCalculado); // CANTIDAD PESADA REAL EN UMP (PESO NETO)
-                dtParametros.SetValue("STATUS", "02"); //ESTADO DE CONSUMO --> SE CAMBIA A 01 O´ 02
+                dtParametros.SetValue("STATUS", statusNum); //ESTADO DE CONSUMO --> SE CAMBIA A 01 O´ 02
               
                 soBapi.SetValue("IT_REQUEST", dtParametros);
 
                 soBapi.Invoke(prd);
-                //IRfcTable IT_KNA1 = soBapi.GetTable("IT_LOG");
                 var res = soBapi.GetValue("EX_V_SUBRC");
+                IRfcTable EX_T_RETURN = soBapi.GetTable("EX_T_RETURN");
 
-                //DataSet dsAjuste = new DataSet();
-                //dsAjuste.Tables.Add(ConvertToDotNetTable(IT_KNA1));
-                //DataTable resultDt_Ajuste = dsAjuste.Tables[0];
+                DataSet dsRes_Retorno = new DataSet();
+                dsRes_Retorno.Tables.Add(ConvertToDotNetTable(EX_T_RETURN));
+                DataTable resultDt_Ajuste = dsRes_Retorno.Tables[0];
 
-                return res ;
+                return resultDt_Ajuste;
 
             }
             finally
@@ -250,7 +261,7 @@ namespace IntegracionSAP_Dll
 
 
 
-
+        //método para cargar toda la data de pesajes de SAP.
         public DataTable CargarData_PesajesActivos()
         {
             
@@ -282,6 +293,42 @@ namespace IntegracionSAP_Dll
 
         }
 
+
+        //método para cargar toda la data de pesajes de SAP.
+        public DataTable Cambiar_estadoConsumo(string idpesaje)
+        {
+
+            try
+            {
+                RfcDestinationManager.RegisterDestinationConfiguration(rfc_Connector);
+                RfcDestination prd = RfcDestinationManager.GetDestination("SE37");
+                RfcRepository repo = prd.Repository;
+                IRfcFunction soBapi = repo.CreateFunction("ZSD_FM_WEIGHING_DATA_GET");
+                soBapi.Invoke(prd);
+                IRfcTable IT_KNA1 = soBapi.GetTable("IS_REQUEST");
+                DataSet dsListadoAct = new DataSet();
+                dsListadoAct.Tables.Add(ConvertToDotNetTable(IT_KNA1));
+                DataTable resultDt_ListadoAct = dsListadoAct.Tables[0];
+
+
+                return resultDt_ListadoAct;
+
+            }
+            catch (Exception) { throw; }
+            finally
+            {
+                try
+                {   //se debe quitar el registro de la conexión si se desea realizar una nueva consulta
+                    RfcDestinationManager.UnregisterDestinationConfiguration(rfc_Connector);
+                }
+                catch (Exception) { throw; }
+            }
+
+        }
+
+
+
+        //Método para traer la data desde SAP a partir de la placa digitada.
         public DataTable FiltrarData_PlacaCabezote(string Placa)
         {
 
@@ -318,6 +365,38 @@ namespace IntegracionSAP_Dll
 
         }
 
+
+        //método para listar todas las empresas transportistas.
+        public DataTable Listar_Transportistas()
+        {
+
+            try
+            {
+                RfcDestinationManager.RegisterDestinationConfiguration(rfc_Connector);
+                RfcDestination prd = RfcDestinationManager.GetDestination("SE37");
+                RfcRepository repo = prd.Repository;
+                IRfcFunction soBapi = repo.CreateFunction("Z_MDFN_TRANSPORTISTA");
+                soBapi.Invoke(prd);
+                IRfcTable IT_TRANS = soBapi.GetTable("IT_TRANS");
+                DataSet dsListTransportista = new DataSet();
+                dsListTransportista.Tables.Add(ConvertToDotNetTable(IT_TRANS));
+                DataTable DT_LstTrans = dsListTransportista.Tables[0];
+
+
+                return DT_LstTrans;
+
+            }
+            catch (Exception) { throw; }
+            finally
+            {
+                try
+                {   //se debe quitar el registro de la conexión si se desea realizar una nueva consulta
+                    RfcDestinationManager.UnregisterDestinationConfiguration(rfc_Connector);
+                }
+                catch (Exception) { throw; }
+            }
+
+        }
 
 
 

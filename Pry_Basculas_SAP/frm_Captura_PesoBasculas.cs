@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using DevExpress.LookAndFeel;
 using System.Windows.Forms;
 using static Pry_Basculas_SAP.Class.EnumTipoPesajes;
+using IntegracionSAP_Dll;
 
 namespace Pry_Basculas_SAP
 {
@@ -21,6 +22,7 @@ namespace Pry_Basculas_SAP
         List<Parametros> LstParametros = new List<Parametros>();
         UserActiveDirectory usuarioAD = new UserActiveDirectory();
         UtilitiesSP utilidadesSP = new UtilitiesSP();
+        MetodosIntegracion metodosIntegracion = new MetodosIntegracion();
 
         private string _idPesaje;
         private string _cantidadUMB;
@@ -77,23 +79,26 @@ namespace Pry_Basculas_SAP
 
         private void btnCapturaPeso_Click(object sender, EventArgs e)
         {
-            var peso1Cap = txtPesoCapturado.Text;
-            if (string.IsNullOrWhiteSpace(peso1Cap))
-            {
-                XtraMessageBox.Show($"Debe establecer el valor de pesaje. ", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            else
-            {
-                frmVista_PesajesActivos frmListasAct = new frmVista_PesajesActivos();
-                GuardarCaptura_Pesaje(peso1Cap);
-                txtPesoCapturado.Text = string.Empty;
-                this.Dispose();
-                this.Hide();
-                frmListasAct.ShowDialog();
-                frmListasAct.Dispose();
+            txtPesoCapturado.Enabled = true;
+            txtPesoCapturado.BackColor = Color.White;
+            
+            //var peso1Cap = txtPesoCapturado.Text;
+            //if (string.IsNullOrWhiteSpace(peso1Cap))
+            //{
+            //    XtraMessageBox.Show($"Debe establecer el valor de pesaje. ", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
+            //else
+            //{
+            //    //frmVista_PesajesActivos frmListasAct = new frmVista_PesajesActivos();
+            //    GuardarCaptura_Pesaje(peso1Cap);
+            //    txtPesoCapturado.Text = string.Empty;
+            //    //this.Dispose();
+            //    //this.Hide();
+            //    //frmListasAct.ShowDialog();
+            //    //frmListasAct.Dispose();
 
-            }
+            //}
 
 
         }
@@ -109,6 +114,7 @@ namespace Pry_Basculas_SAP
             string sql = $"SELECT * FROM [BASCULAS_SAP].[dbo].[CAPTURA_PESAJES] WHERE id_pesaje = {_idPesaje}" ;
             var dt = Datos.ObtenerDataTable(sql);
 
+            //Confirma si es el primer pesaje, buscando resultados anteriores a travez del id pesaje
             if (dt.Rows.Count == 0)
             {
                 //traer el consecutivo de la tabla basculas
@@ -126,8 +132,13 @@ namespace Pry_Basculas_SAP
                 LstParametros.Add(new Parametros("@SALIDA_TICKET", _printTicket, SqlDbType.VarChar));
 
                 sendData = Datos.SPGetEscalar("SP_Guardar_CapturaPesajes", LstParametros);
+
+                DataTable respuestaGet = metodosIntegracion.Cambiar_estadoConsumo(_idPesaje);
+
+                //retorna el status =  01 a SAP para validar su consumo en los listados.
+                DataTable resRetorno = metodosIntegracion.RetornarDatos(_idPesaje,"01", _cantidadUMB, "0,000");
+
                 LstParametros.Clear();
-                
             }
             else
             {
@@ -204,12 +215,17 @@ namespace Pry_Basculas_SAP
             }
 
             if (enviarData == "" || sendData == "")
+            {
                 _ConfirmaCaptura = "ok";
+                frmListasAct.ConfirmacionCaptura(_ConfirmaCaptura);
+                utilidadesSP.GuardarData_Capturada(_dataRow);
+               
+
+
+            }
 
             // DataTable dtNew = Datos.SPObtenerDataTable("SP_Cargue_PlaneacionesPesajes");
 
-            frmListasAct.ConfirmacionCaptura(_ConfirmaCaptura);
-            utilidadesSP.GuardarData_Capturada(_dataRow);
            
 
 
@@ -229,6 +245,7 @@ namespace Pry_Basculas_SAP
                 if (estadoProc == "P")
                 {
                     lblCapt1.Text = dt.Rows[0]["peso1"].ToString();
+
                 }
                 else
                 {
@@ -241,7 +258,8 @@ namespace Pry_Basculas_SAP
                     btn_guardarCaptura.Enabled = false;
                     grbInfoCaptura.BackColor = Color.MediumSeaGreen;
 
-                    XtraMessageBox.Show($"OPERACIÓN DE CAPTURA CULMINADA, PENDIENTE POR CONFIRMACIÓN. \r\nProceso {_idPesaje} - {_procesoDetalle} ", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBox.Show($"OPERACIÓN DE CAPTURA CULMINADA, PENDIENTE POR CONFIRMACIÓN.\n \r\nProceso {_idPesaje} - {_procesoDetalle} ", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
 
                 }
 
@@ -266,6 +284,8 @@ namespace Pry_Basculas_SAP
 
         private void frm_Captua_PesoBasculas_Load(object sender, EventArgs e)
         {
+            btnCapturarPeso.Enabled = true;
+            
             VerificarCapturasPesos();
         }
 
@@ -300,6 +320,12 @@ namespace Pry_Basculas_SAP
                 }
 
 
+            }
+            else
+            {
+                txtPesoCapturado.Enabled = false;
+                txtPesoCapturado.Text = string.Empty;
+                btnCapturarPeso.BackColor = Color.DeepSkyBlue;
             }
         }
     }

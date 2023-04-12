@@ -47,6 +47,7 @@ namespace Pry_Basculas_SAP
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVista_PesajesActivos));
             this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
+            this.btn_ChangeTrans = new DevExpress.XtraEditors.SimpleButton();
             this.btn_GetOut = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -61,6 +62,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -92,6 +94,7 @@ namespace Pry_Basculas_SAP
             this.descr_material = new DevExpress.XtraGrid.Columns.GridColumn();
             this.placa_cabezote = new DevExpress.XtraGrid.Columns.GridColumn();
             this.conductor = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.centro_logistico = new DevExpress.XtraGrid.Columns.GridColumn();
             this.almacen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ticket_bascula = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -150,6 +153,7 @@ namespace Pry_Basculas_SAP
             this.xtraScrollableControl1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.xtraScrollableControl1.Appearance.Options.UseBackColor = true;
             this.xtraScrollableControl1.AutoScroll = false;
+            this.xtraScrollableControl1.Controls.Add(this.btn_ChangeTrans);
             this.xtraScrollableControl1.Controls.Add(this.btn_GetOut);
             this.xtraScrollableControl1.Controls.Add(this.labelControl4);
             this.xtraScrollableControl1.Controls.Add(this.labelControl2);
@@ -163,6 +167,18 @@ namespace Pry_Basculas_SAP
             this.xtraScrollableControl1.Name = "xtraScrollableControl1";
             this.xtraScrollableControl1.Size = new System.Drawing.Size(1308, 699);
             this.xtraScrollableControl1.TabIndex = 5;
+            // 
+            // btn_ChangeTrans
+            // 
+            this.btn_ChangeTrans.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ChangeTrans.Appearance.Options.UseFont = true;
+            this.btn_ChangeTrans.ImageOptions.Image = global::Pry_Basculas_SAP.Properties.Resources.transit_32x32;
+            this.btn_ChangeTrans.Location = new System.Drawing.Point(163, 622);
+            this.btn_ChangeTrans.Name = "btn_ChangeTrans";
+            this.btn_ChangeTrans.Size = new System.Drawing.Size(209, 42);
+            this.btn_ChangeTrans.TabIndex = 13;
+            this.btn_ChangeTrans.Text = "Cambiar Transportista";
+            this.btn_ChangeTrans.Click += new System.EventHandler(this.btn_ChangeTrans_Click);
             // 
             // btn_GetOut
             // 
@@ -227,6 +243,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn6,
             this.gridColumn7,
             this.gridColumn8,
+            this.gridColumn18,
             this.gridColumn9,
             this.gridColumn14,
             this.gridColumn10,
@@ -355,8 +372,14 @@ namespace Pry_Basculas_SAP
             this.gridColumn8.OptionsColumn.AllowFocus = false;
             this.gridColumn8.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn8.OptionsFilter.AllowFilter = false;
-            this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 8;
+            // 
+            // gridColumn18
+            // 
+            this.gridColumn18.Caption = "TRANSPORTISTA";
+            this.gridColumn18.FieldName = "AGENTE";
+            this.gridColumn18.Name = "gridColumn18";
+            this.gridColumn18.OptionsColumn.AllowEdit = false;
+            this.gridColumn18.OptionsFilter.AllowAutoFilter = false;
             // 
             // gridColumn9
             // 
@@ -368,7 +391,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn9.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn9.OptionsFilter.AllowFilter = false;
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 9;
+            this.gridColumn9.VisibleIndex = 8;
             this.gridColumn9.Width = 107;
             // 
             // gridColumn14
@@ -381,7 +404,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn14.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn14.OptionsFilter.AllowFilter = false;
             this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 14;
+            this.gridColumn14.VisibleIndex = 13;
             // 
             // gridColumn10
             // 
@@ -393,7 +416,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn10.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn10.OptionsFilter.AllowFilter = false;
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 10;
+            this.gridColumn10.VisibleIndex = 9;
             this.gridColumn10.Width = 84;
             // 
             // gridColumn11
@@ -406,7 +429,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn11.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn11.OptionsFilter.AllowFilter = false;
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 11;
+            this.gridColumn11.VisibleIndex = 10;
             // 
             // gridColumn12
             // 
@@ -418,7 +441,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn12.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn12.OptionsFilter.AllowFilter = false;
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 12;
+            this.gridColumn12.VisibleIndex = 11;
             this.gridColumn12.Width = 84;
             // 
             // gridColumn13
@@ -429,7 +452,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn13.OptionsColumn.AllowEdit = false;
             this.gridColumn13.OptionsColumn.AllowFocus = false;
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 13;
+            this.gridColumn13.VisibleIndex = 12;
             // 
             // iniciar_proceso
             // 
@@ -439,7 +462,7 @@ namespace Pry_Basculas_SAP
             this.iniciar_proceso.OptionsFilter.AllowAutoFilter = false;
             this.iniciar_proceso.OptionsFilter.AllowFilter = false;
             this.iniciar_proceso.Visible = true;
-            this.iniciar_proceso.VisibleIndex = 15;
+            this.iniciar_proceso.VisibleIndex = 14;
             // 
             // repositoryItemButton_IniciarProceso
             // 
@@ -498,14 +521,16 @@ namespace Pry_Basculas_SAP
             // 
             // panelControl1
             // 
+            this.panelControl1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panelControl1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(171)))), ((int)(((byte)(209)))));
             this.panelControl1.Appearance.Options.UseBackColor = true;
+            this.panelControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl1.Controls.Add(this.lbl_Day);
             this.panelControl1.Controls.Add(this.lbl_date);
             this.panelControl1.Controls.Add(this.lbl_segundos);
             this.panelControl1.Controls.Add(this.lbl_hora);
-            this.panelControl1.Location = new System.Drawing.Point(1010, 2);
+            this.panelControl1.Location = new System.Drawing.Point(1013, 2);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(298, 55);
             this.panelControl1.TabIndex = 8;
@@ -626,6 +651,7 @@ namespace Pry_Basculas_SAP
             this.descr_material,
             this.placa_cabezote,
             this.conductor,
+            this.gridColumn17,
             this.centro_logistico,
             this.almacen,
             this.ticket_bascula,
@@ -775,6 +801,14 @@ namespace Pry_Basculas_SAP
             this.conductor.VisibleIndex = 6;
             this.conductor.Width = 72;
             // 
+            // gridColumn17
+            // 
+            this.gridColumn17.Caption = "TRANSPORTISTA";
+            this.gridColumn17.FieldName = "AGENTE";
+            this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.OptionsColumn.AllowEdit = false;
+            this.gridColumn17.OptionsFilter.AllowAutoFilter = false;
+            // 
             // centro_logistico
             // 
             this.centro_logistico.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -920,8 +954,6 @@ namespace Pry_Basculas_SAP
             this.neto.AppearanceHeader.Options.UseTextOptions = true;
             this.neto.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.neto.Caption = "PESO NETO";
-            this.neto.DisplayFormat.FormatString = "0.000";
-            this.neto.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.neto.FieldName = "peso_neto";
             this.neto.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Right;
             this.neto.Name = "neto";
@@ -1335,6 +1367,9 @@ namespace Pry_Basculas_SAP
         private DevExpress.XtraBars.BarButtonItem btn_AbrirCerrados;
         private DevExpress.XtraEditors.SimpleButton btn_GetOut;
         private DevExpress.XtraBars.DefaultBarAndDockingController defaultBarAndDockingController1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
+        private DevExpress.XtraEditors.SimpleButton btn_ChangeTrans;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
     }
 }
 

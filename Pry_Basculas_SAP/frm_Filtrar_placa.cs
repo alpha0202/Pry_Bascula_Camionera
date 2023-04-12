@@ -36,6 +36,7 @@ namespace Pry_Basculas_SAP
         string          plac_trailer;
         string          fecha_carga;
         string          conductor;
+        string          transportista;
         string          centro_logistico;
         string          num_bascula;
         string          cantidad_umb;
@@ -177,6 +178,7 @@ namespace Pry_Basculas_SAP
                     plac_trailer            = dataRow.Field<string>("ADD02");
                     fecha_carga             = dataRow.Field<string>("DPLBG");
                     conductor               = dataRow.Field<string>("TEXT1");
+                    transportista           = dataRow.Field<string>("AGENTE");
                     centro_logistico        = dataRow.Field<string>("WERKS");
                     num_bascula             = dataRow.Field<string>("BASCULA");
                     cantidad_umb            = dataRow.Field<string>("LFIMG");
@@ -205,6 +207,7 @@ namespace Pry_Basculas_SAP
                     LstParametros.Add(new Parametros("@ADD02" , plac_trailer, SqlDbType.VarChar));
                     LstParametros.Add(new Parametros("@DPLBG" , fecha_carga, SqlDbType.VarChar));
                     LstParametros.Add(new Parametros("@TEXT1" , conductor, SqlDbType.VarChar));  
+                    LstParametros.Add(new Parametros("@AGENTE" , transportista, SqlDbType.VarChar));  
                     LstParametros.Add(new Parametros("@WERKS" , centro_logistico, SqlDbType.VarChar));
                     LstParametros.Add(new Parametros("@BASCULA" , num_bascula, SqlDbType.VarChar));
                     LstParametros.Add(new Parametros("@LFIMG" , cantidad_umb, SqlDbType.VarChar));
@@ -255,6 +258,17 @@ namespace Pry_Basculas_SAP
         {
             //string sql = "DELETE [BASCULAS_SAP].[dbo].[TB_FILTRO_PLACA] ";
             //Datos.GetEscalar(sql);
+        }
+
+        private void txtPlacaCabezote_KeyDown(object sender, KeyEventArgs e)
+        {
+            //If e.KeyCode = Keys.Enter Then
+
+
+            if(e.KeyCode == Keys.Enter)
+            {
+                btn_BuscarData.PerformClick();
+            }
         }
     }
 }

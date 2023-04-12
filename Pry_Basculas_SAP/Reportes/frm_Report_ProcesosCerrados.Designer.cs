@@ -48,6 +48,7 @@ namespace Pry_Basculas_SAP
             this.placa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.conductor = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tiquete = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -107,6 +108,7 @@ namespace Pry_Basculas_SAP
             this.placa,
             this.gridColumn1,
             this.conductor,
+            this.gridColumn7,
             this.gridColumn2,
             this.tiquete,
             this.gridColumn3,
@@ -236,6 +238,17 @@ namespace Pry_Basculas_SAP
             this.conductor.Visible = true;
             this.conductor.VisibleIndex = 10;
             // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "TRANSPORTISTA";
+            this.gridColumn7.FieldName = "AGENTE";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.OptionsColumn.AllowEdit = false;
+            this.gridColumn7.OptionsFilter.AllowAutoFilter = false;
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 11;
+            this.gridColumn7.Width = 91;
+            // 
             // gridColumn2
             // 
             this.gridColumn2.Caption = "BASCULA";
@@ -246,7 +259,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn2.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn2.OptionsFilter.AllowFilter = false;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 11;
+            this.gridColumn2.VisibleIndex = 12;
             // 
             // tiquete
             // 
@@ -258,7 +271,7 @@ namespace Pry_Basculas_SAP
             this.tiquete.OptionsFilter.AllowAutoFilter = false;
             this.tiquete.OptionsFilter.AllowFilter = false;
             this.tiquete.Visible = true;
-            this.tiquete.VisibleIndex = 12;
+            this.tiquete.VisibleIndex = 13;
             this.tiquete.Width = 99;
             // 
             // gridColumn3
@@ -273,7 +286,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn3.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn3.OptionsFilter.AllowFilter = false;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 13;
+            this.gridColumn3.VisibleIndex = 14;
             this.gridColumn3.Width = 173;
             // 
             // gridColumn4
@@ -288,7 +301,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn4.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn4.OptionsFilter.AllowFilter = false;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 14;
+            this.gridColumn4.VisibleIndex = 15;
             this.gridColumn4.Width = 127;
             // 
             // gridColumn5
@@ -303,7 +316,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn5.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn5.OptionsFilter.AllowFilter = false;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 15;
+            this.gridColumn5.VisibleIndex = 16;
             this.gridColumn5.Width = 128;
             // 
             // gridColumn6
@@ -316,7 +329,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn6.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn6.OptionsFilter.AllowFilter = false;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 16;
+            this.gridColumn6.VisibleIndex = 17;
             // 
             // print_formato
             // 
@@ -386,5 +399,6 @@ namespace Pry_Basculas_SAP
         private DevExpress.XtraGrid.Columns.GridColumn print_formato;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButton_ImprimirFormato;
         private System.Windows.Forms.DateTimePicker dtp_dateFilter;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
     }
 }

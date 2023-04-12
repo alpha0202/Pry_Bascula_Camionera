@@ -129,7 +129,7 @@ namespace Pry_Basculas_SAP
             // txt_undUMB
             // 
             this.txt_undUMB.Enabled = false;
-            this.txt_undUMB.Location = new System.Drawing.Point(740, 134);
+            this.txt_undUMB.Location = new System.Drawing.Point(753, 134);
             this.txt_undUMB.Name = "txt_undUMB";
             this.txt_undUMB.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.txt_undUMB.Properties.Appearance.Options.UseFont = true;
@@ -139,13 +139,13 @@ namespace Pry_Basculas_SAP
             this.txt_undUMB.Properties.AppearanceReadOnly.Options.UseBorderColor = true;
             this.txt_undUMB.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.txt_undUMB.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_undUMB.Size = new System.Drawing.Size(63, 22);
+            this.txt_undUMB.Size = new System.Drawing.Size(50, 22);
             this.txt_undUMB.TabIndex = 22;
             // 
             // txt_undUMP
             // 
             this.txt_undUMP.Enabled = false;
-            this.txt_undUMP.Location = new System.Drawing.Point(740, 179);
+            this.txt_undUMP.Location = new System.Drawing.Point(753, 179);
             this.txt_undUMP.Name = "txt_undUMP";
             this.txt_undUMP.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.txt_undUMP.Properties.Appearance.Options.UseFont = true;
@@ -155,7 +155,7 @@ namespace Pry_Basculas_SAP
             this.txt_undUMP.Properties.AppearanceReadOnly.Options.UseBorderColor = true;
             this.txt_undUMP.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.txt_undUMP.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_undUMP.Size = new System.Drawing.Size(63, 22);
+            this.txt_undUMP.Size = new System.Drawing.Size(50, 22);
             this.txt_undUMP.TabIndex = 21;
             // 
             // labelControl11
@@ -189,7 +189,7 @@ namespace Pry_Basculas_SAP
             // 
             // btnSalir
             // 
-            this.btnSalir.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btnSalir.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.btnSalir.Appearance.Options.UseFont = true;
             this.btnSalir.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.False;
             this.btnSalir.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.ImageOptions.Image")));
@@ -197,7 +197,7 @@ namespace Pry_Basculas_SAP
             this.btnSalir.ImageOptions.ImageToTextIndent = -8;
             this.btnSalir.Location = new System.Drawing.Point(730, 323);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(73, 41);
+            this.btnSalir.Size = new System.Drawing.Size(73, 40);
             this.btnSalir.TabIndex = 17;
             this.btnSalir.Text = "Salir";
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
@@ -408,41 +408,46 @@ namespace Pry_Basculas_SAP
             // 
             // txtPesoCapturado
             // 
+            this.txtPesoCapturado.Enabled = false;
             this.txtPesoCapturado.Location = new System.Drawing.Point(47, 54);
             this.txtPesoCapturado.Name = "txtPesoCapturado";
-            this.txtPesoCapturado.Properties.Appearance.Font = new System.Drawing.Font("Cascadia Code", 55.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesoCapturado.Properties.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.txtPesoCapturado.Properties.Appearance.Font = new System.Drawing.Font("Cascadia Code", 56F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesoCapturado.Properties.Appearance.FontSizeDelta = 4;
+            this.txtPesoCapturado.Properties.Appearance.Options.UseBackColor = true;
             this.txtPesoCapturado.Properties.Appearance.Options.UseFont = true;
             this.txtPesoCapturado.Properties.Appearance.Options.UseTextOptions = true;
             this.txtPesoCapturado.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.txtPesoCapturado.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.txtPesoCapturado.Properties.DisplayFormat.FormatString = "0.00";
             this.txtPesoCapturado.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.txtPesoCapturado.Size = new System.Drawing.Size(369, 106);
+            this.txtPesoCapturado.Properties.Mask.EditMask = "n3";
+            this.txtPesoCapturado.Size = new System.Drawing.Size(369, 108);
             this.txtPesoCapturado.TabIndex = 2;
             // 
             // btnCapturarPeso
             // 
-            this.btnCapturarPeso.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Question;
+            this.btnCapturarPeso.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.True;
+            this.btnCapturarPeso.Appearance.BackColor = System.Drawing.Color.LightSeaGreen;
             this.btnCapturarPeso.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCapturarPeso.Appearance.Options.UseBackColor = true;
             this.btnCapturarPeso.Appearance.Options.UseFont = true;
+            this.btnCapturarPeso.Appearance.Options.UseTextOptions = true;
+            this.btnCapturarPeso.Appearance.TextOptions.HotkeyPrefix = DevExpress.Utils.HKeyPrefix.Show;
             this.btnCapturarPeso.AppearanceDisabled.BackColor = System.Drawing.Color.Ivory;
             this.btnCapturarPeso.AppearanceDisabled.Options.UseBackColor = true;
             this.btnCapturarPeso.AppearanceHovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnCapturarPeso.AppearanceHovered.Options.UseBackColor = true;
-            this.btnCapturarPeso.Enabled = false;
             this.btnCapturarPeso.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.btnCapturarPeso.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCapturarPeso.ImageOptions.Image")));
+            this.btnCapturarPeso.ImageOptions.Image = global::Pry_Basculas_SAP.Properties.Resources.download_32x32;
             this.btnCapturarPeso.ImageOptions.ImageIndex = 0;
-            this.btnCapturarPeso.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnCapturarPeso.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
             this.btnCapturarPeso.ImageOptions.ImageToTextIndent = 0;
-            this.btnCapturarPeso.Location = new System.Drawing.Point(47, 212);
+            this.btnCapturarPeso.Location = new System.Drawing.Point(47, 192);
             this.btnCapturarPeso.Name = "btnCapturarPeso";
             this.btnCapturarPeso.Size = new System.Drawing.Size(369, 53);
             this.btnCapturarPeso.TabIndex = 1;
             this.btnCapturarPeso.Text = "Capturar";
-            this.btnCapturarPeso.Visible = false;
             this.btnCapturarPeso.Click += new System.EventHandler(this.btnCapturaPeso_Click);
             // 
             // frm_Captura_PesoBasculas

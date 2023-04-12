@@ -42,6 +42,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -104,6 +105,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn12,
             this.gridColumn4,
             this.gridColumn5,
+            this.gridColumn13,
             this.gridColumn6,
             this.gridColumn9,
             this.gridColumn10,
@@ -221,6 +223,16 @@ namespace Pry_Basculas_SAP
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 8;
             // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "TRANSPORTISTA";
+            this.gridColumn13.FieldName = "AGENTE";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.OptionsColumn.AllowEdit = false;
+            this.gridColumn13.OptionsFilter.AllowAutoFilter = false;
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 9;
+            // 
             // gridColumn6
             // 
             this.gridColumn6.Caption = "CENTRO LOGÍSITCO";
@@ -230,7 +242,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn6.OptionsColumn.AllowFocus = false;
             this.gridColumn6.OptionsEditForm.UseEditorColRowSpan = false;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 9;
+            this.gridColumn6.VisibleIndex = 10;
             this.gridColumn6.Width = 107;
             // 
             // gridColumn9
@@ -242,7 +254,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn9.OptionsColumn.AllowFocus = false;
             this.gridColumn9.OptionsEditForm.UseEditorColRowSpan = false;
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 10;
+            this.gridColumn9.VisibleIndex = 11;
             // 
             // gridColumn10
             // 
@@ -255,7 +267,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn10.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn10.OptionsFilter.AllowFilter = false;
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 11;
+            this.gridColumn10.VisibleIndex = 12;
             this.gridColumn10.Width = 84;
             // 
             // gridColumn11
@@ -269,7 +281,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn11.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn11.OptionsFilter.AllowFilter = false;
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 12;
+            this.gridColumn11.VisibleIndex = 13;
             this.gridColumn11.Width = 86;
             // 
             // panelControl1
@@ -324,6 +336,7 @@ namespace Pry_Basculas_SAP
             this.txtPlacaCabezote.Properties.MaxLength = 7;
             this.txtPlacaCabezote.Size = new System.Drawing.Size(148, 24);
             this.txtPlacaCabezote.TabIndex = 0;
+            this.txtPlacaCabezote.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPlacaCabezote_KeyDown);
             // 
             // frm_Filtrar_placa
             // 
@@ -334,7 +347,7 @@ namespace Pry_Basculas_SAP
             this.IconOptions.LargeImage = global::Pry_Basculas_SAP.Properties.Resources.find_32x32;
             this.Name = "frm_Filtrar_placa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "BUSCAR PLACA";
+            this.Text = "CONSULTAR PLACA";
             this.Load += new System.EventHandler(this.frm_Filtrar_placa_Load);
             this.xtraScrollableControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_ControlBusquedaPlaca)).EndInit();
@@ -369,5 +382,6 @@ namespace Pry_Basculas_SAP
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit txtPlacaCabezote;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
     }
 }

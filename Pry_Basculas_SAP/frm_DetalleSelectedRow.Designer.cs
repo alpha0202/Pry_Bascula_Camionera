@@ -65,6 +65,7 @@ namespace Pry_Basculas_SAP
             this.estado_consumo_servicio = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tiquete_bascula = new DevExpress.XtraGrid.Columns.GridColumn();
             this.estado = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.transportista = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gdv_documentos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_ControlDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gdv_VistaDetalle)).BeginInit();
@@ -246,7 +247,7 @@ namespace Pry_Basculas_SAP
             this.grd_ControlDetalle.Location = new System.Drawing.Point(12, 34);
             this.grd_ControlDetalle.MainView = this.gdv_VistaDetalle;
             this.grd_ControlDetalle.Name = "grd_ControlDetalle";
-            this.grd_ControlDetalle.Size = new System.Drawing.Size(1093, 339);
+            this.grd_ControlDetalle.Size = new System.Drawing.Size(1143, 337);
             this.grd_ControlDetalle.TabIndex = 0;
             this.grd_ControlDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gdv_VistaDetalle,
@@ -274,6 +275,7 @@ namespace Pry_Basculas_SAP
             this.plac_trailer,
             this.fecha_carga,
             this.conductor,
+            this.transportista,
             this.num_bascula,
             this.cantidad_umb,
             this.umb,
@@ -515,7 +517,7 @@ namespace Pry_Basculas_SAP
             this.num_bascula.OptionsFilter.AllowAutoFilter = false;
             this.num_bascula.OptionsFilter.AllowFilter = false;
             this.num_bascula.Visible = true;
-            this.num_bascula.VisibleIndex = 14;
+            this.num_bascula.VisibleIndex = 15;
             this.num_bascula.Width = 115;
             // 
             // cantidad_umb
@@ -528,7 +530,7 @@ namespace Pry_Basculas_SAP
             this.cantidad_umb.OptionsFilter.AllowAutoFilter = false;
             this.cantidad_umb.OptionsFilter.AllowFilter = false;
             this.cantidad_umb.Visible = true;
-            this.cantidad_umb.VisibleIndex = 15;
+            this.cantidad_umb.VisibleIndex = 16;
             this.cantidad_umb.Width = 84;
             // 
             // umb
@@ -541,7 +543,7 @@ namespace Pry_Basculas_SAP
             this.umb.OptionsFilter.AllowAutoFilter = false;
             this.umb.OptionsFilter.AllowFilter = false;
             this.umb.Visible = true;
-            this.umb.VisibleIndex = 16;
+            this.umb.VisibleIndex = 17;
             // 
             // cantidad_ump
             // 
@@ -553,7 +555,7 @@ namespace Pry_Basculas_SAP
             this.cantidad_ump.OptionsFilter.AllowAutoFilter = false;
             this.cantidad_ump.OptionsFilter.AllowFilter = false;
             this.cantidad_ump.Visible = true;
-            this.cantidad_ump.VisibleIndex = 17;
+            this.cantidad_ump.VisibleIndex = 18;
             this.cantidad_ump.Width = 84;
             // 
             // ump
@@ -566,7 +568,7 @@ namespace Pry_Basculas_SAP
             this.ump.OptionsFilter.AllowAutoFilter = false;
             this.ump.OptionsFilter.AllowFilter = false;
             this.ump.Visible = true;
-            this.ump.VisibleIndex = 18;
+            this.ump.VisibleIndex = 19;
             // 
             // cant_pesada_real_umb
             // 
@@ -610,7 +612,7 @@ namespace Pry_Basculas_SAP
             this.tiquete_bascula.OptionsFilter.AllowAutoFilter = false;
             this.tiquete_bascula.OptionsFilter.AllowFilter = false;
             this.tiquete_bascula.Visible = true;
-            this.tiquete_bascula.VisibleIndex = 19;
+            this.tiquete_bascula.VisibleIndex = 20;
             this.tiquete_bascula.Width = 99;
             // 
             // estado
@@ -623,19 +625,30 @@ namespace Pry_Basculas_SAP
             this.estado.OptionsFilter.AllowAutoFilter = false;
             this.estado.OptionsFilter.AllowFilter = false;
             this.estado.Visible = true;
-            this.estado.VisibleIndex = 20;
+            this.estado.VisibleIndex = 21;
             this.estado.Width = 138;
+            // 
+            // transportista
+            // 
+            this.transportista.Caption = "TRANSPORTISTA";
+            this.transportista.FieldName = "AGENTE";
+            this.transportista.Name = "transportista";
+            this.transportista.OptionsColumn.AllowEdit = false;
+            this.transportista.OptionsFilter.AllowAutoFilter = false;
+            this.transportista.Visible = true;
+            this.transportista.VisibleIndex = 14;
+            this.transportista.Width = 91;
             // 
             // frm_DetalleSelectedRow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1132, 403);
+            this.ClientSize = new System.Drawing.Size(1167, 417);
             this.Controls.Add(this.grd_ControlDetalle);
             this.IconOptions.SvgImage = global::Pry_Basculas_SAP.Properties.Resources.newtablestyle;
             this.Name = "frm_DetalleSelectedRow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Detalle Fila Seleccionada";
+            this.Text = "DETALLE DEL PESAJE";
             this.Load += new System.EventHandler(this.frm_DetalleSelectedRow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gdv_documentos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_ControlDetalle)).EndInit();
@@ -682,5 +695,6 @@ namespace Pry_Basculas_SAP
         private DevExpress.XtraGrid.Columns.GridColumn doc_trans;
         private DevExpress.XtraGrid.Columns.GridColumn salida_sap;
         private DevExpress.XtraGrid.Columns.GridColumn centro_log;
+        private DevExpress.XtraGrid.Columns.GridColumn transportista;
     }
 }
