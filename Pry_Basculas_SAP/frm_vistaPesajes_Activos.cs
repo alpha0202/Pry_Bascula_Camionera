@@ -40,9 +40,9 @@ namespace Pry_Basculas_SAP
         string ipBascula = ConfigurationManager.AppSettings["Ip_bascula"];
         string puertoCOM = ConfigurationManager.AppSettings["PUERTO"];
         string numeroBascula = ConfigurationManager.AppSettings["NUM_BASCULA"];
-        string userAd, nombreUser, numberBascula, descBascula;
-        DataTable dataFromSAP;
-        DataTable filterTableSAP;
+        string userAd, nombreUser, numberBascula, descBascula, perfilUsuario;
+        //DataTable dataFromSAP;
+        //DataTable filterTableSAP;
         
 
         public frmVista_PesajesActivos()
@@ -63,7 +63,7 @@ namespace Pry_Basculas_SAP
             }
 
 
-            bascula.GetBascula_byIP(ipBascula);
+            //bascula.GetBascula_byIP(ipBascula);
 
         }
 
@@ -98,26 +98,51 @@ namespace Pry_Basculas_SAP
             userAd = usuarioAD.GetCurrentUserAD();
 
             //string sql = $"select count(*) from t101_Usuarios where f101_Usuario = ALIAR\\{userAd}   ";
-            LstParametros.Add(new Parametros("@user", userAd, SqlDbType.VarChar));
+            //LstParametros.Add(new Parametros("@user", "user", SqlDbType.VarChar));
+            //LstParametros.Add(new Parametros("@numBascula", "0005", SqlDbType.Int));
+            LstParametros.Add(new Parametros("@user", userAd.ToLower().Trim(), SqlDbType.VarChar));
             LstParametros.Add(new Parametros("@numBascula", numeroBascula, SqlDbType.Int));
-            DataTable dt = Datos.SPObtenerDataTable("SP_GetPermisos_UserAD", LstParametros);
-            //var countPermisos = Convert.ToInt32(contador);
+            var dt = Datos.SPObtenerDataTable("SP_GetPermisos_UserAD", LstParametros);
+
 
             if (dt.Rows.Count != 0)
             {
-                nombreUser = dt.Rows[0]["nombre_usuario"].ToString();
-                descBascula = dt.Rows[0]["descripcion"].ToString();
-                numberBascula = dt.Rows[0]["num_bascula"].ToString();
+                 string acceso_total = dt.Rows[0]["ACCESO"].ToString();
 
-                lblGetUsuario.Text = nombreUser;
-                lblGetBascula.Text = string.Concat(numberBascula, "-", descBascula);
-                CargueListadosPesajes();
-                RecargarGridListadoPesajes();
+                if(acceso_total == "DIRECTOR DE LOGISTICA" || acceso_total == "SUPERVISOR TIPO B" || acceso_total == "DESARROLLADOR")
+                {
+                    nombreUser ="USUARIO SUPERVISOR";
+                    descBascula = "SUPERVISOR BÁSCULA";
+                    numberBascula = "9999";
+                    perfilUsuario = acceso_total;
+
+                    lblGetUsuario.Text = nombreUser;
+                    lblGetBascula.Text = string.Concat(numberBascula, "-", descBascula);
+                    lblGetPerfil.Text = perfilUsuario;
+                    CargueListadosPesajes();
+                    RecargarGridListadoPesajes();
+                }
+                else
+                {
+                    nombreUser = dt.Rows[0]["nombre_usuario"].ToString();
+                    descBascula = dt.Rows[0]["descripcion"].ToString();
+                    numberBascula = dt.Rows[0]["num_bascula"].ToString();
+                    perfilUsuario = dt.Rows[0]["descripcion_perfil"].ToString();
+
+                    lblGetUsuario.Text = nombreUser;
+                    lblGetBascula.Text = string.Concat(numberBascula, "-", descBascula);
+                    lblGetPerfil.Text = perfilUsuario;
+                    CargueListadosPesajes();
+                    RecargarGridListadoPesajes();
+                }
+
             }
             else
             {
                 XtraMessageBox.Show("Error: USUARIO NO AUTORIZADO PARA ESTA BÁSCULA.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                btnConsultarPlaca.Enabled = false;
+                btn_ChangeTrans.Enabled = false;
+                barSubItem1.Enabled = false;
 
             }
         }
@@ -280,7 +305,8 @@ namespace Pry_Basculas_SAP
             //decimal numBascula;
             string tipoProceso;
             string descProceso;
-
+            string CodMaterial;
+            string Material;
             string tipoPesaje;
             string placaVehiculo;
 
@@ -302,10 +328,12 @@ namespace Pry_Basculas_SAP
                 descProceso = row.Field<string>("proceso");
                 tipoProceso = row.Field<string>("TPROCESO");
                 tipoPesaje = row.Field<string>("TPESAJE");
+                CodMaterial = row.Field<string>("MATNR");
+                Material = row.Field<string>("MAKT");
                 placaVehiculo = row.Field<string>("ADD01").Trim();
 
                 //new frm_Captua_PesoBasculas(idPesaje, cantidadUmb, cantidadUmp, numBascula, placaVehiculo);
-                frmCaptura.MostrarDatos_Formulario(idPesaje, cantidadUmb, cantidadUmp, numeroBascula, tipoProceso, tipoPesaje, descProceso, placaVehiculo, undUmb, undUmp, row);
+                frmCaptura.MostrarDatos_Formulario(idPesaje, cantidadUmb, cantidadUmp, numeroBascula, tipoProceso, tipoPesaje, descProceso, CodMaterial,Material, placaVehiculo, undUmb, undUmp, row);
 
             }
 
@@ -337,7 +365,8 @@ namespace Pry_Basculas_SAP
             //decimal numBascula;
             string tipoProceso;
             string descProceso;
-
+            string CodMaterial;
+            string Material;
             string tipoPesaje;
             string placaVehiculo;
 
@@ -358,11 +387,13 @@ namespace Pry_Basculas_SAP
                 //numBascula = row.Field<decimal>("num_bascula");
                 descProceso = row.Field<string>("proceso");
                 tipoProceso = row.Field<string>("TPROCESO");
+                CodMaterial = row.Field<string>("MATNR");
+                Material = row.Field<string>("MAKT");
                 tipoPesaje = row.Field<string>("TPESAJE");
                 placaVehiculo = row.Field<string>("ADD01").Trim();
 
                 //new frm_Captua_PesoBasculas(idPesaje, cantidadUmb, cantidadUmp, numBascula, placaVehiculo);
-                frmCaptura.MostrarDatos_Formulario(idPesaje, cantidadUmb, cantidadUmp, numeroBascula, tipoProceso, tipoPesaje, descProceso, placaVehiculo, undUmb, undUmp, row);
+                frmCaptura.MostrarDatos_Formulario(idPesaje, cantidadUmb, cantidadUmp, numeroBascula, tipoProceso, tipoPesaje, descProceso, CodMaterial, Material, placaVehiculo, undUmb, undUmp, row);
 
             }
 
@@ -477,7 +508,7 @@ namespace Pry_Basculas_SAP
             }
             else
             {
-
+                /***si no cumple, se debe verificar si el porcentaje de tolerancia es suficiente, si es así, se procede al ajuste de inv.**/
 
                 string porcentajeTolerancia = "SELECT PORCENTAJE_EXCESO FROM [BASCULAS_SAP].[dbo].[PARAMETROS_GENERALES]";
                 DataTable res_dt = Datos.ObtenerDataTable(porcentajeTolerancia);
@@ -486,35 +517,44 @@ namespace Pry_Basculas_SAP
                 validarExceso = saldoMaterialInv + (saldoMaterialInv * (paramExeceso / 100));
 
                 if (validarExceso >= netoPesado)
-                {  
-                   
-                    DataTable ajusteInv = metodosIntegracion.AjustarInventario(centroLog, lgort, materialSelected, charg, lfimg, meins, netoPesado.ToString(), ump);
-
-                    LstParametros.Add(new Parametros("@ID_PESAJE", idPesajeSelected, SqlDbType.VarChar));
-                    LstParametros.Add(new Parametros("@TIQUETE_BASCULA", tiqueteSelected, SqlDbType.VarChar));
-                    LstParametros.Add(new Parametros("@CONDUCTOR", conductorSelected, SqlDbType.VarChar));
-                    LstParametros.Add(new Parametros("@PESO_NETO", netoSelected, SqlDbType.Decimal));
-                    LstParametros.Add(new Parametros("@VALOR_EXCESO", validarExceso, SqlDbType.Decimal));
-                    LstParametros.Add(new Parametros("@USUARIO_CONFIRMA", usuarioAD.GetCurrentUserAD(), SqlDbType.VarChar));
-                    LstParametros.Add(new Parametros("@CONFIRMADO_SAP", "OK", SqlDbType.VarChar));
-
-                    var sendData = Datos.SPGetEscalar("SP_Confirmar_Pesajes", LstParametros);
-                    if (XtraMessageBox.Show("VALIDACIÓN CORRECTA. ¿DESEA REALIZAR LA IMPRESIÓN DEL TIQUETE?", "CONFIRMACIÓN", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, (DevExpress.Utils.DefaultBoolean)MessageBoxDefaultButton.Button1) == DialogResult.OK)
+                {
+                    if (XtraMessageBox.Show("SE CUMPLE CON EL PORCENTAJE DE EXCESO,¿DESEA REALIZAR EL AJUSTE DE INVENTARIO?", "INFORMACIÓN", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, (DevExpress.Utils.DefaultBoolean)MessageBoxDefaultButton.Button1) == DialogResult.OK)
                     {
-                        var reporte = new XtraReport_EtiquetaBascula();
-                        reporte.Parameters["id_pesaje"].Value = idPesajeSelected;
-                        reporte.RequestParameters = false;
-                        var pt = new ReportPrintTool(reporte);
-                        pt.AutoShowParametersPanel = false;
-                        pt.ShowPreviewDialog();
+                        DataTable ajusteInv = metodosIntegracion.AjustarInventario(centroLog, lgort, materialSelected, charg, lfimg, meins, netoPesado.ToString(), ump);
 
+                        LstParametros.Add(new Parametros("@ID_PESAJE", idPesajeSelected, SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@TIQUETE_BASCULA", tiqueteSelected, SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@CONDUCTOR", conductorSelected, SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@PESO_NETO", netoSelected, SqlDbType.Decimal));
+                        LstParametros.Add(new Parametros("@VALOR_EXCESO", validarExceso, SqlDbType.Decimal));
+                        LstParametros.Add(new Parametros("@USUARIO_CONFIRMA", usuarioAD.GetCurrentUserAD(), SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@CONFIRMADO_SAP", "OK", SqlDbType.VarChar));
+
+                        var sendData = Datos.SPGetEscalar("SP_Confirmar_Pesajes", LstParametros);
+                        if (XtraMessageBox.Show("AJUSTE DE INVENTARIO CORRECTO. ¿DESEA REALIZAR LA IMPRESIÓN DEL TIQUETE?", "CONFIRMACIÓN", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, (DevExpress.Utils.DefaultBoolean)MessageBoxDefaultButton.Button1) == DialogResult.OK)
+                        {
+                            var reporte = new XtraReport_EtiquetaBascula();
+                            reporte.Parameters["id_pesaje"].Value = idPesajeSelected;
+                            reporte.RequestParameters = false;
+                            var pt = new ReportPrintTool(reporte);
+                            pt.AutoShowParametersPanel = false;
+                            pt.ShowPreviewDialog();
+
+                        }
+                        LstParametros.Clear();
+                        CargueListadosPesajes();
                     }
-                    LstParametros.Clear();
-                    CargueListadosPesajes();
+                    else
+                    {
+                        return;
+                    }
+
+
+
                 }
                 else
                 {
-                    XtraMessageBox.Show($"EL MATERIAL {materialSelected} - {descMaterialSelected}, \r\nCON PESO NETO {netoSelected},\r\nNO CUMPLE CON EL PORCENTAJE DE EXCESO {validarExceso}\r \r\nSE PROCEDE A REALIZAR UN AJUSTE DE INVENTARIO.", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBox.Show($"EL MATERIAL {materialSelected} - {descMaterialSelected}, \r\nCON PESO NETO {netoSelected},\r\nNO CUMPLE CON EL PORCENTAJE DE EXCESO {validarExceso}\r \r\n DEBE REVISAR INVENTARIO DEL MATERIAL.", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     //no se hace nada 
 
 
@@ -686,15 +726,6 @@ namespace Pry_Basculas_SAP
 
 
 
-        //RELOJ
-        private void time_live_Tick(object sender, EventArgs e)
-        {
-            lbl_hora.Text = DateTime.Now.ToString("hh:mm tt");
-            //lbl_segundos.Text = DateTime.Now.ToString("ss");
-            lbl_date.Text = DateTime.Now.ToString("dd MMMM yyyy");
-            lbl_Day.Text = DateTime.Now.ToString("dddd");
-        }
-
         private void frmVista_PesajesActivos_FormClosing(object sender, FormClosingEventArgs e)
         {
 
@@ -757,12 +788,22 @@ namespace Pry_Basculas_SAP
 
         }
 
-
+        /**cambiar transportista**/
         private void btn_ChangeTrans_Click(object sender, EventArgs e)
         {
             frm_Cambiar_transportista transpor = new frm_Cambiar_transportista();
             transpor.ShowDialog(Owner);
+            CargueListadosPesajes();
             transpor.Dispose();
+        }
+
+        //RELOJ
+        private void time_live_Tick(object sender, EventArgs e)
+        {
+            lbl_hora.Text = DateTime.Now.ToString("hh:mm tt");
+            //lbl_segundos.Text = DateTime.Now.ToString("ss");
+            lbl_date.Text = DateTime.Now.ToString("dd MMMM yyyy");
+            lbl_Day.Text = DateTime.Now.ToString("dddd");
         }
 
 

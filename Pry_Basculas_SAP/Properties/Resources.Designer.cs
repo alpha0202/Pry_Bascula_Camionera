@@ -163,6 +163,16 @@ namespace Pry_Basculas_SAP.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap exporttoxlsx_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("exporttoxlsx_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap find_32x32 {
             get {
                 object obj = ResourceManager.GetObject("find_32x32", resourceCulture);
@@ -216,6 +226,16 @@ namespace Pry_Basculas_SAP.Properties {
         internal static System.Drawing.Bitmap printlayoutview_32x32 {
             get {
                 object obj = ResourceManager.GetObject("printlayoutview_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap replace_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("replace_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

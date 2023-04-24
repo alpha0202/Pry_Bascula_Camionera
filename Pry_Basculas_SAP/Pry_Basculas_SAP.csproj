@@ -145,6 +145,12 @@
     <Compile Include="frm_Filtrar_placa.Designer.cs">
       <DependentUpon>frm_Filtrar_placa.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_Test_CapturaBascula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Test_CapturaBascula.Designer.cs">
+      <DependentUpon>frm_Test_CapturaBascula.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\frm_Report_ProcesosCerrados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Filtrar_placa.resx">
       <DependentUpon>frm_Filtrar_placa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Test_CapturaBascula.resx">
+      <DependentUpon>frm_Test_CapturaBascula.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\frm_Report_ProcesosCerrados.resx">
       <DependentUpon>frm_Report_ProcesosCerrados.cs</DependentUpon>
@@ -279,6 +288,8 @@
     <Content Include="Resources\aliar_src\LOGO LA FAZENDA.png" />
     <Content Include="Resources\aliar_src\Logo.jpg" />
     <Content Include="Resources\aliar_src\Logo1.jpg" />
+    <None Include="Resources\replace_32x32.png" />
+    <None Include="Resources\exporttoxlsx_32x32.png" />
     <None Include="Resources\contact_32x32.png" />
     <None Include="Resources\transit_32x32.png" />
     <None Include="Resources\download_32x32.png" />

@@ -74,6 +74,11 @@ namespace Pry_Basculas_SAP
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnEndForm = new DevExpress.XtraEditors.SimpleButton();
             this.pnlDatosUser = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.lblGetPerfil = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.lblGetUsuario = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.lbl_Day = new DevExpress.XtraEditors.LabelControl();
             this.lbl_date = new DevExpress.XtraEditors.LabelControl();
@@ -81,8 +86,6 @@ namespace Pry_Basculas_SAP
             this.lbl_hora = new DevExpress.XtraEditors.LabelControl();
             this.lblGetBascula = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.lblGetUsuario = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.gcPesajesActivosSAP = new DevExpress.XtraGrid.GridControl();
             this.gvVista_ListadoActivo = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.id_pesaje = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -138,6 +141,8 @@ namespace Pry_Basculas_SAP
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButton_IniciarProceso)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDatosUser)).BeginInit();
             this.pnlDatosUser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcPesajesActivosSAP)).BeginInit();
@@ -509,15 +514,68 @@ namespace Pry_Basculas_SAP
             this.pnlDatosUser.Appearance.Options.UseBorderColor = true;
             this.pnlDatosUser.AutoSize = true;
             this.pnlDatosUser.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pnlDatosUser.Controls.Add(this.panelControl2);
             this.pnlDatosUser.Controls.Add(this.panelControl1);
             this.pnlDatosUser.Controls.Add(this.lblGetBascula);
             this.pnlDatosUser.Controls.Add(this.labelControl3);
-            this.pnlDatosUser.Controls.Add(this.lblGetUsuario);
-            this.pnlDatosUser.Controls.Add(this.labelControl1);
             this.pnlDatosUser.Location = new System.Drawing.Point(-3, 0);
             this.pnlDatosUser.Name = "pnlDatosUser";
-            this.pnlDatosUser.Size = new System.Drawing.Size(1311, 60);
+            this.pnlDatosUser.Size = new System.Drawing.Size(1311, 61);
             this.pnlDatosUser.TabIndex = 5;
+            // 
+            // panelControl2
+            // 
+            this.panelControl2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(171)))), ((int)(((byte)(209)))));
+            this.panelControl2.Appearance.Options.UseBackColor = true;
+            this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl2.Controls.Add(this.lblGetPerfil);
+            this.panelControl2.Controls.Add(this.labelControl6);
+            this.panelControl2.Controls.Add(this.lblGetUsuario);
+            this.panelControl2.Controls.Add(this.labelControl1);
+            this.panelControl2.Location = new System.Drawing.Point(3, 6);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(372, 52);
+            this.panelControl2.TabIndex = 11;
+            // 
+            // lblGetPerfil
+            // 
+            this.lblGetPerfil.Appearance.Font = new System.Drawing.Font("Cascadia Code", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGetPerfil.Appearance.Options.UseFont = true;
+            this.lblGetPerfil.Location = new System.Drawing.Point(87, 33);
+            this.lblGetPerfil.Name = "lblGetPerfil";
+            this.lblGetPerfil.Size = new System.Drawing.Size(16, 17);
+            this.lblGetPerfil.TabIndex = 14;
+            this.lblGetPerfil.Text = "**";
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Appearance.Font = new System.Drawing.Font("Cascadia Code", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl6.Appearance.Options.UseFont = true;
+            this.labelControl6.Location = new System.Drawing.Point(13, 31);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(63, 20);
+            this.labelControl6.TabIndex = 13;
+            this.labelControl6.Text = "PERFIL:";
+            // 
+            // lblGetUsuario
+            // 
+            this.lblGetUsuario.Appearance.Font = new System.Drawing.Font("Cascadia Code", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGetUsuario.Appearance.Options.UseFont = true;
+            this.lblGetUsuario.Location = new System.Drawing.Point(87, 5);
+            this.lblGetUsuario.Name = "lblGetUsuario";
+            this.lblGetUsuario.Size = new System.Drawing.Size(16, 17);
+            this.lblGetUsuario.TabIndex = 12;
+            this.lblGetUsuario.Text = "**";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Cascadia Code", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Location = new System.Drawing.Point(13, 3);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(81, 20);
+            this.labelControl1.TabIndex = 11;
+            this.labelControl1.Text = "USUARIO: ";
             // 
             // panelControl1
             // 
@@ -584,11 +642,11 @@ namespace Pry_Basculas_SAP
             // 
             // lblGetBascula
             // 
-            this.lblGetBascula.Appearance.Font = new System.Drawing.Font("Cascadia Code SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGetBascula.Appearance.Font = new System.Drawing.Font("Cascadia Code", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGetBascula.Appearance.Options.UseFont = true;
-            this.lblGetBascula.Location = new System.Drawing.Point(419, 17);
+            this.lblGetBascula.Location = new System.Drawing.Point(715, 21);
             this.lblGetBascula.Name = "lblGetBascula";
-            this.lblGetBascula.Size = new System.Drawing.Size(18, 20);
+            this.lblGetBascula.Size = new System.Drawing.Size(16, 17);
             this.lblGetBascula.TabIndex = 3;
             this.lblGetBascula.Text = "**";
             // 
@@ -596,31 +654,11 @@ namespace Pry_Basculas_SAP
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(341, 17);
+            this.labelControl3.Location = new System.Drawing.Point(637, 19);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(72, 21);
             this.labelControl3.TabIndex = 2;
             this.labelControl3.Text = "BASCULA:";
-            // 
-            // lblGetUsuario
-            // 
-            this.lblGetUsuario.Appearance.Font = new System.Drawing.Font("Cascadia Code SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGetUsuario.Appearance.Options.UseFont = true;
-            this.lblGetUsuario.Location = new System.Drawing.Point(116, 17);
-            this.lblGetUsuario.Name = "lblGetUsuario";
-            this.lblGetUsuario.Size = new System.Drawing.Size(18, 20);
-            this.lblGetUsuario.TabIndex = 1;
-            this.lblGetUsuario.Text = "**";
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(29, 17);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(81, 21);
-            this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "USUARIO: ";
             // 
             // gcPesajesActivosSAP
             // 
@@ -1269,6 +1307,9 @@ namespace Pry_Basculas_SAP
             ((System.ComponentModel.ISupportInitialize)(this.pnlDatosUser)).EndInit();
             this.pnlDatosUser.ResumeLayout(false);
             this.pnlDatosUser.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
+            this.panelControl2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
@@ -1288,8 +1329,6 @@ namespace Pry_Basculas_SAP
         private DevExpress.XtraEditors.PanelControl pnlDatosUser;
         private DevExpress.XtraEditors.LabelControl lblGetBascula;
         private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.LabelControl lblGetUsuario;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraGrid.GridControl gcPesajesActivosSAP;
         private DevExpress.XtraGrid.Views.Grid.GridView gvVista_ListadoActivo;
         private DevExpress.XtraGrid.Columns.GridColumn id_pesaje;
@@ -1370,6 +1409,11 @@ namespace Pry_Basculas_SAP
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
         private DevExpress.XtraEditors.SimpleButton btn_ChangeTrans;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
+        private DevExpress.XtraEditors.LabelControl lblGetPerfil;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.LabelControl lblGetUsuario;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }
 

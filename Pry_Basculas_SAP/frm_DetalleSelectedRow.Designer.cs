@@ -55,6 +55,7 @@ namespace Pry_Basculas_SAP
             this.plac_trailer = new DevExpress.XtraGrid.Columns.GridColumn();
             this.fecha_carga = new DevExpress.XtraGrid.Columns.GridColumn();
             this.conductor = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.transportista = new DevExpress.XtraGrid.Columns.GridColumn();
             this.num_bascula = new DevExpress.XtraGrid.Columns.GridColumn();
             this.cantidad_umb = new DevExpress.XtraGrid.Columns.GridColumn();
             this.umb = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -65,7 +66,6 @@ namespace Pry_Basculas_SAP
             this.estado_consumo_servicio = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tiquete_bascula = new DevExpress.XtraGrid.Columns.GridColumn();
             this.estado = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.transportista = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gdv_documentos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_ControlDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gdv_VistaDetalle)).BeginInit();
@@ -507,6 +507,19 @@ namespace Pry_Basculas_SAP
             this.conductor.Visible = true;
             this.conductor.VisibleIndex = 13;
             // 
+            // transportista
+            // 
+            this.transportista.Caption = "TRANSPORTISTA";
+            this.transportista.FieldName = "AGENTE";
+            this.transportista.Name = "transportista";
+            this.transportista.OptionsColumn.AllowEdit = false;
+            this.transportista.OptionsColumn.AllowFocus = false;
+            this.transportista.OptionsFilter.AllowAutoFilter = false;
+            this.transportista.OptionsFilter.AllowFilter = false;
+            this.transportista.Visible = true;
+            this.transportista.VisibleIndex = 14;
+            this.transportista.Width = 91;
+            // 
             // num_bascula
             // 
             this.num_bascula.Caption = "NUMERO DE BÁSCULA";
@@ -627,17 +640,6 @@ namespace Pry_Basculas_SAP
             this.estado.Visible = true;
             this.estado.VisibleIndex = 21;
             this.estado.Width = 138;
-            // 
-            // transportista
-            // 
-            this.transportista.Caption = "TRANSPORTISTA";
-            this.transportista.FieldName = "AGENTE";
-            this.transportista.Name = "transportista";
-            this.transportista.OptionsColumn.AllowEdit = false;
-            this.transportista.OptionsFilter.AllowAutoFilter = false;
-            this.transportista.Visible = true;
-            this.transportista.VisibleIndex = 14;
-            this.transportista.Width = 91;
             // 
             // frm_DetalleSelectedRow
             // 

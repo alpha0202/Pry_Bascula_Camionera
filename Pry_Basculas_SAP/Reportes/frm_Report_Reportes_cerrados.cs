@@ -1,9 +1,12 @@
 ﻿using CapaDatos;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraPrinting;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -44,5 +47,18 @@ namespace Pry_Basculas_SAP.Reportes
             }
         }
 
+        private void btn_exportarEx_Click(object sender, EventArgs e)
+        {
+            string fecha_exporta = DateTime.Now.ToString("dd-MM-yyyy");
+
+            string path = $"Reporte_Pesajes_Cerrados_{fecha_exporta}.xlsx";
+
+            XlsxExportOptionsEx advOptions = new XlsxExportOptionsEx();
+            advOptions.SheetName = "Pesajes Cerrados";
+
+            grc_ControlReportCerrrado.ExportToXlsx(path,advOptions);
+            // Open the created XLSX file with the default application.
+            Process.Start(path);
+        }
     }
 }

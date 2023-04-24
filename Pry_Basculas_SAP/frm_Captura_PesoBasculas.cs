@@ -33,6 +33,8 @@ namespace Pry_Basculas_SAP
         private string _PlacaCabezote;
         private string _tipoProceso;
         private string _tipoPesaje;
+        private string _codMaterial;
+        private string _Material;
         private string _procesoDetalle;
         private string _printTicket;
         private string _ConfirmaCaptura;
@@ -48,7 +50,7 @@ namespace Pry_Basculas_SAP
         }
 
 
-        public void MostrarDatos_Formulario(string id_pesaje, string cant_umb, string cant_ump, string numBascula, string tipoProc, string tipoPesaje, string procDetalle, string placa, string undUMB, string undUMP, DataRow row)
+        public void MostrarDatos_Formulario(string id_pesaje, string cant_umb, string cant_ump, string numBascula, string tipoProc, string tipoPesaje, string procDetalle, string codMaterial, string material, string placa, string undUMB, string undUMP, DataRow row)
         {
 
             _idPesaje = id_pesaje;
@@ -60,12 +62,15 @@ namespace Pry_Basculas_SAP
             _tipoProceso = tipoProc;
             _tipoPesaje = tipoPesaje;
             _procesoDetalle = procDetalle;
+            _codMaterial = codMaterial;
+            _Material = material;
             _PlacaCabezote = placa;
             _dataRow = row;
 
 
             txtIdPesaje.Text = _idPesaje;
             txtTipoProceso.Text = _procesoDetalle;
+            txtMaterial.Text = _Material.Trim();
             txtUmb.Text = _cantidadUMB.ToString().Trim();
             txt_undUMB.Text = _undUMB.Trim();
             txt_undUMP.Text = _undUMP.Trim();

@@ -398,7 +398,39 @@ namespace IntegracionSAP_Dll
 
         }
 
+        //método para listar centros logísticos para destinos en básculas.
+        public DataTable Listar_ClDestinos()
+        {
 
+            try
+            {
+                RfcDestinationManager.RegisterDestinationConfiguration(rfc_Connector);
+                RfcDestination prd = RfcDestinationManager.GetDestination("SE37");
+                RfcRepository repo = prd.Repository;
+                IRfcFunction soBapi = repo.CreateFunction("Z_MDFN_DESTINOS");
+                soBapi.Invoke(prd);
+                IRfcTable IT_WERKS = soBapi.GetTable("IT_WERKS");
+                DataSet ds_lstDestinos = new DataSet();
+                ds_lstDestinos.Tables.Add(ConvertToDotNetTable(IT_WERKS));
+                DataTable dt_lstDestinos = ds_lstDestinos.Tables[0];
+
+
+                return dt_lstDestinos;
+
+            }
+            catch (Exception) { throw; }
+            finally
+            {
+                try
+                {   //se debe quitar el registro de la conexión si se desea realizar una nueva consulta
+                    RfcDestinationManager.UnregisterDestinationConfiguration(rfc_Connector);
+                }
+                catch (Exception) { throw; }
+            }
+
+
+
+        }
 
 
         #endregion

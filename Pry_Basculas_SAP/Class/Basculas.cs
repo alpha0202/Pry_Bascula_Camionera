@@ -30,7 +30,8 @@ namespace Pry_Basculas_SAP.Class
         private decimal NumBascula;
         private string Prefijo;
         private decimal Consecutivo;
-        public SerialPort mySerialPort = new SerialPort();
+        SerialPort mySerialPort;
+       
 
         public decimal _ToleranciaMerma
         {
@@ -185,6 +186,120 @@ namespace Pry_Basculas_SAP.Class
 
 
 
+        //llamado por puerto serial
+        public string CapturarPeso_PortSerial()
+        {
+           
+            string lSt_Sarta = "";
+            string lSt_Caracter = "";
+            string lSt_Valor = "";
+            string puertoCOM = ConfigurationManager.AppSettings["PUERTO_COM"].ToString();
+             mySerialPort = new SerialPort(puertoCOM, 9600, Parity.None, 8, StopBits.One);
+
+            //si el llamado se hace por IP
+            /****  string IP = ConfigurationManager.AppSettings["IP"].ToString();
+                   string PUERTO = ConfigurationManager.AppSettings["PUERTO"].ToString();
+                   var tcpClient = new TcpClient();
+                   NetworkStream networkStream;
+                   tcpClient.Connect(IP, int.Parse(PUERTO));
+                   networkStream = tcpClient.GetStream();
+                   var bytes = new byte[tcpClient.ReceiveBufferSize + 1];
+                   networkStream.Read(bytes, 0, tcpClient.ReceiveBufferSize);
+                   lSt_Sarta = Encoding.ASCII.GetString(bytes);  *****/
+
+
+           mySerialPort.Close();
+
+            
+
+
+            mySerialPort.Open();
+
+
+            Thread.Sleep(500);
+            mySerialPort.Write("%p");
+            Thread.Sleep(500);
+
+            lSt_Sarta = mySerialPort.ReadExisting();
+
+            if (lSt_Sarta.Length >= 16)
+            {
+                //lSt_Sarta = Strings.Mid(lSt_Sarta, 1, 16);
+                //c# equivalente
+                lSt_Sarta = lSt_Sarta.Substring(1, 16);
+            }
+
+
+
+            lSt_Sarta =  SacarNumeros(lSt_Sarta);
+
+            //recorrido de la sarta para sacar la parte numérica del dato completo.
+            //for (int i = 1, loopTo = lSt_Sarta.Length; i <= loopTo; i++)
+            //{
+            //    //lSt_Caracter = Strings.Mid(lSt_Sarta, i, 1);
+            //    lSt_Caracter = lSt_Sarta.Substring(i, 1);
+            //    if (!string.IsNullOrEmpty(lSt_Valor.Trim()) && string.IsNullOrEmpty(lSt_Caracter.Trim()))
+            //        break;
+            //    if (EsNumero(lSt_Caracter) || lSt_Caracter == ".")
+            //    {
+
+            //        lSt_Valor = lSt_Valor + lSt_Caracter;
+            //    }
+
+            //    //if (Information.IsNumeric(lSt_Caracter) || lSt_Caracter == ".")
+            //    //{
+            //    //    // If IsNumeric(lSt_Caracter) Then
+            //    //    lSt_Valor = lSt_Valor + lSt_Caracter;
+            //    //}
+            //}
+
+            mySerialPort.Close();
+
+            return (lSt_Sarta);
+
+            //frm_Test_CapturaBascula test = new frm_Test_CapturaBascula();
+            //test.Get_DataCatch(lSt_Sarta);
+
+        }
+
+        public string SacarNumeros(string lSt_Sarta)
+        {
+         
+          
+            string lSt_Caracter = "";
+            string lSt_Valor = "";
+
+            /***recorrido de la sarta para sacar la parte numérica del dato completo.***/
+            for (int i = 0, loopTo = lSt_Sarta.Length; i <= loopTo; i++)
+            {
+               
+                lSt_Caracter = lSt_Sarta.Substring(i, 1);
+                if (!string.IsNullOrEmpty(lSt_Valor.Trim()) && string.IsNullOrEmpty(lSt_Caracter.Trim()))
+                    break;
+                if (EsNumero(lSt_Caracter) || lSt_Caracter == "." || lSt_Caracter == ",")
+                {
+
+                    lSt_Valor = lSt_Valor + lSt_Caracter;
+                }
+
+            }
+
+            return lSt_Valor;
+        }
+
+
+        public static bool EsNumero(string valor)
+        {
+            int result;
+            return int.TryParse(valor, out result);
+        }
+
+
+
+
+
+
+        #region otros métodos
         public string CapturarPeso(decimal RowIdBascula)
         {
             var bascula = new Basculas();
@@ -234,11 +349,11 @@ namespace Pry_Basculas_SAP.Class
                         lIn_Pos = lIn_Pos = Strings.InStr(lSt_Sarta, "Net", CompareMethod.Text);
                         lSt_Sarta = Strings.Mid(lSt_Sarta, 1, lIn_Pos);
                         //c# equivalente
-                        lSt_Sarta =lSt_Sarta.Substring(1, lIn_Pos);
+                        lSt_Sarta = lSt_Sarta.Substring(1, lIn_Pos);
 
                         // ----------------------------ESTE ES EL CODIGO NUEVO----------------------------'
                         lSt_Sarta = Strings.Replace(Strings.Trim(lSt_Sarta), ",", ".");
-                        
+
                         //c# equivalente 
                         lSt_Sarta = lSt_Sarta.Trim().Replace(",", ".");
 
@@ -491,80 +606,6 @@ namespace Pry_Basculas_SAP.Class
 
         }
 
-        public void CapturarPeso_PortSerial()
-        {
-            string lSt_Sarta = "";
-            string lSt_Sarta2 = "";
-            int lBy_Lecturas = 1;
-            bool lBo_Sarta = false;
-            string lSt_Caracter = "";
-            string lSt_Valor = "";
-            int lIn_PosPunto = 0;
-            string puertoCOM = ConfigurationManager.AppSettings["COM"].ToString();
-
-            //si el llamado se hace por IP
-            /****  string IP = ConfigurationManager.AppSettings["IP"].ToString();
-                   string PUERTO = ConfigurationManager.AppSettings["PUERTO"].ToString();
-                   var tcpClient = new TcpClient();
-                   NetworkStream networkStream;
-                   tcpClient.Connect(IP, int.Parse(PUERTO));
-                   networkStream = tcpClient.GetStream();
-                   var bytes = new byte[tcpClient.ReceiveBufferSize + 1];
-                   networkStream.Read(bytes, 0, tcpClient.ReceiveBufferSize);
-                   lSt_Sarta = Encoding.ASCII.GetString(bytes);  *****/
-
-
-
-            //llamado por puerto serial
-            mySerialPort = new SerialPort(puertoCOM, 9600, Parity.None, 8, StopBits.One);
-
-           // mySerialPort.Close();
-
-
-            mySerialPort.Open();
-
-
-            Thread.Sleep(500);
-            mySerialPort.Write("%p");
-            Thread.Sleep(500);
-
-            lSt_Sarta = mySerialPort.ReadExisting();
-
-            if (lSt_Sarta.Length >= 16)
-            {
-                //lSt_Sarta = Strings.Mid(lSt_Sarta, 1, 16);
-                //c# equivalente
-                lSt_Sarta = lSt_Sarta.Substring(1, 16);
-            }
-
-
-
-            //recorrido de la sarta para sacar la parte numérica del dato completo.
-            for (int i = 1, loopTo = lSt_Sarta.Length; i <= loopTo; i++)
-            {
-                //lSt_Caracter = Strings.Mid(lSt_Sarta, i, 1);
-                lSt_Caracter = lSt_Sarta.Substring(i, 1);
-                if (!string.IsNullOrEmpty(lSt_Valor.Trim()) && string.IsNullOrEmpty(lSt_Caracter.Trim()))
-                    break;
-                if (EsNumero(lSt_Caracter) || lSt_Caracter == ".")
-                {
-                    
-                    lSt_Valor = lSt_Valor + lSt_Caracter;
-                }
-
-                //if (Information.IsNumeric(lSt_Caracter) || lSt_Caracter == ".")
-                //{
-                //    // If IsNumeric(lSt_Caracter) Then
-                //    lSt_Valor = lSt_Valor + lSt_Caracter;
-                //}
-            }
-
-            mySerialPort.Close();
-
-
-        }
-
-        
         public Basculas GetBascula(decimal numBascula)
         {
             Basculas bascula = new Basculas();
@@ -580,8 +621,6 @@ namespace Pry_Basculas_SAP.Class
             return bascula;
         }  
        
-
-
         public Basculas GetBascula_byIP(string Ip)
         {
             Basculas basculaIp = new Basculas();
@@ -608,11 +647,7 @@ namespace Pry_Basculas_SAP.Class
         //    return dt;
         //}
 
-        public static bool EsNumero(string valor)
-        {
-            int result;
-            return int.TryParse(valor, out result);
-        }
+        #endregion
 
     }
 }
