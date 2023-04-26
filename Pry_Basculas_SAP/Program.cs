@@ -1,6 +1,7 @@
 ﻿using DevExpress.LookAndFeel;
 using DevExpress.Skins;
 using DevExpress.UserSkins;
+using Pry_Basculas_SAP.Impresion;
 using System;
 using System.Collections.Generic;
 using System.Linq;

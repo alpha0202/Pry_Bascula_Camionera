@@ -114,9 +114,5 @@ namespace Pry_Basculas_SAP
             CargaReporte_ProcesosCerrados(dateFilter);
         }
 
-        private void repositoryItemComboBox_Select_CL_Destino_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-
-        }
     }
 }

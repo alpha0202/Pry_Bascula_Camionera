@@ -278,7 +278,6 @@ namespace Pry_Basculas_SAP
             this.gridColumn9.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumn9.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.gridColumn9.Caption = "CENTRO LOGISTICO DESTINO";
-            this.gridColumn9.ColumnEdit = this.repositoryItemComboBox_Select_CL_Destino;
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn9.OptionsFilter.AllowFilter = false;
@@ -293,7 +292,6 @@ namespace Pry_Basculas_SAP
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemComboBox_Select_CL_Destino.Name = "repositoryItemComboBox_Select_CL_Destino";
             this.repositoryItemComboBox_Select_CL_Destino.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            this.repositoryItemComboBox_Select_CL_Destino.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemComboBox_Select_CL_Destino_ButtonClick);
             // 
             // gridColumn2
             // 

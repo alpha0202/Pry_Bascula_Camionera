@@ -151,6 +151,12 @@
     <Compile Include="frm_Test_CapturaBascula.Designer.cs">
       <DependentUpon>frm_Test_CapturaBascula.cs</DependentUpon>
     </Compile>
+    <Compile Include="Impresion\frm_Seleccionar_CLDestino.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Impresion\frm_Seleccionar_CLDestino.Designer.cs">
+      <DependentUpon>frm_Seleccionar_CLDestino.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\frm_Report_ProcesosCerrados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Test_CapturaBascula.resx">
       <DependentUpon>frm_Test_CapturaBascula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Impresion\frm_Seleccionar_CLDestino.resx">
+      <DependentUpon>frm_Seleccionar_CLDestino.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\frm_Report_ProcesosCerrados.resx">
       <DependentUpon>frm_Report_ProcesosCerrados.cs</DependentUpon>

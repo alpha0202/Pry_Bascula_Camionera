@@ -450,122 +450,141 @@ namespace Pry_Basculas_SAP
                 return;
             }
 
-            //CONSULTAR EL INVENTARIO DEL MATERIAL
-            DataTable inventario = metodosIntegracion.CargarSaldos(centroLog, charg, materialSelected);
 
-            if (inventario.Rows.Count == 0)
+
+            //Retornar datos de captura reales a SAP.
+            DataTable result = metodosIntegracion.RetornarDatos(idPesajeSelected, tiqueteSelected, lfimg, netoSelected.ToString().Trim());
+
+            if (result is null || result.Rows.Count == 0)
             {
-                XtraMessageBox.Show($"NO SE ENCONTRÓ INVENTARIO PARA EL MATERIAL {materialSelected} - {descMaterialSelected} \r\nDEL CENTRO LOGÍSTICO {centroLog}.", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
 
-            //validar si existe inventario
-            //string  saldoInv = inventario.Rows[0]["LABST"].ToString();
-            //decimal netoPesado = decimal.Parse(netoSelected);
-            decimal netoPesado = netoSelected;
-            decimal saldoMaterialInv = decimal.Parse(inventario.Rows[0]["LABST"].ToString());
+                LstParametros.Add(new Parametros("@ID_PESAJE", idPesajeSelected, SqlDbType.VarChar));
+                LstParametros.Add(new Parametros("@TIQUETE_BASCULA", tiqueteSelected, SqlDbType.VarChar));
+                LstParametros.Add(new Parametros("@CONDUCTOR", conductorSelected, SqlDbType.VarChar));
+                LstParametros.Add(new Parametros("@PESO_NETO", netoSelected, SqlDbType.Decimal));
+                LstParametros.Add(new Parametros("@VALOR_EXCESO", 0, SqlDbType.Decimal));
+                LstParametros.Add(new Parametros("@USUARIO_CONFIRMA", usuarioAD.GetCurrentUserAD(), SqlDbType.VarChar));
+                LstParametros.Add(new Parametros("@CONFIRMADO_SAP", "OK", SqlDbType.VarChar));
 
+                var sendData = Datos.SPGetEscalar("SP_Confirmar_Pesajes", LstParametros);
 
-
-            if (netoPesado <= saldoMaterialInv)
-            {
-                //Retornar datos de captura reales a SAP.
-                DataTable result = metodosIntegracion.RetornarDatos(idPesajeSelected, tiqueteSelected, lfimg, netoSelected.ToString().Trim());
-
-                if (result is null)
+                //XtraMessageBox.Show("CONFIRMACIÓN CORRECTA.", "CONFIRMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                if (XtraMessageBox.Show("CONFIRMACIÓN CORRECTA. ¿DESEA REALIZAR LA IMPRESIÓN DEL TIQUETE?", "CONFIRMACIÓN", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, (DevExpress.Utils.DefaultBoolean)MessageBoxDefaultButton.Button1) == DialogResult.OK)
                 {
-
-                    LstParametros.Add(new Parametros("@ID_PESAJE", idPesajeSelected, SqlDbType.VarChar));
-                    LstParametros.Add(new Parametros("@TIQUETE_BASCULA", tiqueteSelected, SqlDbType.VarChar));
-                    LstParametros.Add(new Parametros("@CONDUCTOR", conductorSelected, SqlDbType.VarChar));
-                    LstParametros.Add(new Parametros("@PESO_NETO", netoSelected, SqlDbType.Decimal));
-                    LstParametros.Add(new Parametros("@VALOR_EXCESO", 0, SqlDbType.Decimal));
-                    LstParametros.Add(new Parametros("@USUARIO_CONFIRMA", usuarioAD.GetCurrentUserAD(), SqlDbType.VarChar));
-                    LstParametros.Add(new Parametros("@CONFIRMADO_SAP", "OK", SqlDbType.VarChar));
-
-                    var sendData = Datos.SPGetEscalar("SP_Confirmar_Pesajes", LstParametros);
-
-                    //XtraMessageBox.Show("CONFIRMACIÓN CORRECTA.", "CONFIRMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    if (XtraMessageBox.Show("CONFIRMACIÓN CORRECTA. ¿DESEA REALIZAR LA IMPRESIÓN DEL TIQUETE?", "CONFIRMACIÓN", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, (DevExpress.Utils.DefaultBoolean)MessageBoxDefaultButton.Button1) == DialogResult.OK)
-                    {
-                        var reporte = new XtraReport_EtiquetaBascula();
-                        reporte.Parameters["id_pesaje"].Value = idPesajeSelected;
-                        reporte.RequestParameters = false;
-                        var pt = new ReportPrintTool(reporte);
-                        pt.AutoShowParametersPanel = false;
-                        pt.ShowPreviewDialog();
-
-                    }
+                    //frm_Seleccionar_CLDestino clDestinos = new frm_Seleccionar_CLDestino( idPesajeSelected);
+                   
+                    //clDestinos.ShowDialog(Owner);
+                    //clDestinos.Dispose();
+                    var reporte = new XtraReport_EtiquetaBascula();
+                    reporte.Parameters["id_pesaje"].Value = idPesajeSelected;
+                    reporte.RequestParameters = false;
+                    var pt = new ReportPrintTool(reporte);
+                    pt.AutoShowParametersPanel = false;
+                    pt.ShowPreviewDialog();
 
                 }
-                else
-                {
 
-                    var enviarError = Datos.SPGetEscalar("SP_Guardar_log_ErroresRetorno", LstParametros);
-                }
-                LstParametros.Clear();
-                CargueListadosPesajes();
             }
             else
             {
-                /***si no cumple, se debe verificar si el porcentaje de tolerancia es suficiente, si es así, se procede al ajuste de inv.**/
+                string msgError;
+                msgError = result.Rows[0]["MESSAGE"].ToString();
+                XtraMessageBox.Show($"Se produjo un error en el retorno de datos: {msgError}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                string porcentajeTolerancia = "SELECT PORCENTAJE_EXCESO FROM [BASCULAS_SAP].[dbo].[PARAMETROS_GENERALES]";
-                DataTable res_dt = Datos.ObtenerDataTable(porcentajeTolerancia);
-                decimal paramExeceso = decimal.Parse(res_dt.Rows[0]["porcentaje_exceso"].ToString());
-
-                validarExceso = saldoMaterialInv + (saldoMaterialInv * (paramExeceso / 100));
-
-                if (validarExceso >= netoPesado)
-                {
-                    if (XtraMessageBox.Show("SE CUMPLE CON EL PORCENTAJE DE EXCESO,¿DESEA REALIZAR EL AJUSTE DE INVENTARIO?", "INFORMACIÓN", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, (DevExpress.Utils.DefaultBoolean)MessageBoxDefaultButton.Button1) == DialogResult.OK)
-                    {
-                        DataTable ajusteInv = metodosIntegracion.AjustarInventario(centroLog, lgort, materialSelected, charg, lfimg, meins, netoPesado.ToString(), ump);
-
-                        LstParametros.Add(new Parametros("@ID_PESAJE", idPesajeSelected, SqlDbType.VarChar));
-                        LstParametros.Add(new Parametros("@TIQUETE_BASCULA", tiqueteSelected, SqlDbType.VarChar));
-                        LstParametros.Add(new Parametros("@CONDUCTOR", conductorSelected, SqlDbType.VarChar));
-                        LstParametros.Add(new Parametros("@PESO_NETO", netoSelected, SqlDbType.Decimal));
-                        LstParametros.Add(new Parametros("@VALOR_EXCESO", validarExceso, SqlDbType.Decimal));
-                        LstParametros.Add(new Parametros("@USUARIO_CONFIRMA", usuarioAD.GetCurrentUserAD(), SqlDbType.VarChar));
-                        LstParametros.Add(new Parametros("@CONFIRMADO_SAP", "OK", SqlDbType.VarChar));
-
-                        var sendData = Datos.SPGetEscalar("SP_Confirmar_Pesajes", LstParametros);
-                        if (XtraMessageBox.Show("AJUSTE DE INVENTARIO CORRECTO. ¿DESEA REALIZAR LA IMPRESIÓN DEL TIQUETE?", "CONFIRMACIÓN", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, (DevExpress.Utils.DefaultBoolean)MessageBoxDefaultButton.Button1) == DialogResult.OK)
-                        {
-                            var reporte = new XtraReport_EtiquetaBascula();
-                            reporte.Parameters["id_pesaje"].Value = idPesajeSelected;
-                            reporte.RequestParameters = false;
-                            var pt = new ReportPrintTool(reporte);
-                            pt.AutoShowParametersPanel = false;
-                            pt.ShowPreviewDialog();
-
-                        }
-                        LstParametros.Clear();
-                        CargueListadosPesajes();
-                    }
-                    else
-                    {
-                        return;
-                    }
-
-
-
-                }
-                else
-                {
-                    XtraMessageBox.Show($"EL MATERIAL {materialSelected} - {descMaterialSelected}, \r\nCON PESO NETO {netoSelected},\r\nNO CUMPLE CON EL PORCENTAJE DE EXCESO {validarExceso}\r \r\n DEBE REVISAR INVENTARIO DEL MATERIAL.", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    //no se hace nada 
-
-
-                    CargueListadosPesajes();
-                }
-
-
-
-
-
+                LstParametros.Add(new Parametros("@ID_PESAJE", idPesajeSelected, SqlDbType.VarChar));
+                LstParametros.Add(new Parametros("@MENSAJE", msgError, SqlDbType.VarChar));
+                var enviarError = Datos.SPGetEscalar("SP_Guardar_log_ErroresRetorno", LstParametros);
             }
+            LstParametros.Clear();
+            CargueListadosPesajes();
+
+
+            #region RESTAURAR AL FINALIZAR
+
+            //CONSULTAR EL INVENTARIO DEL MATERIAL
+            //DataTable inventario = metodosIntegracion.CargarSaldos(centroLog, charg, materialSelected);
+
+            //if (inventario.Rows.Count == 0)
+            //{
+            //    XtraMessageBox.Show($"NO SE ENCONTRÓ INVENTARIO PARA EL MATERIAL {materialSelected} - {descMaterialSelected} \r\nDEL CENTRO LOGÍSTICO {centroLog}.", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //    return;
+            //}
+
+            ////validar si existe inventario
+            ////string  saldoInv = inventario.Rows[0]["LABST"].ToString();
+            ////decimal netoPesado = decimal.Parse(netoSelected);
+            //decimal netoPesado = netoSelected;
+            //decimal saldoMaterialInv = decimal.Parse(inventario.Rows[0]["LABST"].ToString());
+
+
+
+            //if (netoPesado <= saldoMaterialInv)
+            //{
+
+
+
+            //}
+            //else
+            //{
+            //    /***si no cumple, se debe verificar si el porcentaje de tolerancia es suficiente, si es así, se procede al ajuste de inv.**/
+
+            //    string porcentajeTolerancia = "SELECT PORCENTAJE_EXCESO FROM [BASCULAS_SAP].[dbo].[PARAMETROS_GENERALES]";
+            //    DataTable res_dt = Datos.ObtenerDataTable(porcentajeTolerancia);
+            //    decimal paramExeceso = decimal.Parse(res_dt.Rows[0]["porcentaje_exceso"].ToString());
+
+            //    validarExceso = saldoMaterialInv + (saldoMaterialInv * (paramExeceso / 100));
+
+            //    if (validarExceso >= netoPesado)
+            //    {
+            //        if (XtraMessageBox.Show("SE CUMPLE CON EL PORCENTAJE DE EXCESO,¿DESEA REALIZAR EL AJUSTE DE INVENTARIO?", "INFORMACIÓN", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, (DevExpress.Utils.DefaultBoolean)MessageBoxDefaultButton.Button1) == DialogResult.OK)
+            //        {
+            //            DataTable ajusteInv = metodosIntegracion.AjustarInventario(centroLog, lgort, materialSelected, charg, lfimg, meins, netoPesado.ToString(), ump);
+
+            //            LstParametros.Add(new Parametros("@ID_PESAJE", idPesajeSelected, SqlDbType.VarChar));
+            //            LstParametros.Add(new Parametros("@TIQUETE_BASCULA", tiqueteSelected, SqlDbType.VarChar));
+            //            LstParametros.Add(new Parametros("@CONDUCTOR", conductorSelected, SqlDbType.VarChar));
+            //            LstParametros.Add(new Parametros("@PESO_NETO", netoSelected, SqlDbType.Decimal));
+            //            LstParametros.Add(new Parametros("@VALOR_EXCESO", validarExceso, SqlDbType.Decimal));
+            //            LstParametros.Add(new Parametros("@USUARIO_CONFIRMA", usuarioAD.GetCurrentUserAD(), SqlDbType.VarChar));
+            //            LstParametros.Add(new Parametros("@CONFIRMADO_SAP", "OK", SqlDbType.VarChar));
+
+            //            var sendData = Datos.SPGetEscalar("SP_Confirmar_Pesajes", LstParametros);
+            //            if (XtraMessageBox.Show("AJUSTE DE INVENTARIO CORRECTO. ¿DESEA REALIZAR LA IMPRESIÓN DEL TIQUETE?", "CONFIRMACIÓN", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, (DevExpress.Utils.DefaultBoolean)MessageBoxDefaultButton.Button1) == DialogResult.OK)
+            //            {
+            //                var reporte = new XtraReport_EtiquetaBascula();
+            //                reporte.Parameters["id_pesaje"].Value = idPesajeSelected;
+            //                reporte.RequestParameters = false;
+            //                var pt = new ReportPrintTool(reporte);
+            //                pt.AutoShowParametersPanel = false;
+            //                pt.ShowPreviewDialog();
+
+            //            }
+            //            LstParametros.Clear();
+            //            CargueListadosPesajes();
+            //        }
+            //        else
+            //        {
+            //            return;
+            //        }
+
+
+
+            //    }
+            //    else
+            //    {
+            //        XtraMessageBox.Show($"EL MATERIAL {materialSelected} - {descMaterialSelected}, \r\nCON PESO NETO {netoSelected},\r\nNO CUMPLE CON EL PORCENTAJE DE EXCESO {validarExceso}\r \r\n DEBE REVISAR INVENTARIO DEL MATERIAL.", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //        //no se hace nada 
+
+
+            //        CargueListadosPesajes();
+            //    }
+
+
+
+
+
+            //}
+            #endregion
 
         }
 
@@ -751,9 +770,6 @@ namespace Pry_Basculas_SAP
 
             }
         }
-
-
-
 
 
 

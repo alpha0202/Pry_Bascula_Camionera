@@ -211,16 +211,18 @@ namespace IntegracionSAP_Dll
         public DataTable RetornarDatos(string idPesaje, string tiqueteBascula, string umb,  string netoCalculado)
         {
             string statusNum = "02";
+            DataTable resultDt_Retorno = new DataTable();
+            object res = "";
             try
             {
-                if(tiqueteBascula == "01" && netoCalculado == "0,000")
+                if (tiqueteBascula == "01" && netoCalculado == "0,000")
                 {
                     statusNum = "01";
                     tiqueteBascula = "";
                     umb = "0,000";
-                      
+
                 }
-               
+
                 RfcDestinationManager.RegisterDestinationConfiguration(rfc_Connector);
                 RfcDestination prd = RfcDestinationManager.GetDestination("SE37");
                 RfcRepository repo = prd.Repository;
@@ -235,20 +237,27 @@ namespace IntegracionSAP_Dll
                 dtParametros.SetValue("LKIMG_REAL", umb); // CANTIDAD PESADA REAL EN UMB
                 dtParametros.SetValue("PIKMG_REAL", netoCalculado); // CANTIDAD PESADA REAL EN UMP (PESO NETO)
                 dtParametros.SetValue("STATUS", statusNum); //ESTADO DE CONSUMO --> SE CAMBIA A 01 O´ 02
-              
+
                 soBapi.SetValue("IT_REQUEST", dtParametros);
 
                 soBapi.Invoke(prd);
-                var res = soBapi.GetValue("EX_V_SUBRC");
+                res = soBapi.GetValue("EX_V_SUBRC");
                 IRfcTable EX_T_RETURN = soBapi.GetTable("EX_T_RETURN");
 
                 DataSet dsRes_Retorno = new DataSet();
                 dsRes_Retorno.Tables.Add(ConvertToDotNetTable(EX_T_RETURN));
-                DataTable resultDt_Ajuste = dsRes_Retorno.Tables[0];
-
-                return resultDt_Ajuste;
+                resultDt_Retorno = dsRes_Retorno.Tables[0];
+                return resultDt_Retorno;
 
             }
+            catch (Exception ex)
+            {
+
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK);
+                return resultDt_Retorno;
+            }
+
             finally
             {
                 try
@@ -258,6 +267,8 @@ namespace IntegracionSAP_Dll
                 catch (Exception) { throw; }
             }
         }
+
+
 
 
 

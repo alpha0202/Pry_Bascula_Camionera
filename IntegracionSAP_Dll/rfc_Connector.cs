@@ -28,7 +28,7 @@ namespace RFC_SAP_Interface
                 parms.Add(RfcConfigParameters.SystemID, "A4D");
                 parms.Add(RfcConfigParameters.User, "INTEGRADOR");
                 parms.Add(RfcConfigParameters.Password, "Inicio.2023$");
-                parms.Add(RfcConfigParameters.Client, "330");
+                parms.Add(RfcConfigParameters.Client, "340");
                 parms.Add(RfcConfigParameters.SAPRouter, "/H/179.50.79.116");
                 parms.Add(RfcConfigParameters.Language, "ES");
                 parms.Add(RfcConfigParameters.Name, "SE37");

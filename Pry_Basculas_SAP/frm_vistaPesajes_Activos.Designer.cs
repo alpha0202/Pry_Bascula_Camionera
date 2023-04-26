@@ -532,9 +532,9 @@ namespace Pry_Basculas_SAP
             this.panelControl2.Controls.Add(this.labelControl6);
             this.panelControl2.Controls.Add(this.lblGetUsuario);
             this.panelControl2.Controls.Add(this.labelControl1);
-            this.panelControl2.Location = new System.Drawing.Point(3, 6);
+            this.panelControl2.Location = new System.Drawing.Point(3, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(372, 52);
+            this.panelControl2.Size = new System.Drawing.Size(372, 58);
             this.panelControl2.TabIndex = 11;
             // 
             // lblGetPerfil
