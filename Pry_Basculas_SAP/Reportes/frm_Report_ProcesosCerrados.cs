@@ -12,6 +12,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraReports.UI;
+using DevExpress.Utils;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 
 namespace Pry_Basculas_SAP
 
@@ -114,5 +117,34 @@ namespace Pry_Basculas_SAP
             CargaReporte_ProcesosCerrados(dateFilter);
         }
 
+      
+
+        private void grv_VistaProcesosClose_DoubleClick(object sender, EventArgs e)
+        {
+            DXMouseEventArgs ea = e as DXMouseEventArgs;
+            GridView view = sender as GridView;
+            GridHitInfo info = view.CalcHitInfo(ea.Location);
+            DataRow dr = view.GetDataRow(info.RowHandle);
+
+
+            try
+            {
+                frm_Seleccionar_CLDestino clDestino = new frm_Seleccionar_CLDestino(dr[0].ToString())
+                {
+                    StartPosition = FormStartPosition.CenterParent
+                };
+                clDestino.ShowDialog();
+                string dateFilter;
+                dateFilter = dtp_dateFilter.Value.ToString("yyyy-MM-dd");
+                CargaReporte_ProcesosCerrados(dateFilter);
+                //clDestino.Dispose();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

@@ -297,6 +297,7 @@
     <Content Include="Resources\aliar_src\LOGO LA FAZENDA.png" />
     <Content Include="Resources\aliar_src\Logo.jpg" />
     <Content Include="Resources\aliar_src\Logo1.jpg" />
+    <None Include="Resources\status_32x32.png" />
     <None Include="Resources\replace_32x32.png" />
     <None Include="Resources\exporttoxlsx_32x32.png" />
     <None Include="Resources\contact_32x32.png" />

@@ -29,11 +29,11 @@ namespace Pry_Basculas_SAP
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
             this.dtp_dateFilter = new System.Windows.Forms.DateTimePicker();
             this.grc_ControlProcesosClose = new DevExpress.XtraGrid.GridControl();
@@ -51,7 +51,6 @@ namespace Pry_Basculas_SAP
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemComboBox_Select_CL_Destino = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tiquete = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -60,23 +59,26 @@ namespace Pry_Basculas_SAP
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.print_formato = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButton_ImprimirFormato = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.repositoryItemComboBox_Select_CL_Destino = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.xtraScrollableControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grc_ControlProcesosClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grv_VistaProcesosClose)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox_Select_CL_Destino)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButton_ImprimirFormato)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox_Select_CL_Destino)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraScrollableControl1
             // 
             this.xtraScrollableControl1.Appearance.BackColor = System.Drawing.Color.Lavender;
             this.xtraScrollableControl1.Appearance.Options.UseBackColor = true;
+            this.xtraScrollableControl1.Controls.Add(this.labelControl1);
             this.xtraScrollableControl1.Controls.Add(this.dtp_dateFilter);
             this.xtraScrollableControl1.Controls.Add(this.grc_ControlProcesosClose);
             this.xtraScrollableControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraScrollableControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraScrollableControl1.Name = "xtraScrollableControl1";
-            this.xtraScrollableControl1.Size = new System.Drawing.Size(1303, 669);
+            this.xtraScrollableControl1.Size = new System.Drawing.Size(1324, 686);
             this.xtraScrollableControl1.TabIndex = 0;
             // 
             // dtp_dateFilter
@@ -89,13 +91,13 @@ namespace Pry_Basculas_SAP
             // 
             // grc_ControlProcesosClose
             // 
-            this.grc_ControlProcesosClose.Location = new System.Drawing.Point(12, 59);
+            this.grc_ControlProcesosClose.Location = new System.Drawing.Point(12, 84);
             this.grc_ControlProcesosClose.MainView = this.grv_VistaProcesosClose;
             this.grc_ControlProcesosClose.Name = "grc_ControlProcesosClose";
             this.grc_ControlProcesosClose.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButton_ImprimirFormato,
             this.repositoryItemComboBox_Select_CL_Destino});
-            this.grc_ControlProcesosClose.Size = new System.Drawing.Size(1279, 559);
+            this.grc_ControlProcesosClose.Size = new System.Drawing.Size(1300, 559);
             this.grc_ControlProcesosClose.TabIndex = 0;
             this.grc_ControlProcesosClose.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grv_VistaProcesosClose});
@@ -125,6 +127,7 @@ namespace Pry_Basculas_SAP
             this.print_formato});
             this.grv_VistaProcesosClose.GridControl = this.grc_ControlProcesosClose;
             this.grv_VistaProcesosClose.Name = "grv_VistaProcesosClose";
+            this.grv_VistaProcesosClose.DoubleClick += new System.EventHandler(this.grv_VistaProcesosClose_DoubleClick);
             // 
             // id
             // 
@@ -278,20 +281,14 @@ namespace Pry_Basculas_SAP
             this.gridColumn9.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumn9.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.gridColumn9.Caption = "CENTRO LOGISTICO DESTINO";
+            this.gridColumn9.FieldName = "centroLogistico_destino";
             this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.OptionsColumn.AllowEdit = false;
+            this.gridColumn9.OptionsColumn.AllowFocus = false;
             this.gridColumn9.OptionsFilter.AllowAutoFilter = false;
-            this.gridColumn9.OptionsFilter.AllowFilter = false;
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 12;
             this.gridColumn9.Width = 154;
-            // 
-            // repositoryItemComboBox_Select_CL_Destino
-            // 
-            this.repositoryItemComboBox_Select_CL_Destino.AutoHeight = false;
-            this.repositoryItemComboBox_Select_CL_Destino.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemComboBox_Select_CL_Destino.Name = "repositoryItemComboBox_Select_CL_Destino";
-            this.repositoryItemComboBox_Select_CL_Destino.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
             // gridColumn2
             // 
@@ -395,18 +392,35 @@ namespace Pry_Basculas_SAP
             // repositoryItemButton_ImprimirFormato
             // 
             this.repositoryItemButton_ImprimirFormato.AutoHeight = false;
-            editorButtonImageOptions2.Image = global::Pry_Basculas_SAP.Properties.Resources.report_32x32;
+            editorButtonImageOptions1.Image = global::Pry_Basculas_SAP.Properties.Resources.report_32x32;
             this.repositoryItemButton_ImprimirFormato.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButton_ImprimirFormato.Name = "repositoryItemButton_ImprimirFormato";
             this.repositoryItemButton_ImprimirFormato.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repositoryItemButton_ImprimirFormato.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButton_ImprimirFormato_ButtonClick);
+            // 
+            // repositoryItemComboBox_Select_CL_Destino
+            // 
+            this.repositoryItemComboBox_Select_CL_Destino.AutoHeight = false;
+            this.repositoryItemComboBox_Select_CL_Destino.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox_Select_CL_Destino.Name = "repositoryItemComboBox_Select_CL_Destino";
+            this.repositoryItemComboBox_Select_CL_Destino.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(12, 65);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(400, 13);
+            this.labelControl1.TabIndex = 3;
+            this.labelControl1.Text = "* Puedes dar doble click sobre cada fila, para agregar el centro logísitco de des" +
+    "tino.";
             // 
             // frm_Report_ProcesosCerrados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1303, 669);
+            this.ClientSize = new System.Drawing.Size(1324, 686);
             this.Controls.Add(this.xtraScrollableControl1);
             this.IconOptions.LargeImage = global::Pry_Basculas_SAP.Properties.Resources.printlayoutview_32x32;
             this.Name = "frm_Report_ProcesosCerrados";
@@ -414,10 +428,11 @@ namespace Pry_Basculas_SAP
             this.Text = "PROCESOS TERMINADOS PARA IMPRESIÓN DE TIQUETE";
             this.Load += new System.EventHandler(this.frm_Report_ProcesosCerrados_Load);
             this.xtraScrollableControl1.ResumeLayout(false);
+            this.xtraScrollableControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grc_ControlProcesosClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grv_VistaProcesosClose)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox_Select_CL_Destino)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButton_ImprimirFormato)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox_Select_CL_Destino)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -450,5 +465,6 @@ namespace Pry_Basculas_SAP
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox_Select_CL_Destino;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }

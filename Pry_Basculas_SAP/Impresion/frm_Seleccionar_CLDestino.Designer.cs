@@ -30,12 +30,12 @@ namespace Pry_Basculas_SAP.Impresion
         private void InitializeComponent()
         {
             this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
-            this.cbo_destinos = new System.Windows.Forms.ComboBox();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.txt_idPesaje = new DevExpress.XtraEditors.TextEdit();
-            this.btn_Aplicar = new DevExpress.XtraEditors.SimpleButton();
             this.lbl_seleccion = new DevExpress.XtraEditors.LabelControl();
+            this.btn_Aplicar = new DevExpress.XtraEditors.SimpleButton();
+            this.txt_idPesaje = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.cbo_destinos = new System.Windows.Forms.ComboBox();
             this.xtraScrollableControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txt_idPesaje.Properties)).BeginInit();
             this.SuspendLayout();
@@ -53,67 +53,71 @@ namespace Pry_Basculas_SAP.Impresion
             this.xtraScrollableControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraScrollableControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraScrollableControl1.Name = "xtraScrollableControl1";
-            this.xtraScrollableControl1.Size = new System.Drawing.Size(618, 244);
+            this.xtraScrollableControl1.Size = new System.Drawing.Size(545, 187);
             this.xtraScrollableControl1.TabIndex = 0;
             // 
-            // cbo_destinos
+            // lbl_seleccion
             // 
-            this.cbo_destinos.FormattingEnabled = true;
-            this.cbo_destinos.Location = new System.Drawing.Point(258, 70);
-            this.cbo_destinos.Name = "cbo_destinos";
-            this.cbo_destinos.Size = new System.Drawing.Size(304, 21);
-            this.cbo_destinos.TabIndex = 1;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(258, 42);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(189, 13);
-            this.labelControl1.TabIndex = 2;
-            this.labelControl1.Text = "CENTROS LOGÍSTICOS DE DESTINO";
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(75, 42);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(56, 13);
-            this.labelControl2.TabIndex = 3;
-            this.labelControl2.Text = "ID PESAJE";
-            // 
-            // txt_idPesaje
-            // 
-            this.txt_idPesaje.Location = new System.Drawing.Point(75, 71);
-            this.txt_idPesaje.Name = "txt_idPesaje";
-            this.txt_idPesaje.Size = new System.Drawing.Size(126, 20);
-            this.txt_idPesaje.TabIndex = 4;
+            this.lbl_seleccion.Location = new System.Drawing.Point(212, 97);
+            this.lbl_seleccion.Name = "lbl_seleccion";
+            this.lbl_seleccion.Size = new System.Drawing.Size(4, 13);
+            this.lbl_seleccion.TabIndex = 6;
+            this.lbl_seleccion.Text = ".";
+            this.lbl_seleccion.Visible = false;
             // 
             // btn_Aplicar
             // 
-            this.btn_Aplicar.Location = new System.Drawing.Point(487, 182);
+            this.btn_Aplicar.Location = new System.Drawing.Point(441, 150);
             this.btn_Aplicar.Name = "btn_Aplicar";
             this.btn_Aplicar.Size = new System.Drawing.Size(75, 23);
             this.btn_Aplicar.TabIndex = 5;
             this.btn_Aplicar.Text = "Aplicar";
             this.btn_Aplicar.Click += new System.EventHandler(this.btn_Aplicar_Click);
             // 
-            // lbl_seleccion
+            // txt_idPesaje
             // 
-            this.lbl_seleccion.Location = new System.Drawing.Point(258, 97);
-            this.lbl_seleccion.Name = "lbl_seleccion";
-            this.lbl_seleccion.Size = new System.Drawing.Size(4, 13);
-            this.lbl_seleccion.TabIndex = 6;
-            this.lbl_seleccion.Text = ".";
+            this.txt_idPesaje.Enabled = false;
+            this.txt_idPesaje.Location = new System.Drawing.Point(29, 70);
+            this.txt_idPesaje.Name = "txt_idPesaje";
+            this.txt_idPesaje.Size = new System.Drawing.Size(126, 20);
+            this.txt_idPesaje.TabIndex = 4;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Location = new System.Drawing.Point(29, 42);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(56, 13);
+            this.labelControl2.TabIndex = 3;
+            this.labelControl2.Text = "ID PESAJE";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Location = new System.Drawing.Point(212, 42);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(189, 13);
+            this.labelControl1.TabIndex = 2;
+            this.labelControl1.Text = "CENTROS LOGÍSTICOS DE DESTINO";
+            // 
+            // cbo_destinos
+            // 
+            this.cbo_destinos.FormattingEnabled = true;
+            this.cbo_destinos.Location = new System.Drawing.Point(212, 70);
+            this.cbo_destinos.Name = "cbo_destinos";
+            this.cbo_destinos.Size = new System.Drawing.Size(304, 21);
+            this.cbo_destinos.TabIndex = 1;
+            this.cbo_destinos.SelectedIndexChanged += new System.EventHandler(this.cbo_destinos_SelectedIndexChanged);
             // 
             // frm_Seleccionar_CLDestino
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 244);
+            this.ClientSize = new System.Drawing.Size(545, 187);
             this.Controls.Add(this.xtraScrollableControl1);
+            this.IconOptions.LargeImage = global::Pry_Basculas_SAP.Properties.Resources.status_32x32;
             this.Name = "frm_Seleccionar_CLDestino";
             this.Text = "CENTRO LOGÍSTICO DE DESTINO";
             this.Load += new System.EventHandler(this.frm_Seleccionar_CLDestino_Load);

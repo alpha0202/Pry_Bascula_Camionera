@@ -23,6 +23,19 @@ namespace IntegracionSAP_Dll
 
         }
 
+        public class Consecutivo
+        {
+            private static int _consecutivo = 0;
+
+            public static int GetConsecutivo()
+            {
+                return ++_consecutivo;
+            }
+        }
+
+
+
+
         public MetodosIntegracion(DataTable dt1, DataTable dt2)
         {
             (dt1, dt2) = readdata();
@@ -163,6 +176,10 @@ namespace IntegracionSAP_Dll
         //metodo para ajuste de inventarios 
         public DataTable AjustarInventario(string CL, string lgort, string Material, string charg, string menge, string mei, string netoCalculado, string cw)
         {
+
+
+            int consecutivo = Consecutivo.GetConsecutivo();
+            DataTable resultDt_Ajuste = new DataTable();
             try
             {
                 RfcDestinationManager.RegisterDestinationConfiguration(rfc_Connector);
@@ -174,10 +191,10 @@ namespace IntegracionSAP_Dll
                 IRfcTable dtParametros = soBapi.GetTable("IT_MAT");
 
                 dtParametros.Append();
-                dtParametros.SetValue("ZEILE", 1); //CONSECUTIVO PROPIO 
+                dtParametros.SetValue("ZEILE", consecutivo); //"1" CONSECUTIVO PROPIO 
                 dtParametros.SetValue("MATNR", Material); // COD MATERIAL
                 dtParametros.SetValue("CHARG", charg); //LOTE SI LO MANEJA
-                dtParametros.SetValue("MENGE", netoCalculado); //UNIDADES
+                dtParametros.SetValue("MENGE", netoCalculado); //VALOR NETO CALCULADO QUE VA A REALIZAR EL AJUSTE
                 dtParametros.SetValue("MEINS", cw); //UNID MEDIDA UNIDADES (UN
                 dtParametros.SetValue("/CWM/MENGE", 0); //PESAJE FINAL(NETO KG)
                 dtParametros.SetValue("/CWM/MEINS", ""); // UMP(UNID MEDIDADE DEL PESAJE KG)
@@ -189,7 +206,7 @@ namespace IntegracionSAP_Dll
 
                 DataSet dsAjuste = new DataSet();
                 dsAjuste.Tables.Add(ConvertToDotNetTable(IT_KNA1));
-                DataTable resultDt_Ajuste = dsAjuste.Tables[0];
+                resultDt_Ajuste = dsAjuste.Tables[0];
 
 
 
@@ -197,6 +214,16 @@ namespace IntegracionSAP_Dll
 
 
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "ADVERTENCIA", MessageBoxButtons.OK);
+                return resultDt_Ajuste;
+
+            }
+
+
+
             finally
             {
                 try
@@ -208,11 +235,12 @@ namespace IntegracionSAP_Dll
         }
 
         //enviar información de retorno a SAP 
-        public DataTable RetornarDatos(string idPesaje, string tiqueteBascula, string umb,  string netoCalculado)
+        public (int, DataTable) RetornarDatos(string idPesaje, string tiqueteBascula, string umb,  string netoCalculado)
         {
             string statusNum = "02";
+            int valorRetorno = 0;
             DataTable resultDt_Retorno = new DataTable();
-            object res = "";
+            object res;
             try
             {
                 if (tiqueteBascula == "01" && netoCalculado == "0,000")
@@ -247,15 +275,20 @@ namespace IntegracionSAP_Dll
                 DataSet dsRes_Retorno = new DataSet();
                 dsRes_Retorno.Tables.Add(ConvertToDotNetTable(EX_T_RETURN));
                 resultDt_Retorno = dsRes_Retorno.Tables[0];
-                return resultDt_Retorno;
+                valorRetorno = Convert.ToInt32(res);
+                return (valorRetorno,resultDt_Retorno);
 
             }
             catch (Exception ex)
             {
 
-
+                //throw new Exception(ex.Message);
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK);
-                return resultDt_Retorno;
+                valorRetorno = -1;
+                resultDt_Retorno.Columns.Add("MESSAGE", typeof(string));
+                resultDt_Retorno.Rows.Add(ex.Message);
+
+                return (valorRetorno, resultDt_Retorno);
             }
 
             finally

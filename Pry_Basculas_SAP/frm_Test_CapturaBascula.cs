@@ -31,8 +31,8 @@ namespace Pry_Basculas_SAP
 
         private void btn_capturar_Click(object sender, EventArgs e)
         {
-            //txt_datoCapturado.Text =  bascula.CapturarPeso_PortSerial();
-            txt_datoCapturado.Text =  bascula.SacarNumeros("68552,000 kg");
+            txt_datoCapturado.Text =  bascula.CapturarPeso_PortSerial();
+            //txt_datoCapturado.Text =  bascula.SacarNumeros("68552,000 kg");
         }
     }
 }

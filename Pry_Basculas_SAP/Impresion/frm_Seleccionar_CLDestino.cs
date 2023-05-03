@@ -28,18 +28,19 @@ namespace Pry_Basculas_SAP.Impresion
 
         private DataTable CL_Destinos()
         {
-            DataTable dtCl_Destinos = metodosIntegracion.Listar_ClDestinos();
+            //DataTable dtCl_Destinos = metodosIntegracion.Listar_ClDestinos();
+
+            string sql = $"SELECT [Cod_CL_Destino],[Descripcion_CentroLog_Destino] FROM[BASCULAS_SAP].[dbo].[TB_CENTROS_LOGI_DESTINO]";
+            DataTable dtCl_Destinos = Datos.ObtenerDataTable(sql);
 
             txt_idPesaje.Text = _idPesaje;
-            cbo_destinos.DataSource = dtCl_Destinos;
-            cbo_destinos.DisplayMember = "NAME1";
-            cbo_destinos.ValueMember = "NAME1";
-            lbl_seleccion.Text = cbo_destinos.SelectedItem.ToString();
-
-
+            cbo_destinos.DataSource = dtCl_Destinos;       
+            cbo_destinos.DisplayMember = "Descripcion_CentroLog_Destino";
+            cbo_destinos.ValueMember = "Cod_CL_Destino";
+            //lbl_seleccion.Text = cbo_destinos.SelectedIndex.ToString() ;  
+            //lbl_seleccion.Text = cbo_destinos.SelectedItem.ToString();
 
             return dtCl_Destinos;
-
 
         }
 
@@ -56,12 +57,24 @@ namespace Pry_Basculas_SAP.Impresion
         {
             if (XtraMessageBox.Show($"¿CONFIRMAR EL CENTRO LOGISTICO DE DESTINO PARA EL ID PESAJE: {_idPesaje}", "CONFIRMACIÓN", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, (DevExpress.Utils.DefaultBoolean)MessageBoxDefaultButton.Button1) == DialogResult.OK)
             {
+                string clDestino = lbl_seleccion.Text;
                 //[BASCULAS_SAP].[dbo].[TB_DATOS_ACTIVOS]
-                string sql = $"UPDATE set [centroLogistico_destino] = {lbl_seleccion.Text} [BASCULAS_SAP].[dbo].[TB_DATOS_ACTIVOS] WHERE id_pesaje = {_idPesaje} ";
-                var respuesta = Datos.GetEscalar(sql);
+                string sql = $"UPDATE [BASCULAS_SAP].[dbo].[TB_DATOS_ACTIVOS] set [BASCULAS_SAP].[dbo].[TB_DATOS_ACTIVOS].centroLogistico_destino = '{clDestino}' FROM [BASCULAS_SAP].[dbo].[TB_DATOS_ACTIVOS]a INNER JOIN [BASCULAS_SAP].[dbo].[CAPTURA_PESAJES] cp ON a.id_pesaje = cp.id_pesaje  WHERE a.id_pesaje = '{_idPesaje}' and  cp.estado in ('C','Y') ";
+                string respuesta = (string)Datos.GetEscalar(sql);
+                if (respuesta == "" || respuesta is null )
+                {
+                    XtraMessageBox.Show($"CENTRO LOGÍSTICO DESTINO ACTUALIZADO PARA ID: {_idPesaje}", "CONFIRMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Dispose();
+                }
 
             }
 
+        }
+
+        private void cbo_destinos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedValue = cbo_destinos.GetItemText(cbo_destinos.SelectedItem);
+            lbl_seleccion.Text = selectedValue;
         }
     }
 }

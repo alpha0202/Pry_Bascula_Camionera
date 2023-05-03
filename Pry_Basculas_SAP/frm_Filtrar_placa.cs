@@ -98,8 +98,8 @@ namespace Pry_Basculas_SAP
                 }
                 else
                 {
-                    throw new Exception($"NO EXISTEN REGISTROS ACTIVOS PARA LA PLACA {placaValida}");
                     txtPlacaCabezote.Text = "";
+                    throw new Exception($"NO EXISTEN REGISTROS ACTIVOS PARA LA PLACA {placaValida}");
                 }
 
             }

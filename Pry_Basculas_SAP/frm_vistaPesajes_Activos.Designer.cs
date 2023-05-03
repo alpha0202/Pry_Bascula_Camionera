@@ -60,6 +60,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -178,7 +179,7 @@ namespace Pry_Basculas_SAP
             this.btn_ChangeTrans.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ChangeTrans.Appearance.Options.UseFont = true;
             this.btn_ChangeTrans.ImageOptions.Image = global::Pry_Basculas_SAP.Properties.Resources.transit_32x32;
-            this.btn_ChangeTrans.Location = new System.Drawing.Point(163, 622);
+            this.btn_ChangeTrans.Location = new System.Drawing.Point(163, 644);
             this.btn_ChangeTrans.Name = "btn_ChangeTrans";
             this.btn_ChangeTrans.Size = new System.Drawing.Size(209, 42);
             this.btn_ChangeTrans.TabIndex = 13;
@@ -193,7 +194,7 @@ namespace Pry_Basculas_SAP
             this.btn_GetOut.ImageOptions.Image = global::Pry_Basculas_SAP.Properties.Resources.walking_32x32;
             this.btn_GetOut.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
             this.btn_GetOut.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
-            this.btn_GetOut.Location = new System.Drawing.Point(1152, 621);
+            this.btn_GetOut.Location = new System.Drawing.Point(1152, 643);
             this.btn_GetOut.Name = "btn_GetOut";
             this.btn_GetOut.Size = new System.Drawing.Size(144, 42);
             this.btn_GetOut.TabIndex = 11;
@@ -204,7 +205,7 @@ namespace Pry_Basculas_SAP
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(13, 306);
+            this.labelControl4.Location = new System.Drawing.Point(13, 328);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(130, 13);
             this.labelControl4.TabIndex = 9;
@@ -231,7 +232,7 @@ namespace Pry_Basculas_SAP
             this.grc_ControlFiltrado.Name = "grc_ControlFiltrado";
             this.grc_ControlFiltrado.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButton_IniciarProceso});
-            this.grc_ControlFiltrado.Size = new System.Drawing.Size(1284, 215);
+            this.grc_ControlFiltrado.Size = new System.Drawing.Size(1284, 227);
             this.grc_ControlFiltrado.TabIndex = 7;
             this.grc_ControlFiltrado.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grv_VistaFiltrado});
@@ -246,6 +247,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn15,
             this.gridColumn5,
             this.gridColumn6,
+            this.gridColumn19,
             this.gridColumn7,
             this.gridColumn8,
             this.gridColumn18,
@@ -280,6 +282,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn1.OptionsFilter.AllowFilter = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 72;
             // 
             // gridColumn2
             // 
@@ -292,6 +295,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn2.OptionsFilter.AllowFilter = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.Width = 72;
             // 
             // gridColumn3
             // 
@@ -304,6 +308,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn3.OptionsFilter.AllowFilter = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.Width = 72;
             // 
             // gridColumn4
             // 
@@ -316,7 +321,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn4.OptionsFilter.AllowFilter = false;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 4;
-            this.gridColumn4.Width = 92;
+            this.gridColumn4.Width = 89;
             // 
             // gridColumn15
             // 
@@ -329,6 +334,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn15.OptionsFilter.AllowFilter = false;
             this.gridColumn15.Visible = true;
             this.gridColumn15.VisibleIndex = 3;
+            this.gridColumn15.Width = 72;
             // 
             // gridColumn5
             // 
@@ -341,7 +347,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn5.OptionsFilter.AllowFilter = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 5;
-            this.gridColumn5.Width = 83;
+            this.gridColumn5.Width = 80;
             // 
             // gridColumn6
             // 
@@ -354,6 +360,23 @@ namespace Pry_Basculas_SAP
             this.gridColumn6.OptionsFilter.AllowFilter = false;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 6;
+            this.gridColumn6.Width = 72;
+            // 
+            // gridColumn19
+            // 
+            this.gridColumn19.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn19.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn19.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn19.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn19.Caption = "BASCULA ";
+            this.gridColumn19.FieldName = "DESC_BASCULA";
+            this.gridColumn19.Name = "gridColumn19";
+            this.gridColumn19.OptionsColumn.AllowEdit = false;
+            this.gridColumn19.OptionsColumn.AllowFocus = false;
+            this.gridColumn19.OptionsFilter.AllowAutoFilter = false;
+            this.gridColumn19.Visible = true;
+            this.gridColumn19.VisibleIndex = 7;
+            this.gridColumn19.Width = 64;
             // 
             // gridColumn7
             // 
@@ -365,8 +388,8 @@ namespace Pry_Basculas_SAP
             this.gridColumn7.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn7.OptionsFilter.AllowFilter = false;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 7;
-            this.gridColumn7.Width = 95;
+            this.gridColumn7.VisibleIndex = 8;
+            this.gridColumn7.Width = 93;
             // 
             // gridColumn8
             // 
@@ -396,8 +419,8 @@ namespace Pry_Basculas_SAP
             this.gridColumn9.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn9.OptionsFilter.AllowFilter = false;
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 8;
-            this.gridColumn9.Width = 107;
+            this.gridColumn9.VisibleIndex = 9;
+            this.gridColumn9.Width = 105;
             // 
             // gridColumn14
             // 
@@ -409,7 +432,8 @@ namespace Pry_Basculas_SAP
             this.gridColumn14.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn14.OptionsFilter.AllowFilter = false;
             this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 13;
+            this.gridColumn14.VisibleIndex = 14;
+            this.gridColumn14.Width = 66;
             // 
             // gridColumn10
             // 
@@ -421,12 +445,12 @@ namespace Pry_Basculas_SAP
             this.gridColumn10.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn10.OptionsFilter.AllowFilter = false;
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 9;
-            this.gridColumn10.Width = 84;
+            this.gridColumn10.VisibleIndex = 10;
+            this.gridColumn10.Width = 81;
             // 
             // gridColumn11
             // 
-            this.gridColumn11.Caption = "UND UMB";
+            this.gridColumn11.Caption = "UND MEDIDA UMB";
             this.gridColumn11.FieldName = "MEINS";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.OptionsColumn.AllowEdit = false;
@@ -434,7 +458,8 @@ namespace Pry_Basculas_SAP
             this.gridColumn11.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn11.OptionsFilter.AllowFilter = false;
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 10;
+            this.gridColumn11.VisibleIndex = 11;
+            this.gridColumn11.Width = 96;
             // 
             // gridColumn12
             // 
@@ -446,18 +471,19 @@ namespace Pry_Basculas_SAP
             this.gridColumn12.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn12.OptionsFilter.AllowFilter = false;
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 11;
-            this.gridColumn12.Width = 84;
+            this.gridColumn12.VisibleIndex = 12;
+            this.gridColumn12.Width = 74;
             // 
             // gridColumn13
             // 
-            this.gridColumn13.Caption = "UND UMP";
+            this.gridColumn13.Caption = "UND MEDIDA UMP";
             this.gridColumn13.FieldName = "UMP";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.OptionsColumn.AllowEdit = false;
             this.gridColumn13.OptionsColumn.AllowFocus = false;
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 12;
+            this.gridColumn13.VisibleIndex = 13;
+            this.gridColumn13.Width = 66;
             // 
             // iniciar_proceso
             // 
@@ -467,7 +493,8 @@ namespace Pry_Basculas_SAP
             this.iniciar_proceso.OptionsFilter.AllowAutoFilter = false;
             this.iniciar_proceso.OptionsFilter.AllowFilter = false;
             this.iniciar_proceso.Visible = true;
-            this.iniciar_proceso.VisibleIndex = 14;
+            this.iniciar_proceso.VisibleIndex = 15;
+            this.iniciar_proceso.Width = 85;
             // 
             // repositoryItemButton_IniciarProceso
             // 
@@ -664,7 +691,7 @@ namespace Pry_Basculas_SAP
             // 
             this.gcPesajesActivosSAP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gcPesajesActivosSAP.Location = new System.Drawing.Point(12, 324);
+            this.gcPesajesActivosSAP.Location = new System.Drawing.Point(12, 346);
             this.gcPesajesActivosSAP.MainView = this.gvVista_ListadoActivo;
             this.gcPesajesActivosSAP.Name = "gcPesajesActivosSAP";
             this.gcPesajesActivosSAP.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -1136,7 +1163,7 @@ namespace Pry_Basculas_SAP
             this.btnConsultarPlaca.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConsultarPlaca.Appearance.Options.UseFont = true;
             this.btnConsultarPlaca.ImageOptions.Image = global::Pry_Basculas_SAP.Properties.Resources.checkbuttons_32x32;
-            this.btnConsultarPlaca.Location = new System.Drawing.Point(13, 622);
+            this.btnConsultarPlaca.Location = new System.Drawing.Point(13, 644);
             this.btnConsultarPlaca.Name = "btnConsultarPlaca";
             this.btnConsultarPlaca.Size = new System.Drawing.Size(144, 42);
             this.btnConsultarPlaca.TabIndex = 3;
@@ -1187,7 +1214,6 @@ namespace Pry_Basculas_SAP
             // barSubItem2
             // 
             this.barSubItem2.Caption = "Administración";
-            this.barSubItem2.Enabled = false;
             this.barSubItem2.Id = 4;
             this.barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btn_CapManual)});
@@ -1195,7 +1221,7 @@ namespace Pry_Basculas_SAP
             // 
             // btn_CapManual
             // 
-            this.btn_CapManual.Caption = "Captura Manual";
+            this.btn_CapManual.Caption = "PROBAR CAPTURA";
             this.btn_CapManual.Id = 5;
             this.btn_CapManual.Name = "btn_CapManual";
             this.btn_CapManual.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_CapManual_ItemClick);
@@ -1414,6 +1440,7 @@ namespace Pry_Basculas_SAP
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.LabelControl lblGetUsuario;
         private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
     }
 }
 

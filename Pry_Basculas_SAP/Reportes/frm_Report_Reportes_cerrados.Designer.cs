@@ -29,11 +29,11 @@ namespace Pry_Basculas_SAP.Reportes
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
             this.btn_exportarEx = new DevExpress.XtraEditors.SimpleButton();
             this.grc_ControlReportCerrrado = new DevExpress.XtraGrid.GridControl();
@@ -56,9 +56,15 @@ namespace Pry_Basculas_SAP.Reportes
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tiquete = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -68,6 +74,9 @@ namespace Pry_Basculas_SAP.Reportes
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraScrollableControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grc_ControlReportCerrrado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grv_VistaReportCerrado)).BeginInit();
@@ -83,7 +92,7 @@ namespace Pry_Basculas_SAP.Reportes
             this.xtraScrollableControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraScrollableControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraScrollableControl1.Name = "xtraScrollableControl1";
-            this.xtraScrollableControl1.Size = new System.Drawing.Size(1309, 715);
+            this.xtraScrollableControl1.Size = new System.Drawing.Size(1393, 738);
             this.xtraScrollableControl1.TabIndex = 0;
             // 
             // btn_exportarEx
@@ -105,7 +114,7 @@ namespace Pry_Basculas_SAP.Reportes
             this.grc_ControlReportCerrrado.Name = "grc_ControlReportCerrrado";
             this.grc_ControlReportCerrrado.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButton_ImprimirFormato});
-            this.grc_ControlReportCerrrado.Size = new System.Drawing.Size(1285, 633);
+            this.grc_ControlReportCerrrado.Size = new System.Drawing.Size(1369, 649);
             this.grc_ControlReportCerrrado.TabIndex = 1;
             this.grc_ControlReportCerrrado.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grv_VistaReportCerrado});
@@ -131,9 +140,17 @@ namespace Pry_Basculas_SAP.Reportes
             this.gridColumn10,
             this.gridColumn9,
             this.gridColumn2,
+            this.gridColumn18,
             this.tiquete,
             this.gridColumn3,
+            this.gridColumn16,
+            this.gridColumn20,
+            this.gridColumn17,
+            this.gridColumn21,
             this.gridColumn11,
+            this.gridColumn19,
+            this.gridColumn23,
+            this.gridColumn24,
             this.gridColumn8,
             this.gridColumn4,
             this.gridColumn5,
@@ -141,7 +158,8 @@ namespace Pry_Basculas_SAP.Reportes
             this.print_formato,
             this.gridColumn13,
             this.gridColumn14,
-            this.gridColumn15});
+            this.gridColumn15,
+            this.gridColumn22});
             this.grv_VistaReportCerrado.GridControl = this.grc_ControlReportCerrrado;
             this.grv_VistaReportCerrado.Name = "grv_VistaReportCerrado";
             // 
@@ -361,6 +379,18 @@ namespace Pry_Basculas_SAP.Reportes
             this.gridColumn2.VisibleIndex = 15;
             this.gridColumn2.Width = 53;
             // 
+            // gridColumn18
+            // 
+            this.gridColumn18.Caption = "DESCRIPCIÓN BÁSCULA";
+            this.gridColumn18.FieldName = "DESC_BASCULA";
+            this.gridColumn18.Name = "gridColumn18";
+            this.gridColumn18.OptionsColumn.AllowEdit = false;
+            this.gridColumn18.OptionsColumn.AllowFocus = false;
+            this.gridColumn18.OptionsFilter.AllowAutoFilter = false;
+            this.gridColumn18.Visible = true;
+            this.gridColumn18.VisibleIndex = 17;
+            this.gridColumn18.Width = 125;
+            // 
             // tiquete
             // 
             this.tiquete.Caption = "TIQUETE BASCULA";
@@ -386,8 +416,56 @@ namespace Pry_Basculas_SAP.Reportes
             this.gridColumn3.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn3.OptionsFilter.AllowFilter = false;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 18;
+            this.gridColumn3.VisibleIndex = 23;
             this.gridColumn3.Width = 173;
+            // 
+            // gridColumn16
+            // 
+            this.gridColumn16.Caption = "PESAJE 1";
+            this.gridColumn16.FieldName = "peso1";
+            this.gridColumn16.Name = "gridColumn16";
+            this.gridColumn16.OptionsColumn.AllowEdit = false;
+            this.gridColumn16.OptionsColumn.AllowFocus = false;
+            this.gridColumn16.OptionsFilter.AllowAutoFilter = false;
+            this.gridColumn16.Visible = true;
+            this.gridColumn16.VisibleIndex = 18;
+            // 
+            // gridColumn20
+            // 
+            this.gridColumn20.Caption = "FECHA-HORA PESAJE 1";
+            this.gridColumn20.DisplayFormat.FormatString = "DateTime \"d/MM/yyyy hh:mm tt\"";
+            this.gridColumn20.FieldName = "date_capt1";
+            this.gridColumn20.Name = "gridColumn20";
+            this.gridColumn20.OptionsColumn.AllowEdit = false;
+            this.gridColumn20.OptionsColumn.AllowFocus = false;
+            this.gridColumn20.OptionsFilter.AllowAutoFilter = false;
+            this.gridColumn20.Visible = true;
+            this.gridColumn20.VisibleIndex = 19;
+            this.gridColumn20.Width = 122;
+            // 
+            // gridColumn17
+            // 
+            this.gridColumn17.Caption = "PESAJE 2";
+            this.gridColumn17.FieldName = "peso2";
+            this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.OptionsColumn.AllowEdit = false;
+            this.gridColumn17.OptionsColumn.AllowFocus = false;
+            this.gridColumn17.OptionsFilter.AllowAutoFilter = false;
+            this.gridColumn17.Visible = true;
+            this.gridColumn17.VisibleIndex = 20;
+            // 
+            // gridColumn21
+            // 
+            this.gridColumn21.Caption = "FECHA-HORA PESAJE 2";
+            this.gridColumn21.DisplayFormat.FormatString = "DateTime \"d/MM/yyyy hh:mm tt\"";
+            this.gridColumn21.FieldName = "date_capt2";
+            this.gridColumn21.Name = "gridColumn21";
+            this.gridColumn21.OptionsColumn.AllowEdit = false;
+            this.gridColumn21.OptionsColumn.AllowFocus = false;
+            this.gridColumn21.OptionsFilter.AllowAutoFilter = false;
+            this.gridColumn21.Visible = true;
+            this.gridColumn21.VisibleIndex = 21;
+            this.gridColumn21.Width = 122;
             // 
             // gridColumn11
             // 
@@ -403,8 +481,19 @@ namespace Pry_Basculas_SAP.Reportes
             this.gridColumn11.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn11.OptionsFilter.AllowFilter = false;
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 17;
+            this.gridColumn11.VisibleIndex = 22;
             this.gridColumn11.Width = 67;
+            // 
+            // gridColumn19
+            // 
+            this.gridColumn19.Caption = "TARA";
+            this.gridColumn19.FieldName = "tara";
+            this.gridColumn19.Name = "gridColumn19";
+            this.gridColumn19.OptionsColumn.AllowEdit = false;
+            this.gridColumn19.OptionsColumn.AllowFocus = false;
+            this.gridColumn19.OptionsFilter.AllowAutoFilter = false;
+            this.gridColumn19.Visible = true;
+            this.gridColumn19.VisibleIndex = 26;
             // 
             // gridColumn8
             // 
@@ -415,7 +504,7 @@ namespace Pry_Basculas_SAP.Reportes
             this.gridColumn8.OptionsColumn.AllowFocus = false;
             this.gridColumn8.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 21;
+            this.gridColumn8.VisibleIndex = 29;
             this.gridColumn8.Width = 101;
             // 
             // gridColumn4
@@ -430,7 +519,7 @@ namespace Pry_Basculas_SAP.Reportes
             this.gridColumn4.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn4.OptionsFilter.AllowFilter = false;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 19;
+            this.gridColumn4.VisibleIndex = 24;
             this.gridColumn4.Width = 127;
             // 
             // gridColumn5
@@ -445,7 +534,7 @@ namespace Pry_Basculas_SAP.Reportes
             this.gridColumn5.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn5.OptionsFilter.AllowFilter = false;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 20;
+            this.gridColumn5.VisibleIndex = 25;
             this.gridColumn5.Width = 128;
             // 
             // gridColumn6
@@ -458,7 +547,7 @@ namespace Pry_Basculas_SAP.Reportes
             this.gridColumn6.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn6.OptionsFilter.AllowFilter = false;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 22;
+            this.gridColumn6.VisibleIndex = 30;
             this.gridColumn6.Width = 65;
             // 
             // print_formato
@@ -477,9 +566,9 @@ namespace Pry_Basculas_SAP.Reportes
             // repositoryItemButton_ImprimirFormato
             // 
             this.repositoryItemButton_ImprimirFormato.AutoHeight = false;
-            editorButtonImageOptions2.Image = global::Pry_Basculas_SAP.Properties.Resources.report_32x32;
+            editorButtonImageOptions1.Image = global::Pry_Basculas_SAP.Properties.Resources.report_32x32;
             this.repositoryItemButton_ImprimirFormato.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButton_ImprimirFormato.Name = "repositoryItemButton_ImprimirFormato";
             this.repositoryItemButton_ImprimirFormato.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
@@ -492,7 +581,7 @@ namespace Pry_Basculas_SAP.Reportes
             this.gridColumn13.OptionsColumn.AllowFocus = false;
             this.gridColumn13.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 23;
+            this.gridColumn13.VisibleIndex = 31;
             this.gridColumn13.Width = 128;
             // 
             // gridColumn14
@@ -504,7 +593,7 @@ namespace Pry_Basculas_SAP.Reportes
             this.gridColumn14.OptionsColumn.AllowFocus = false;
             this.gridColumn14.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 24;
+            this.gridColumn14.VisibleIndex = 32;
             this.gridColumn14.Width = 148;
             // 
             // gridColumn15
@@ -517,14 +606,45 @@ namespace Pry_Basculas_SAP.Reportes
             this.gridColumn15.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn15.OptionsFilter.AllowFilter = false;
             this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 25;
+            this.gridColumn15.VisibleIndex = 33;
             this.gridColumn15.Width = 170;
+            // 
+            // gridColumn22
+            // 
+            this.gridColumn22.Caption = "OBSERVACIONES";
+            this.gridColumn22.Name = "gridColumn22";
+            this.gridColumn22.Visible = true;
+            this.gridColumn22.VisibleIndex = 34;
+            this.gridColumn22.Width = 92;
+            // 
+            // gridColumn23
+            // 
+            this.gridColumn23.Caption = "PESO BRUTO";
+            this.gridColumn23.FieldName = "peso_bruto";
+            this.gridColumn23.Name = "gridColumn23";
+            this.gridColumn23.OptionsColumn.AllowEdit = false;
+            this.gridColumn23.OptionsColumn.AllowFocus = false;
+            this.gridColumn23.OptionsFilter.AllowAutoFilter = false;
+            this.gridColumn23.Visible = true;
+            this.gridColumn23.VisibleIndex = 27;
+            // 
+            // gridColumn24
+            // 
+            this.gridColumn24.Caption = "KILOGRAMOS - LITROS";
+            this.gridColumn24.FieldName = "kilogramos_a_litros";
+            this.gridColumn24.Name = "gridColumn24";
+            this.gridColumn24.OptionsColumn.AllowEdit = false;
+            this.gridColumn24.OptionsColumn.AllowFocus = false;
+            this.gridColumn24.OptionsFilter.AllowAutoFilter = false;
+            this.gridColumn24.Visible = true;
+            this.gridColumn24.VisibleIndex = 28;
+            this.gridColumn24.Width = 120;
             // 
             // frm_Report_Reportes_cerrados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1309, 715);
+            this.ClientSize = new System.Drawing.Size(1393, 738);
             this.Controls.Add(this.xtraScrollableControl1);
             this.IconOptions.LargeImage = global::Pry_Basculas_SAP.Properties.Resources.boreport2_32x321;
             this.Name = "frm_Report_Reportes_cerrados";
@@ -575,5 +695,14 @@ namespace Pry_Basculas_SAP.Reportes
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
     }
 }

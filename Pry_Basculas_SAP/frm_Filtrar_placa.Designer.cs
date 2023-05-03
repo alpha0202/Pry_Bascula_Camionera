@@ -51,6 +51,8 @@ namespace Pry_Basculas_SAP
             this.btn_BuscarData = new System.Windows.Forms.Button();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtPlacaCabezote = new DevExpress.XtraEditors.TextEdit();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraScrollableControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_ControlBusquedaPlaca)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_ViewBusquedaPlaca)).BeginInit();
@@ -109,7 +111,9 @@ namespace Pry_Basculas_SAP
             this.gridColumn6,
             this.gridColumn9,
             this.gridColumn10,
-            this.gridColumn11});
+            this.gridColumn14,
+            this.gridColumn11,
+            this.gridColumn15});
             this.grd_ViewBusquedaPlaca.GridControl = this.grd_ControlBusquedaPlaca;
             this.grd_ViewBusquedaPlaca.Name = "grd_ViewBusquedaPlaca";
             this.grd_ViewBusquedaPlaca.OptionsSelection.MultiSelect = true;
@@ -232,6 +236,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn13.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 9;
+            this.gridColumn13.Width = 90;
             // 
             // gridColumn6
             // 
@@ -281,7 +286,7 @@ namespace Pry_Basculas_SAP
             this.gridColumn11.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn11.OptionsFilter.AllowFilter = false;
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 13;
+            this.gridColumn11.VisibleIndex = 14;
             this.gridColumn11.Width = 86;
             // 
             // panelControl1
@@ -338,6 +343,30 @@ namespace Pry_Basculas_SAP
             this.txtPlacaCabezote.TabIndex = 0;
             this.txtPlacaCabezote.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPlacaCabezote_KeyDown);
             // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "UNID MEDIDA UMB";
+            this.gridColumn14.FieldName = "MEINS";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.OptionsColumn.AllowEdit = false;
+            this.gridColumn14.OptionsColumn.AllowFocus = false;
+            this.gridColumn14.OptionsFilter.AllowAutoFilter = false;
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 13;
+            this.gridColumn14.Width = 98;
+            // 
+            // gridColumn15
+            // 
+            this.gridColumn15.Caption = "UNID MEDIDA UMP";
+            this.gridColumn15.FieldName = "UMP";
+            this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.OptionsColumn.AllowEdit = false;
+            this.gridColumn15.OptionsColumn.AllowFocus = false;
+            this.gridColumn15.OptionsFilter.AllowAutoFilter = false;
+            this.gridColumn15.Visible = true;
+            this.gridColumn15.VisibleIndex = 15;
+            this.gridColumn15.Width = 98;
+            // 
             // frm_Filtrar_placa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -383,5 +412,7 @@ namespace Pry_Basculas_SAP
         private DevExpress.XtraEditors.TextEdit txtPlacaCabezote;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
     }
 }

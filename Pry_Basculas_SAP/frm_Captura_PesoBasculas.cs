@@ -14,6 +14,7 @@ using DevExpress.LookAndFeel;
 using System.Windows.Forms;
 using static Pry_Basculas_SAP.Class.EnumTipoPesajes;
 using IntegracionSAP_Dll;
+using System.Configuration;
 
 namespace Pry_Basculas_SAP
 {
@@ -23,6 +24,9 @@ namespace Pry_Basculas_SAP
         UserActiveDirectory usuarioAD = new UserActiveDirectory();
         UtilitiesSP utilidadesSP = new UtilitiesSP();
         MetodosIntegracion metodosIntegracion = new MetodosIntegracion();
+        Basculas bascula = new Basculas();
+        string tipoCapturas = ConfigurationManager.AppSettings["TIPO_CAPTURAS"];
+
 
         private string _idPesaje;
         private string _cantidadUMB;
@@ -80,13 +84,34 @@ namespace Pry_Basculas_SAP
 
         }
 
-
+        private void ModoCapturas(string tipoCaptura)
+        {
+            switch (tipoCaptura)
+            {
+                case "A":
+                ///***Captura por puerto COM****/
+                txtPesoCapturado.Text = bascula.CapturarPeso_PortSerial();
+                    break;
+                default:
+                    txtPesoCapturado.Enabled = true;
+                    txtPesoCapturado.BackColor = Color.White;
+                    btnCapturarPeso.Enabled = false;
+                    break;
+            }
+        }
 
         private void btnCapturaPeso_Click(object sender, EventArgs e)
         {
-            txtPesoCapturado.Enabled = true;
-            txtPesoCapturado.BackColor = Color.White;
-            
+            ModoCapturas(tipoCapturas);
+            //txtPesoCapturado.Enabled = false;
+            //txtPesoCapturado.BackColor = Color.White;
+            //btnCapturarPeso.Enabled = false;
+
+            ///***Captura por puerto COM****/
+            //txtPesoCapturado.Text = bascula.CapturarPeso_PortSerial();
+
+
+
             //var peso1Cap = txtPesoCapturado.Text;
             //if (string.IsNullOrWhiteSpace(peso1Cap))
             //{
@@ -138,10 +163,12 @@ namespace Pry_Basculas_SAP
 
                 sendData = Datos.SPGetEscalar("SP_Guardar_CapturaPesajes", LstParametros);
 
+                XtraMessageBox.Show($"mensaje {sendData}");
+
                 DataTable respuestaGet = metodosIntegracion.Cambiar_estadoConsumo(_idPesaje);
 
                 //retorna el status =  01 a SAP para validar su consumo en los listados.
-                DataTable resRetorno = metodosIntegracion.RetornarDatos(_idPesaje,"01", _cantidadUMB, "0,000");
+                //DataTable resRetorno = metodosIntegracion.RetornarDatos(_idPesaje,"01", _cantidadUMB, "0,000");
 
                 LstParametros.Clear();
             }
@@ -240,7 +267,7 @@ namespace Pry_Basculas_SAP
         private void VerificarCapturasPesos()
         {
             string estadoProc;
-            string sql = $"SELECT [peso1],[peso2],[peso_neto],[estado] FROM [BASCULAS_SAP].[dbo].[CAPTURA_PESAJES] WHERE id_pesaje = {_idPesaje}"; //AND[estado] = 'Y'
+            string sql = $"SELECT [peso1],[peso2],[peso_neto],[tara],[peso_bruto],[estado] FROM [BASCULAS_SAP].[dbo].[CAPTURA_PESAJES] WHERE id_pesaje = {_idPesaje}"; //AND[estado] = 'Y'
             DataTable dt = Datos.ObtenerDataTable(sql);
 
 
@@ -257,6 +284,8 @@ namespace Pry_Basculas_SAP
 
                     lblCapt1.Text = dt.Rows[0]["peso1"].ToString();
                     lblCapt2.Text = dt.Rows[0]["peso2"].ToString();
+                    lblTara.Text = dt.Rows[0]["tara"].ToString();
+                    lblPesoBruto.Text = dt.Rows[0]["peso_bruto"].ToString();
                     lblPesoNeto.Text = dt.Rows[0]["peso_neto"].ToString();
                     btnCapturarPeso.Enabled = false;
                     txtPesoCapturado.Enabled = false;
@@ -292,6 +321,9 @@ namespace Pry_Basculas_SAP
             btnCapturarPeso.Enabled = true;
             
             VerificarCapturasPesos();
+
+            ///***Captura por puerto COM****/
+            //txtPesoCapturado.Text = bascula.CapturarPeso_PortSerial();
         }
 
         //private void frm_Captua_PesoBasculas_FormClosing(object sender, FormClosingEventArgs e)
