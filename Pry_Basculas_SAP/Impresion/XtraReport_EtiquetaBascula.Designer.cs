@@ -128,6 +128,7 @@ namespace Pry_Basculas_SAP.Impresion
             this.xrControlStyle1 = new DevExpress.XtraReports.UI.XRControlStyle();
             this.id_pesaje = new DevExpress.XtraReports.Parameters.Parameter();
             this.sqlDataSource2 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
+            this.xrLabel47 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -586,7 +587,7 @@ namespace Pry_Basculas_SAP.Impresion
             // 
             // BottomMargin
             // 
-            this.BottomMargin.HeightF = 94F;
+            this.BottomMargin.HeightF = 95.15203F;
             this.BottomMargin.Name = "BottomMargin";
             // 
             // Detail
@@ -928,6 +929,7 @@ namespace Pry_Basculas_SAP.Impresion
             // xrPanel6
             // 
             this.xrPanel6.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel47,
             this.xrLabel30,
             this.xrLabel31,
             this.xrLabel32,
@@ -968,20 +970,20 @@ namespace Pry_Basculas_SAP.Impresion
             // 
             // xrLabel31
             // 
-            this.xrLabel31.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Top | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLabel31.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Top | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrLabel31.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[WERKS]")});
             this.xrLabel31.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel31.LocationFloat = new DevExpress.Utils.PointFloat(79.01224F, 0F);
+            this.xrLabel31.LocationFloat = new DevExpress.Utils.PointFloat(79.01223F, 0F);
             this.xrLabel31.Multiline = true;
             this.xrLabel31.Name = "xrLabel31";
             this.xrLabel31.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel31.SizeF = new System.Drawing.SizeF(277.9929F, 20.83334F);
+            this.xrLabel31.SizeF = new System.Drawing.SizeF(111.6517F, 20.83334F);
             this.xrLabel31.StylePriority.UseBorders = false;
             this.xrLabel31.StylePriority.UseFont = false;
             this.xrLabel31.StylePriority.UsePadding = false;
             this.xrLabel31.Text = "origen";
+            this.xrLabel31.WordWrap = false;
             // 
             // xrLabel32
             // 
@@ -1374,7 +1376,6 @@ namespace Pry_Basculas_SAP.Impresion
             this.xrLabel26.StylePriority.UseFont = false;
             this.xrLabel26.StylePriority.UsePadding = false;
             this.xrLabel26.StylePriority.UseTextAlignment = false;
-            this.xrLabel26.Text = "X";
             this.xrLabel26.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrLabel27
@@ -1496,6 +1497,26 @@ namespace Pry_Basculas_SAP.Impresion
             storedProcQuery1});
             this.sqlDataSource2.ResultSchemaSerializable = resources.GetString("sqlDataSource2.ResultSchemaSerializable");
             // 
+            // xrLabel47
+            // 
+            this.xrLabel47.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLabel47.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[WERKS ORIGEN]")});
+            this.xrLabel47.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel47.LocationFloat = new DevExpress.Utils.PointFloat(190.6639F, 0F);
+            this.xrLabel47.Multiline = true;
+            this.xrLabel47.Name = "xrLabel47";
+            this.xrLabel47.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.xrLabel47.SizeF = new System.Drawing.SizeF(167.5319F, 20.83333F);
+            this.xrLabel47.StylePriority.UseBorders = false;
+            this.xrLabel47.StylePriority.UseFont = false;
+            this.xrLabel47.StylePriority.UseTextAlignment = false;
+            this.xrLabel47.Text = "xrLabel47";
+            this.xrLabel47.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            this.xrLabel47.WordWrap = false;
+            // 
             // XtraReport_EtiquetaBascula
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -1511,7 +1532,7 @@ namespace Pry_Basculas_SAP.Impresion
             this.DataMember = "SP_Cargar_Impresión_FormatosBasculas";
             this.DataSource = this.sqlDataSource2;
             this.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.Margins = new System.Drawing.Printing.Margins(27, 33, 212, 94);
+            this.Margins = new System.Drawing.Printing.Margins(27, 33, 212, 95);
             this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {
             this.id_pesaje});
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
@@ -1620,5 +1641,6 @@ namespace Pry_Basculas_SAP.Impresion
         private DevExpress.XtraReports.UI.XRLabel xrLabel16;
         private DevExpress.XtraReports.UI.XRLabel xrLabel17;
         private DevExpress.XtraReports.UI.XRLabel xrLabel18;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel47;
     }
 }

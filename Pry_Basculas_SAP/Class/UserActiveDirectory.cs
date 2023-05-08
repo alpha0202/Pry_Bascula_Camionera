@@ -12,6 +12,7 @@ namespace Pry_Basculas_SAP.Class
     class UserActiveDirectory
     {
 
+       
         public void DatosUsuario()
         {
             // string sql = "" ;
@@ -138,6 +139,9 @@ namespace Pry_Basculas_SAP.Class
             public string Mobile { get; set; }
         }
 
+
+
+
         public string  GetCurrentUserAD()
         {
 
@@ -164,6 +168,10 @@ namespace Pry_Basculas_SAP.Class
             return userClean;
 
         }
+
+
+       
+        
 
     }
 }

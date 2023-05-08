@@ -46,7 +46,16 @@ namespace Pry_Basculas_SAP
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVista_PesajesActivos));
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tool_tituloVersion = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tool_version = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tool_tituloMandante = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tool_mandante = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lbl_ensamblado = new DevExpress.XtraEditors.LabelControl();
             this.btn_ChangeTrans = new DevExpress.XtraEditors.SimpleButton();
             this.btn_GetOut = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -135,8 +144,15 @@ namespace Pry_Basculas_SAP
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.btn_AbrirAdmin = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
+            this.barHeaderItem1 = new DevExpress.XtraBars.BarHeaderItem();
+            this.bar_EnsambladoVersion = new DevExpress.XtraBars.BarStaticItem();
+            this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.defaultBarAndDockingController1 = new DevExpress.XtraBars.DefaultBarAndDockingController(this.components);
+            this.btn_cambiarUsr = new DevExpress.XtraBars.BarButtonItem();
             this.xtraScrollableControl1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grc_ControlFiltrado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grv_VistaFiltrado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButton_IniciarProceso)).BeginInit();
@@ -151,6 +167,7 @@ namespace Pry_Basculas_SAP
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEjecutarPesaje)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonConfirmar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.defaultBarAndDockingController1.Controller)).BeginInit();
             this.SuspendLayout();
             // 
@@ -159,6 +176,8 @@ namespace Pry_Basculas_SAP
             this.xtraScrollableControl1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.xtraScrollableControl1.Appearance.Options.UseBackColor = true;
             this.xtraScrollableControl1.AutoScroll = false;
+            this.xtraScrollableControl1.Controls.Add(this.statusStrip1);
+            this.xtraScrollableControl1.Controls.Add(this.lbl_ensamblado);
             this.xtraScrollableControl1.Controls.Add(this.btn_ChangeTrans);
             this.xtraScrollableControl1.Controls.Add(this.btn_GetOut);
             this.xtraScrollableControl1.Controls.Add(this.labelControl4);
@@ -171,15 +190,74 @@ namespace Pry_Basculas_SAP
             this.xtraScrollableControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraScrollableControl1.Location = new System.Drawing.Point(0, 23);
             this.xtraScrollableControl1.Name = "xtraScrollableControl1";
-            this.xtraScrollableControl1.Size = new System.Drawing.Size(1308, 699);
+            this.xtraScrollableControl1.Size = new System.Drawing.Size(1308, 721);
             this.xtraScrollableControl1.TabIndex = 5;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tool_tituloVersion,
+            this.tool_version,
+            this.toolStripStatusLabel1,
+            this.tool_tituloMandante,
+            this.tool_mandante});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 699);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1308, 22);
+            this.statusStrip1.TabIndex = 16;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // tool_tituloVersion
+            // 
+            this.tool_tituloVersion.BackColor = System.Drawing.Color.Transparent;
+            this.tool_tituloVersion.Name = "tool_tituloVersion";
+            this.tool_tituloVersion.Size = new System.Drawing.Size(107, 17);
+            this.tool_tituloVersion.Text = "Version Aplicativo: ";
+            // 
+            // tool_version
+            // 
+            this.tool_version.ActiveLinkColor = System.Drawing.Color.DarkGreen;
+            this.tool_version.BackColor = System.Drawing.Color.Transparent;
+            this.tool_version.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.tool_version.Name = "tool_version";
+            this.tool_version.Size = new System.Drawing.Size(0, 17);
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(13, 17);
+            this.toolStripStatusLabel1.Text = "||";
+            // 
+            // tool_tituloMandante
+            // 
+            this.tool_tituloMandante.BackColor = System.Drawing.Color.Transparent;
+            this.tool_tituloMandante.Name = "tool_tituloMandante";
+            this.tool_tituloMandante.Size = new System.Drawing.Size(67, 17);
+            this.tool_tituloMandante.Text = "Mandante: ";
+            // 
+            // tool_mandante
+            // 
+            this.tool_mandante.BackColor = System.Drawing.Color.Transparent;
+            this.tool_mandante.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.tool_mandante.Name = "tool_mandante";
+            this.tool_mandante.Size = new System.Drawing.Size(0, 17);
+            // 
+            // lbl_ensamblado
+            // 
+            this.lbl_ensamblado.Location = new System.Drawing.Point(703, 682);
+            this.lbl_ensamblado.Name = "lbl_ensamblado";
+            this.lbl_ensamblado.Size = new System.Drawing.Size(12, 13);
+            this.lbl_ensamblado.TabIndex = 15;
+            this.lbl_ensamblado.Text = "**";
+            this.lbl_ensamblado.Visible = false;
             // 
             // btn_ChangeTrans
             // 
             this.btn_ChangeTrans.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ChangeTrans.Appearance.Options.UseFont = true;
             this.btn_ChangeTrans.ImageOptions.Image = global::Pry_Basculas_SAP.Properties.Resources.transit_32x32;
-            this.btn_ChangeTrans.Location = new System.Drawing.Point(163, 644);
+            this.btn_ChangeTrans.Location = new System.Drawing.Point(163, 654);
             this.btn_ChangeTrans.Name = "btn_ChangeTrans";
             this.btn_ChangeTrans.Size = new System.Drawing.Size(209, 42);
             this.btn_ChangeTrans.TabIndex = 13;
@@ -194,7 +272,7 @@ namespace Pry_Basculas_SAP
             this.btn_GetOut.ImageOptions.Image = global::Pry_Basculas_SAP.Properties.Resources.walking_32x32;
             this.btn_GetOut.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
             this.btn_GetOut.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
-            this.btn_GetOut.Location = new System.Drawing.Point(1152, 643);
+            this.btn_GetOut.Location = new System.Drawing.Point(1152, 653);
             this.btn_GetOut.Name = "btn_GetOut";
             this.btn_GetOut.Size = new System.Drawing.Size(144, 42);
             this.btn_GetOut.TabIndex = 11;
@@ -232,7 +310,7 @@ namespace Pry_Basculas_SAP
             this.grc_ControlFiltrado.Name = "grc_ControlFiltrado";
             this.grc_ControlFiltrado.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButton_IniciarProceso});
-            this.grc_ControlFiltrado.Size = new System.Drawing.Size(1284, 227);
+            this.grc_ControlFiltrado.Size = new System.Drawing.Size(1284, 239);
             this.grc_ControlFiltrado.TabIndex = 7;
             this.grc_ControlFiltrado.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grv_VistaFiltrado});
@@ -559,7 +637,7 @@ namespace Pry_Basculas_SAP
             this.panelControl2.Controls.Add(this.labelControl6);
             this.panelControl2.Controls.Add(this.lblGetUsuario);
             this.panelControl2.Controls.Add(this.labelControl1);
-            this.panelControl2.Location = new System.Drawing.Point(3, 0);
+            this.panelControl2.Location = new System.Drawing.Point(4, 0);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(372, 58);
             this.panelControl2.TabIndex = 11;
@@ -617,7 +695,7 @@ namespace Pry_Basculas_SAP
             this.panelControl1.Controls.Add(this.lbl_hora);
             this.panelControl1.Location = new System.Drawing.Point(1013, 2);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(298, 55);
+            this.panelControl1.Size = new System.Drawing.Size(298, 56);
             this.panelControl1.TabIndex = 8;
             // 
             // lbl_Day
@@ -671,7 +749,7 @@ namespace Pry_Basculas_SAP
             // 
             this.lblGetBascula.Appearance.Font = new System.Drawing.Font("Cascadia Code", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGetBascula.Appearance.Options.UseFont = true;
-            this.lblGetBascula.Location = new System.Drawing.Point(715, 21);
+            this.lblGetBascula.Location = new System.Drawing.Point(748, 21);
             this.lblGetBascula.Name = "lblGetBascula";
             this.lblGetBascula.Size = new System.Drawing.Size(16, 17);
             this.lblGetBascula.TabIndex = 3;
@@ -681,7 +759,7 @@ namespace Pry_Basculas_SAP
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(637, 19);
+            this.labelControl3.Location = new System.Drawing.Point(670, 19);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(72, 21);
             this.labelControl3.TabIndex = 2;
@@ -697,7 +775,7 @@ namespace Pry_Basculas_SAP
             this.gcPesajesActivosSAP.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEjecutarPesaje,
             this.repositoryItemButtonConfirmar});
-            this.gcPesajesActivosSAP.Size = new System.Drawing.Size(1284, 293);
+            this.gcPesajesActivosSAP.Size = new System.Drawing.Size(1284, 302);
             this.gcPesajesActivosSAP.TabIndex = 4;
             this.gcPesajesActivosSAP.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvVista_ListadoActivo});
@@ -761,7 +839,7 @@ namespace Pry_Basculas_SAP
             this.id_pesaje.OptionsColumn.AllowEdit = false;
             this.id_pesaje.Visible = true;
             this.id_pesaje.VisibleIndex = 0;
-            this.id_pesaje.Width = 82;
+            this.id_pesaje.Width = 45;
             // 
             // proceso
             // 
@@ -791,6 +869,7 @@ namespace Pry_Basculas_SAP
             this.desc_proceso.OptionsFilter.AllowFilter = false;
             this.desc_proceso.Visible = true;
             this.desc_proceso.VisibleIndex = 1;
+            this.desc_proceso.Width = 41;
             // 
             // fecha_proceso
             // 
@@ -808,7 +887,7 @@ namespace Pry_Basculas_SAP
             this.fecha_proceso.OptionsColumn.AllowEdit = false;
             this.fecha_proceso.Visible = true;
             this.fecha_proceso.VisibleIndex = 2;
-            this.fecha_proceso.Width = 95;
+            this.fecha_proceso.Width = 52;
             // 
             // material_sap
             // 
@@ -822,7 +901,7 @@ namespace Pry_Basculas_SAP
             this.material_sap.OptionsColumn.AllowEdit = false;
             this.material_sap.Visible = true;
             this.material_sap.VisibleIndex = 3;
-            this.material_sap.Width = 83;
+            this.material_sap.Width = 45;
             // 
             // descr_material
             // 
@@ -834,7 +913,7 @@ namespace Pry_Basculas_SAP
             this.descr_material.OptionsFilter.AllowFilter = false;
             this.descr_material.Visible = true;
             this.descr_material.VisibleIndex = 4;
-            this.descr_material.Width = 87;
+            this.descr_material.Width = 48;
             // 
             // placa_cabezote
             // 
@@ -848,7 +927,7 @@ namespace Pry_Basculas_SAP
             this.placa_cabezote.OptionsColumn.AllowEdit = false;
             this.placa_cabezote.Visible = true;
             this.placa_cabezote.VisibleIndex = 5;
-            this.placa_cabezote.Width = 98;
+            this.placa_cabezote.Width = 54;
             // 
             // conductor
             // 
@@ -864,7 +943,7 @@ namespace Pry_Basculas_SAP
             this.conductor.OptionsColumn.AllowEdit = false;
             this.conductor.Visible = true;
             this.conductor.VisibleIndex = 6;
-            this.conductor.Width = 72;
+            this.conductor.Width = 23;
             // 
             // gridColumn17
             // 
@@ -890,7 +969,7 @@ namespace Pry_Basculas_SAP
             this.centro_logistico.OptionsFilter.AllowFilter = false;
             this.centro_logistico.Visible = true;
             this.centro_logistico.VisibleIndex = 7;
-            this.centro_logistico.Width = 110;
+            this.centro_logistico.Width = 57;
             // 
             // almacen
             // 
@@ -908,7 +987,7 @@ namespace Pry_Basculas_SAP
             this.almacen.OptionsFilter.AllowFilter = false;
             this.almacen.Visible = true;
             this.almacen.VisibleIndex = 8;
-            this.almacen.Width = 71;
+            this.almacen.Width = 44;
             // 
             // ticket_bascula
             // 
@@ -925,14 +1004,14 @@ namespace Pry_Basculas_SAP
             this.ticket_bascula.OptionsFilter.AllowFilter = false;
             this.ticket_bascula.Visible = true;
             this.ticket_bascula.VisibleIndex = 9;
-            this.ticket_bascula.Width = 114;
+            this.ticket_bascula.Width = 81;
             // 
             // peso1
             // 
             this.peso1.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.peso1.AppearanceCell.Options.UseFont = true;
             this.peso1.AppearanceCell.Options.UseTextOptions = true;
-            this.peso1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.peso1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.peso1.AppearanceHeader.Options.UseTextOptions = true;
             this.peso1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.peso1.Caption = "PESO 1";
@@ -972,7 +1051,7 @@ namespace Pry_Basculas_SAP
             this.peso2.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.peso2.AppearanceCell.Options.UseFont = true;
             this.peso2.AppearanceCell.Options.UseTextOptions = true;
-            this.peso2.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.peso2.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.peso2.AppearanceHeader.Options.UseTextOptions = true;
             this.peso2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.peso2.Caption = "PESO 2";
@@ -1036,6 +1115,8 @@ namespace Pry_Basculas_SAP
             this.tiempo_total_capturas.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.tiempo_total_capturas.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.tiempo_total_capturas.AppearanceHeader.Options.UseFont = true;
+            this.tiempo_total_capturas.AppearanceHeader.Options.UseTextOptions = true;
+            this.tiempo_total_capturas.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.tiempo_total_capturas.Caption = "TIEMPOS(MIN)";
             this.tiempo_total_capturas.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.tiempo_total_capturas.FieldName = "tiempo_total_capturas";
@@ -1047,7 +1128,7 @@ namespace Pry_Basculas_SAP
             this.tiempo_total_capturas.OptionsFilter.AllowFilter = false;
             this.tiempo_total_capturas.Visible = true;
             this.tiempo_total_capturas.VisibleIndex = 15;
-            this.tiempo_total_capturas.Width = 143;
+            this.tiempo_total_capturas.Width = 105;
             // 
             // AccionPesaje
             // 
@@ -1066,7 +1147,7 @@ namespace Pry_Basculas_SAP
             this.AccionPesaje.OptionsFilter.AllowFilter = false;
             this.AccionPesaje.Visible = true;
             this.AccionPesaje.VisibleIndex = 16;
-            this.AccionPesaje.Width = 107;
+            this.AccionPesaje.Width = 106;
             // 
             // repositoryItemButtonEjecutarPesaje
             // 
@@ -1093,7 +1174,7 @@ namespace Pry_Basculas_SAP
             this.AccionConfirmar.OptionsFilter.AllowFilter = false;
             this.AccionConfirmar.Visible = true;
             this.AccionConfirmar.VisibleIndex = 17;
-            this.AccionConfirmar.Width = 92;
+            this.AccionConfirmar.Width = 109;
             // 
             // repositoryItemButtonConfirmar
             // 
@@ -1163,7 +1244,7 @@ namespace Pry_Basculas_SAP
             this.btnConsultarPlaca.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConsultarPlaca.Appearance.Options.UseFont = true;
             this.btnConsultarPlaca.ImageOptions.Image = global::Pry_Basculas_SAP.Properties.Resources.checkbuttons_32x32;
-            this.btnConsultarPlaca.Location = new System.Drawing.Point(13, 644);
+            this.btnConsultarPlaca.Location = new System.Drawing.Point(13, 654);
             this.btnConsultarPlaca.Name = "btnConsultarPlaca";
             this.btnConsultarPlaca.Size = new System.Drawing.Size(144, 42);
             this.btnConsultarPlaca.TabIndex = 3;
@@ -1192,8 +1273,15 @@ namespace Pry_Basculas_SAP
             this.barSubItem2,
             this.btn_CapManual,
             this.barButtonItem1,
-            this.btn_AbrirCerrados});
-            this.barManager1.MaxItemId = 8;
+            this.btn_AbrirCerrados,
+            this.barStaticItem1,
+            this.barHeaderItem1,
+            this.bar_EnsambladoVersion,
+            this.barEditItem1,
+            this.btn_cambiarUsr});
+            this.barManager1.MaxItemId = 13;
+            this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemTextEdit1});
             // 
             // bar1
             // 
@@ -1216,13 +1304,15 @@ namespace Pry_Basculas_SAP
             this.barSubItem2.Caption = "Administración";
             this.barSubItem2.Id = 4;
             this.barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.btn_CapManual)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btn_CapManual),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btn_cambiarUsr)});
             this.barSubItem2.Name = "barSubItem2";
             // 
             // btn_CapManual
             // 
             this.btn_CapManual.Caption = "PROBAR CAPTURA";
             this.btn_CapManual.Id = 5;
+            this.btn_CapManual.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_CapManual.ImageOptions.Image")));
             this.btn_CapManual.Name = "btn_CapManual";
             this.btn_CapManual.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_CapManual_ItemClick);
             // 
@@ -1272,7 +1362,7 @@ namespace Pry_Basculas_SAP
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 722);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 744);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(1308, 0);
             // 
@@ -1282,7 +1372,7 @@ namespace Pry_Basculas_SAP
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 23);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 699);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 721);
             // 
             // barDockControlRight
             // 
@@ -1290,7 +1380,7 @@ namespace Pry_Basculas_SAP
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1308, 23);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 699);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 721);
             // 
             // btn_AbrirAdmin
             // 
@@ -1304,14 +1394,58 @@ namespace Pry_Basculas_SAP
             this.barButtonItem2.Id = 1;
             this.barButtonItem2.Name = "barButtonItem2";
             // 
+            // barStaticItem1
+            // 
+            this.barStaticItem1.Caption = "Man";
+            this.barStaticItem1.Id = 8;
+            this.barStaticItem1.Name = "barStaticItem1";
+            this.barStaticItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.Caption;
+            // 
+            // barHeaderItem1
+            // 
+            this.barHeaderItem1.Caption = "barHeaderItem1";
+            this.barHeaderItem1.Id = 9;
+            this.barHeaderItem1.Name = "barHeaderItem1";
+            // 
+            // bar_EnsambladoVersion
+            // 
+            this.bar_EnsambladoVersion.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bar_EnsambladoVersion.Caption = "Version: ";
+            this.bar_EnsambladoVersion.Id = 10;
+            this.bar_EnsambladoVersion.Name = "bar_EnsambladoVersion";
+            toolTipTitleItem1.ImageOptions.Image = global::Pry_Basculas_SAP.Properties.Resources.aliarlogo1_fw;
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.bar_EnsambladoVersion.SuperTip = superToolTip1;
+            this.bar_EnsambladoVersion.TextAlignment = System.Drawing.StringAlignment.Far;
+            // 
+            // barEditItem1
+            // 
+            this.barEditItem1.Caption = "barEditItem1";
+            this.barEditItem1.Edit = this.repositoryItemTextEdit1;
+            this.barEditItem1.Id = 11;
+            this.barEditItem1.Name = "barEditItem1";
+            // 
+            // repositoryItemTextEdit1
+            // 
+            this.repositoryItemTextEdit1.AutoHeight = false;
+            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
+            // 
             // defaultBarAndDockingController1
             // 
+            // 
+            // btn_cambiarUsr
+            // 
+            this.btn_cambiarUsr.Caption = "CAMBIAR USUARIO";
+            this.btn_cambiarUsr.Id = 12;
+            this.btn_cambiarUsr.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_cambiarUsr.ImageOptions.Image")));
+            this.btn_cambiarUsr.Name = "btn_cambiarUsr";
+            this.btn_cambiarUsr.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_cambiarUsr_ItemClick);
             // 
             // frmVista_PesajesActivos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1308, 722);
+            this.ClientSize = new System.Drawing.Size(1308, 744);
             this.Controls.Add(this.xtraScrollableControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -1327,6 +1461,8 @@ namespace Pry_Basculas_SAP
             this.Load += new System.EventHandler(this.Form1_Load);
             this.xtraScrollableControl1.ResumeLayout(false);
             this.xtraScrollableControl1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grc_ControlFiltrado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grv_VistaFiltrado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButton_IniciarProceso)).EndInit();
@@ -1344,6 +1480,7 @@ namespace Pry_Basculas_SAP
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEjecutarPesaje)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonConfirmar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.defaultBarAndDockingController1.Controller)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1441,6 +1578,19 @@ namespace Pry_Basculas_SAP
         private DevExpress.XtraEditors.LabelControl lblGetUsuario;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem1;
+        private DevExpress.XtraBars.BarHeaderItem barHeaderItem1;
+        private DevExpress.XtraBars.BarStaticItem bar_EnsambladoVersion;
+        private DevExpress.XtraEditors.LabelControl lbl_ensamblado;
+        private DevExpress.XtraBars.BarEditItem barEditItem1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel tool_tituloVersion;
+        private System.Windows.Forms.ToolStripStatusLabel tool_version;
+        private System.Windows.Forms.ToolStripStatusLabel tool_tituloMandante;
+        private System.Windows.Forms.ToolStripStatusLabel tool_mandante;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private DevExpress.XtraBars.BarButtonItem btn_cambiarUsr;
     }
 }
 

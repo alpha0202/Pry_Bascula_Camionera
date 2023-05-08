@@ -127,6 +127,12 @@
     <Compile Include="frm_Administracion_pesaje.Designer.cs">
       <DependentUpon>frm_Administracion_pesaje.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_CambiarUsuario_Aplicacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_CambiarUsuario_Aplicacion.Designer.cs">
+      <DependentUpon>frm_CambiarUsuario_Aplicacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_Cambiar_transportista.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +198,9 @@
     </Compile>
     <EmbeddedResource Include="frm_Administracion_pesaje.resx">
       <DependentUpon>frm_Administracion_pesaje.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_CambiarUsuario_Aplicacion.resx">
+      <DependentUpon>frm_CambiarUsuario_Aplicacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Cambiar_transportista.resx">
       <DependentUpon>frm_Cambiar_transportista.cs</DependentUpon>
@@ -297,6 +306,7 @@
     <Content Include="Resources\aliar_src\LOGO LA FAZENDA.png" />
     <Content Include="Resources\aliar_src\Logo.jpg" />
     <Content Include="Resources\aliar_src\Logo1.jpg" />
+    <None Include="Resources\customer_32x32.png" />
     <None Include="Resources\status_32x32.png" />
     <None Include="Resources\replace_32x32.png" />
     <None Include="Resources\exporttoxlsx_32x32.png" />

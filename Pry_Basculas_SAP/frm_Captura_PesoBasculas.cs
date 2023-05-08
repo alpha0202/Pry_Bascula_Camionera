@@ -89,13 +89,15 @@ namespace Pry_Basculas_SAP
             switch (tipoCaptura)
             {
                 case "A":
-                ///***Captura por puerto COM****/
-                txtPesoCapturado.Text = bascula.CapturarPeso_PortSerial();
+                    ///***Captura por puerto COM****/
+                    txtPesoCapturado.Text = bascula.CapturarPeso_PortSerial();
+                   
                     break;
                 default:
                     txtPesoCapturado.Enabled = true;
                     txtPesoCapturado.BackColor = Color.White;
                     btnCapturarPeso.Enabled = false;
+                    
                     break;
             }
         }
@@ -111,24 +113,6 @@ namespace Pry_Basculas_SAP
             //txtPesoCapturado.Text = bascula.CapturarPeso_PortSerial();
 
 
-
-            //var peso1Cap = txtPesoCapturado.Text;
-            //if (string.IsNullOrWhiteSpace(peso1Cap))
-            //{
-            //    XtraMessageBox.Show($"Debe establecer el valor de pesaje. ", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-            //else
-            //{
-            //    //frmVista_PesajesActivos frmListasAct = new frmVista_PesajesActivos();
-            //    GuardarCaptura_Pesaje(peso1Cap);
-            //    txtPesoCapturado.Text = string.Empty;
-            //    //this.Dispose();
-            //    //this.Hide();
-            //    //frmListasAct.ShowDialog();
-            //    //frmListasAct.Dispose();
-
-            //}
 
 
         }
@@ -154,7 +138,7 @@ namespace Pry_Basculas_SAP
                 LstParametros.Clear();
 
                 LstParametros.Add(new Parametros("@ID_PESAJE", _idPesaje, SqlDbType.VarChar));
-                LstParametros.Add(new Parametros("@NUM_BASCULA", _numeroBascula, SqlDbType.Decimal));
+                LstParametros.Add(new Parametros("@NUM_BASCULA", _numeroBascula, SqlDbType.VarChar));
                 LstParametros.Add(new Parametros("@CANT_PESADA_UMB", _cantidadUMB, SqlDbType.Decimal));
                 LstParametros.Add(new Parametros("@CANT_PESADA_UMP", _cantidadUMP, SqlDbType.Decimal));
                 LstParametros.Add(new Parametros("@USUARIO_PESAJE", usuarioAD.GetCurrentUserAD(), SqlDbType.VarChar));
@@ -179,7 +163,7 @@ namespace Pry_Basculas_SAP
                 if (_tipoProceso == "VN" && _tipoPesaje == "01")
                 { if (pesajeUno < decimal.Parse(pesaje))
                     {
-                        LstParametros.Add(new Parametros("@NUM_BASCULA", _numeroBascula, SqlDbType.Decimal));
+                        LstParametros.Add(new Parametros("@NUM_BASCULA", _numeroBascula, SqlDbType.VarChar));
                         LstParametros.Add(new Parametros("@CANT_PESADA_UMB", _cantidadUMB, SqlDbType.Decimal));
                         LstParametros.Add(new Parametros("@CANT_PESADA_UMP", _cantidadUMP, SqlDbType.Decimal));
                         LstParametros.Add(new Parametros("@USUARIO_PESAJE", usuarioAD.GetCurrentUserAD(), SqlDbType.VarChar));
@@ -201,7 +185,7 @@ namespace Pry_Basculas_SAP
                 {
                     if (pesajeUno < decimal.Parse(pesaje))
                     {
-                        LstParametros.Add(new Parametros("@NUM_BASCULA", _numeroBascula, SqlDbType.Decimal));
+                        LstParametros.Add(new Parametros("@NUM_BASCULA", _numeroBascula, SqlDbType.VarChar));
                         LstParametros.Add(new Parametros("@CANT_PESADA_UMB", _cantidadUMB, SqlDbType.Decimal));
                         LstParametros.Add(new Parametros("@CANT_PESADA_UMP", _cantidadUMP, SqlDbType.Decimal));
                         LstParametros.Add(new Parametros("@USUARIO_PESAJE", usuarioAD.GetCurrentUserAD(), SqlDbType.VarChar));
@@ -224,7 +208,7 @@ namespace Pry_Basculas_SAP
                 {
                     if(pesajeUno> decimal.Parse(pesaje))
                     {
-                        LstParametros.Add(new Parametros("@NUM_BASCULA", _numeroBascula, SqlDbType.Decimal));
+                        LstParametros.Add(new Parametros("@NUM_BASCULA", _numeroBascula, SqlDbType.VarChar));
                         LstParametros.Add(new Parametros("@CANT_PESADA_UMB", _cantidadUMB, SqlDbType.Decimal));
                         LstParametros.Add(new Parametros("@CANT_PESADA_UMP", _cantidadUMP, SqlDbType.Decimal));
                         LstParametros.Add(new Parametros("@USUARIO_PESAJE", usuarioAD.GetCurrentUserAD(), SqlDbType.VarChar));
@@ -322,17 +306,20 @@ namespace Pry_Basculas_SAP
             
             VerificarCapturasPesos();
 
+
+            if(tipoCapturas == "A")
+            {
+                tool_ModoCaptura.Text = "Automático";
+            }
+            else
+            {
+                tool_ModoCaptura.Text = "Manual";
+            }
+
             ///***Captura por puerto COM****/
             //txtPesoCapturado.Text = bascula.CapturarPeso_PortSerial();
         }
 
-        //private void frm_Captua_PesoBasculas_FormClosing(object sender, FormClosingEventArgs e)
-        //{
-        //    this.Hide();
-        //   //frmVista_PesajesActivos frmListasAct = new frmVista_PesajesActivos();
-        //    //frmPesajesAct.ShowDialog();
-        //    //frmPesajesAct.Dispose();
-        //}
 
         private void btn_guardarCaptura_Click(object sender, EventArgs e)
         {
@@ -366,4 +353,11 @@ namespace Pry_Basculas_SAP
             }
         }
     }
+        //private void frm_Captua_PesoBasculas_FormClosing(object sender, FormClosingEventArgs e)
+        //{
+        //    this.Hide();
+        //   //frmVista_PesajesActivos frmListasAct = new frmVista_PesajesActivos();
+        //    //frmPesajesAct.ShowDialog();
+        //    //frmPesajesAct.Dispose();
+        //}
 }

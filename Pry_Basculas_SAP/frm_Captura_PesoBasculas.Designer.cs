@@ -65,6 +65,9 @@ namespace Pry_Basculas_SAP
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtPesoCapturado = new DevExpress.XtraEditors.TextEdit();
             this.btnCapturarPeso = new DevExpress.XtraEditors.SimpleButton();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tool_tituloTipo = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tool_ModoCaptura = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaterial.Properties)).BeginInit();
@@ -78,6 +81,7 @@ namespace Pry_Basculas_SAP
             ((System.ComponentModel.ISupportInitialize)(this.txtUmp.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUmb.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPesoCapturado.Properties)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -493,7 +497,7 @@ namespace Pry_Basculas_SAP
             this.txtPesoCapturado.Location = new System.Drawing.Point(47, 59);
             this.txtPesoCapturado.Name = "txtPesoCapturado";
             this.txtPesoCapturado.Properties.Appearance.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtPesoCapturado.Properties.Appearance.Font = new System.Drawing.Font("Cascadia Code", 60F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesoCapturado.Properties.Appearance.Font = new System.Drawing.Font("Cascadia Code", 52F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesoCapturado.Properties.Appearance.FontSizeDelta = 4;
             this.txtPesoCapturado.Properties.Appearance.Options.UseBackColor = true;
             this.txtPesoCapturado.Properties.Appearance.Options.UseFont = true;
@@ -502,8 +506,9 @@ namespace Pry_Basculas_SAP
             this.txtPesoCapturado.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.txtPesoCapturado.Properties.DisplayFormat.FormatString = "0.00";
             this.txtPesoCapturado.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.txtPesoCapturado.Properties.Mask.EditMask = "n3";
-            this.txtPesoCapturado.Size = new System.Drawing.Size(460, 114);
+            this.txtPesoCapturado.Properties.Mask.EditMask = "d";
+            this.txtPesoCapturado.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtPesoCapturado.Size = new System.Drawing.Size(460, 100);
             this.txtPesoCapturado.TabIndex = 2;
             // 
             // btnCapturarPeso
@@ -532,12 +537,38 @@ namespace Pry_Basculas_SAP
             this.btnCapturarPeso.Text = "Capturar";
             this.btnCapturarPeso.Click += new System.EventHandler(this.btnCapturaPeso_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tool_tituloTipo,
+            this.tool_ModoCaptura});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 425);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(892, 22);
+            this.statusStrip1.TabIndex = 4;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // tool_tituloTipo
+            // 
+            this.tool_tituloTipo.BackColor = System.Drawing.Color.Transparent;
+            this.tool_tituloTipo.Name = "tool_tituloTipo";
+            this.tool_tituloTipo.Size = new System.Drawing.Size(106, 17);
+            this.tool_tituloTipo.Text = "Modo de Captura: ";
+            // 
+            // tool_ModoCaptura
+            // 
+            this.tool_ModoCaptura.BackColor = System.Drawing.Color.Transparent;
+            this.tool_ModoCaptura.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.tool_ModoCaptura.Name = "tool_ModoCaptura";
+            this.tool_ModoCaptura.Size = new System.Drawing.Size(0, 17);
+            // 
             // frm_Captura_PesoBasculas
             // 
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(892, 429);
+            this.ClientSize = new System.Drawing.Size(892, 447);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupControl1);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.IconOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("frm_Captura_PesoBasculas.IconOptions.LargeImage")));
@@ -559,7 +590,10 @@ namespace Pry_Basculas_SAP
             ((System.ComponentModel.ISupportInitialize)(this.txtUmp.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUmb.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPesoCapturado.Properties)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -600,5 +634,8 @@ namespace Pry_Basculas_SAP
         private DevExpress.XtraEditors.LabelControl labelControl17;
         private DevExpress.XtraEditors.LabelControl lblTara;
         private DevExpress.XtraEditors.LabelControl labelControl15;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel tool_tituloTipo;
+        private System.Windows.Forms.ToolStripStatusLabel tool_ModoCaptura;
     }
 }

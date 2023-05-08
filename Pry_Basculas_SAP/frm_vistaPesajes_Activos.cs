@@ -21,17 +21,20 @@ using DevExpress.XtraLayout;
 using Pry_Basculas_SAP.Impresion;
 using DevExpress.XtraReports.UI;
 using Pry_Basculas_SAP.Reportes;
+using System.Reflection;
+
 
 namespace Pry_Basculas_SAP
 {
     public partial class frmVista_PesajesActivos : XtraForm
     {
-
+        public Version Version { get; }
 
         frm_Filtrar_placa ppal = new frm_Filtrar_placa();
         UserActiveDirectory usuarioAD = new UserActiveDirectory();
         UtilitiesSP utilidadesSP = new UtilitiesSP();
         FrmCustom custom = new FrmCustom();
+       
 
         MetodosIntegracion metodosIntegracion = new MetodosIntegracion();
         RFC_SAP_Interface.rfc_Connector conector = new RFC_SAP_Interface.rfc_Connector();
@@ -77,11 +80,30 @@ namespace Pry_Basculas_SAP
 
         }
 
+        public string UsuarioSeleccionado(string usuario)
+        {
+
+
+            if (usuario != "")
+            {
+                userAd = usuario;
+
+            }
+            else
+            {
+                userAd = usuarioAD.GetCurrentUserAD();
+            }
+
+           
+
+            return userAd;
+        }
+
 
         private void Form1_Load(object sender, EventArgs e)
 
         {
-           // conector.DatosCredenciales(ambienteSAP);
+            //conector.DatosCredenciales(ambienteSAP);
 
             //string sql = "  DELETE [BASCULAS_SAP].[dbo].[TB_FILTRO_PLACA] ";
             //Datos.GetEscalar(sql);
@@ -95,7 +117,30 @@ namespace Pry_Basculas_SAP
             ////Guardar toda la data para luego ser cruzada con el filtro de la plata
             //utilidadesSP.GuardarData_FromSAP(filterTableSAP);
 
-            
+         
+
+            //UsuarioSeleccionado(userAd);
+
+            Assembly thisAssem = typeof(frmVista_PesajesActivos).Assembly;
+            AssemblyName thisAssemName = thisAssem.GetName();
+            Version ver = thisAssemName.Version;
+
+            lbl_ensamblado.Text = ver.ToString();
+
+            tool_version.Text = ver.ToString();
+
+            if(ambienteSAP == "D")
+            {
+                tool_mandante.Text = "340";
+            }
+            else
+            {
+                tool_mandante.Text = "380";
+            }
+
+
+
+
 
             List<Parametros> LstParametros = new List<Parametros>();
             userAd = usuarioAD.GetCurrentUserAD();
@@ -104,7 +149,7 @@ namespace Pry_Basculas_SAP
             //LstParametros.Add(new Parametros("@user", "user", SqlDbType.VarChar));
             //LstParametros.Add(new Parametros("@numBascula", "0005", SqlDbType.Int));
             LstParametros.Add(new Parametros("@user", userAd.ToLower().Trim(), SqlDbType.VarChar));
-            LstParametros.Add(new Parametros("@numBascula", numeroBascula, SqlDbType.Int));
+            LstParametros.Add(new Parametros("@numBascula", numeroBascula, SqlDbType.VarChar));
             var dt = Datos.SPObtenerDataTable("SP_GetPermisos_UserAD", LstParametros);
 
 
@@ -115,12 +160,14 @@ namespace Pry_Basculas_SAP
                 if (acceso_total == "DIRECTOR DE LOGISTICA" || acceso_total == "SUPERVISOR TIPO B" || acceso_total == "DESARROLLADOR")
                 {
                     nombreUser = "USUARIO SUPERVISOR";
-                    descBascula = "SUPERVISOR BÁSCULA FRIGORÍFICO";
-                    numberBascula = "0005";
+                    //nombreUser = dt.Rows[0]["nombre_usuario"].ToString();
+                    descBascula = "SUPERVISOR BÁSCULA";
+                    //numberBascula = "";
                     perfilUsuario = acceso_total;
 
                     lblGetUsuario.Text = nombreUser;
-                    lblGetBascula.Text = string.Concat(numberBascula, "-", descBascula);
+                    //lblGetBascula.Text = string.Concat(numberBascula, "-", descBascula);
+                    lblGetBascula.Text =  descBascula;
                     lblGetPerfil.Text = perfilUsuario;
                     CargueListadosPesajes();
                     RecargarGridListadoPesajes();
@@ -154,7 +201,9 @@ namespace Pry_Basculas_SAP
         public void CargueListadosPesajes()
         {
 
-            DataTable dt = Datos.SPObtenerDataTable("SP_Cargue_PlaneacionesPesajes");
+            List<Parametros> LstParametros = new List<Parametros>();
+            LstParametros.Add(new Parametros("@numBascula", numeroBascula, SqlDbType.VarChar));
+            DataTable dt = Datos.SPObtenerDataTable("SP_Cargue_PlaneacionesPesajes",LstParametros);
 
             try
             {
@@ -179,8 +228,9 @@ namespace Pry_Basculas_SAP
         //carga desde frm de busqueda por placa
         public void RecargarGridListadoPesajes()
         {
-
-            DataTable dtRefresh = Datos.SPObtenerDataTable("SP_Cargue_DetalleSeleccionado_Pesajes");
+            List<Parametros> LstParametros = new List<Parametros>();
+            LstParametros.Add(new Parametros("@numBascula", numeroBascula, SqlDbType.VarChar));
+            DataTable dtRefresh = Datos.SPObtenerDataTable("SP_Cargue_DetalleSeleccionado_Pesajes",LstParametros);
             //DataTable dtRefresh = Datos.SPObtenerDataTable("SP_RefrescarData_FiltradaPlacas");
             try
             {
@@ -469,54 +519,97 @@ namespace Pry_Basculas_SAP
             {
                 int valRetorno = 0;
                 DataTable result = new DataTable();
-                
+
                 decimal valorDividir = 1.032M;
 
                 decimal cantLitros = (netoSelected / valorDividir);
                 string cantLitros_st = cantLitros.ToString("F3");
-                
+
                 //Retornar datos de captura reales a SAP.
                 (valRetorno, result) = metodosIntegracion.RetornarDatos(idPesajeSelected, tiqueteSelected, cantLitros_st, "0");
 
                 if (valRetorno == 0)
                 {
-
-                    string actualiza_Kg_Lt = $"UPDATE [BASCULAS_SAP].[dbo].[CAPTURA_PESAJES] SET [kilogramos_a_litros] ={cantLitros}  WHERE id_pesaje = {idPesajeSelected}";
-                    var resUpdtate = Datos.GetEscalar(actualiza_Kg_Lt);
-
-
-                    LstParametros.Add(new Parametros("@ID_PESAJE", idPesajeSelected, SqlDbType.VarChar));
-                    LstParametros.Add(new Parametros("@TIQUETE_BASCULA", tiqueteSelected, SqlDbType.VarChar));
-                    LstParametros.Add(new Parametros("@CONDUCTOR", conductorSelected, SqlDbType.VarChar));
-                    LstParametros.Add(new Parametros("@PESO_NETO", netoSelected, SqlDbType.Decimal));
-                    LstParametros.Add(new Parametros("@VALOR_EXCESO", 0, SqlDbType.Decimal));
-                    LstParametros.Add(new Parametros("@USUARIO_CONFIRMA", usuarioAD.GetCurrentUserAD(), SqlDbType.VarChar));
-                    LstParametros.Add(new Parametros("@DOC_AJUSTE", "", SqlDbType.VarChar));
-                    LstParametros.Add(new Parametros("@CONFIRMADO_SAP", "OK", SqlDbType.VarChar));
-
-                    var sendData = Datos.SPGetEscalar("SP_Confirmar_Pesajes", LstParametros);
-
-                    //XtraMessageBox.Show("CONFIRMACIÓN CORRECTA.", "CONFIRMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    if (XtraMessageBox.Show("CONFIRMACIÓN CORRECTA. ¿DESEA REALIZAR LA IMPRESIÓN DEL TIQUETE?", "CONFIRMACIÓN", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, (DevExpress.Utils.DefaultBoolean)MessageBoxDefaultButton.Button1) == DialogResult.OK)
+                    if (result.Rows.Count > 1 || result != null)
                     {
-                        if (tipoProcesoSelected =="TR" && tipoPesajeSelected =="01" )
+                        string actualiza_Kg_Lt = $"UPDATE [BASCULAS_SAP].[dbo].[CAPTURA_PESAJES] SET [kilogramos_a_litros] ={cantLitros}  WHERE id_pesaje = {idPesajeSelected}";
+                        var resUpdtate = Datos.GetEscalar(actualiza_Kg_Lt);
+
+
+                        LstParametros.Add(new Parametros("@ID_PESAJE", idPesajeSelected, SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@TIQUETE_BASCULA", tiqueteSelected, SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@CONDUCTOR", conductorSelected, SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@PESO_NETO", netoSelected, SqlDbType.Decimal));
+                        LstParametros.Add(new Parametros("@VALOR_EXCESO", 0, SqlDbType.Decimal));
+                        LstParametros.Add(new Parametros("@USUARIO_CONFIRMA", usuarioAD.GetCurrentUserAD(), SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@DOC_AJUSTE", "", SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@CONFIRMADO_SAP", "OK", SqlDbType.VarChar));
+
+                        var sendData = Datos.SPGetEscalar("SP_Confirmar_Pesajes", LstParametros);
+
+                        //XtraMessageBox.Show("CONFIRMACIÓN CORRECTA.", "CONFIRMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        if (XtraMessageBox.Show("CONFIRMACIÓN CORRECTA. ¿DESEA REALIZAR LA IMPRESIÓN DEL TIQUETE?", "CONFIRMACIÓN", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, (DevExpress.Utils.DefaultBoolean)MessageBoxDefaultButton.Button1) == DialogResult.OK)
                         {
-                            AgregarCLDestino(idPesajeSelected);
-                            //string consulta = $"SELECT [centroLogistico_destino] FROM [BASCULAS_SAP].[dbo].[TB_DATOS_ACTIVOS] WHERE id_pesaje = {idPesajeSelected}";
-                            //var dtRes = Datos.ObtenerDataTable(consulta);
-                            //if (dtRes.Rows.Count == 0)
-                            //}
+                            if (tipoProcesoSelected == "TR" && tipoPesajeSelected == "01")
+                            {
+                                AgregarCLDestino(idPesajeSelected);
+
+                            }
+
+
+                            var reporte = new XtraReport_EtiquetaBascula();
+                            reporte.Parameters["id_pesaje"].Value = idPesajeSelected;
+                            reporte.RequestParameters = false;
+                            var pt = new ReportPrintTool(reporte);
+                            pt.AutoShowParametersPanel = false;
+                            pt.ShowPreviewDialog();
+
                         }
-
-
-                        var reporte = new XtraReport_EtiquetaBascula();
-                        reporte.Parameters["id_pesaje"].Value = idPesajeSelected;
-                        reporte.RequestParameters = false;
-                        var pt = new ReportPrintTool(reporte);
-                        pt.AutoShowParametersPanel = false;
-                        pt.ShowPreviewDialog();
+                        string msgRes_dt;
+                        msgRes_dt = result.Rows[0]["MESSAGE"].ToString();
+                        XtraMessageBox.Show($"{msgRes_dt}", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LstParametros.Add(new Parametros("@ID_PESAJE", idPesajeSelected, SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@MENSAJE", msgRes_dt, SqlDbType.VarChar));
+                        var enviarResp = Datos.SPGetEscalar("SP_Guardar_log_ErroresRetorno", LstParametros);
 
                     }
+                    else
+                    {
+                        string actualiza_Kg_Lt = $"UPDATE [BASCULAS_SAP].[dbo].[CAPTURA_PESAJES] SET [kilogramos_a_litros] ={cantLitros}  WHERE id_pesaje = {idPesajeSelected}";
+                        var resUpdtate = Datos.GetEscalar(actualiza_Kg_Lt);
+
+
+                        LstParametros.Add(new Parametros("@ID_PESAJE", idPesajeSelected, SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@TIQUETE_BASCULA", tiqueteSelected, SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@CONDUCTOR", conductorSelected, SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@PESO_NETO", netoSelected, SqlDbType.Decimal));
+                        LstParametros.Add(new Parametros("@VALOR_EXCESO", 0, SqlDbType.Decimal));
+                        LstParametros.Add(new Parametros("@USUARIO_CONFIRMA", usuarioAD.GetCurrentUserAD(), SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@DOC_AJUSTE", "", SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@CONFIRMADO_SAP", "OK", SqlDbType.VarChar));
+
+                        var sendData = Datos.SPGetEscalar("SP_Confirmar_Pesajes", LstParametros);
+
+                        //XtraMessageBox.Show("CONFIRMACIÓN CORRECTA.", "CONFIRMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        if (XtraMessageBox.Show("CONFIRMACIÓN CORRECTA. ¿DESEA REALIZAR LA IMPRESIÓN DEL TIQUETE?", "CONFIRMACIÓN", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, (DevExpress.Utils.DefaultBoolean)MessageBoxDefaultButton.Button1) == DialogResult.OK)
+                        {
+                            if (tipoProcesoSelected == "TR" && tipoPesajeSelected == "01")
+                            {
+                                AgregarCLDestino(idPesajeSelected);
+
+                            }
+
+
+                            var reporte = new XtraReport_EtiquetaBascula();
+                            reporte.Parameters["id_pesaje"].Value = idPesajeSelected;
+                            reporte.RequestParameters = false;
+                            var pt = new ReportPrintTool(reporte);
+                            pt.AutoShowParametersPanel = false;
+                            pt.ShowPreviewDialog();
+
+                        }
+                    }
+
 
                 }
                 else
@@ -530,7 +623,7 @@ namespace Pry_Basculas_SAP
                     var enviarError = Datos.SPGetEscalar("SP_Guardar_log_ErroresRetorno", LstParametros);
                     LstParametros.Clear();
                 }
-                
+
                 CargueListadosPesajes();
                 return;
             }
@@ -558,7 +651,7 @@ namespace Pry_Basculas_SAP
             decimal netoPesado = netoSelected;
 
             /***Si maneja doble unidad de medida.**/
-            if(lfimg != "0,000" && meins != "" && pikmg !="0,000" && ump !="")
+            if (lfimg != "0,000" && meins != "" && pikmg != "0,000" && ump != "")
             {
                 //saldoMat_InvCwmLabst = decimal.Parse(inventario.Rows[0]["/CWM/LABST"].ToString());
                 saldoMaterialInv = decimal.Parse(inventario.Rows[0]["/CWM/LABST"].ToString());
@@ -566,7 +659,7 @@ namespace Pry_Basculas_SAP
             }
             else
             {
-               saldoMaterialInv = decimal.Parse(inventario.Rows[0]["LABST"].ToString());
+                saldoMaterialInv = decimal.Parse(inventario.Rows[0]["LABST"].ToString());
 
             }
 
@@ -577,7 +670,7 @@ namespace Pry_Basculas_SAP
                 int valRetorno = 0;
                 DataTable result = new DataTable();
                 //Retornar datos de captura reales a SAP.
-                
+
                 if (lfimg != "0,000" && meins != "" && pikmg != "0,000" && ump != "")
                 {                                                            //idpesaje      //tiqueteBascula  umb     ump
                     (valRetorno, result) = metodosIntegracion.RetornarDatos(idPesajeSelected, tiqueteSelected, lfimg, netoSelected.ToString().Trim());
@@ -591,37 +684,78 @@ namespace Pry_Basculas_SAP
 
                 if (valRetorno == 0)
                 {
-
-                    LstParametros.Add(new Parametros("@ID_PESAJE", idPesajeSelected, SqlDbType.VarChar));
-                    LstParametros.Add(new Parametros("@TIQUETE_BASCULA", tiqueteSelected, SqlDbType.VarChar));
-                    LstParametros.Add(new Parametros("@CONDUCTOR", conductorSelected, SqlDbType.VarChar));
-                    LstParametros.Add(new Parametros("@PESO_NETO", netoSelected, SqlDbType.Decimal));
-                    LstParametros.Add(new Parametros("@VALOR_EXCESO", 0, SqlDbType.Decimal));
-                    LstParametros.Add(new Parametros("@USUARIO_CONFIRMA", usuarioAD.GetCurrentUserAD(), SqlDbType.VarChar));
-                    LstParametros.Add(new Parametros("@DOC_AJUSTE", "", SqlDbType.VarChar));
-                    LstParametros.Add(new Parametros("@CONFIRMADO_SAP", "OK", SqlDbType.VarChar));
-
-                    var sendData = Datos.SPGetEscalar("SP_Confirmar_Pesajes", LstParametros);
-                    
-                   
-                    //XtraMessageBox.Show("CONFIRMACIÓN CORRECTA.", "CONFIRMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    if (XtraMessageBox.Show("CONFIRMACIÓN CORRECTA. ¿DESEA REALIZAR LA IMPRESIÓN DEL TIQUETE?", "CONFIRMACIÓN", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, (DevExpress.Utils.DefaultBoolean)MessageBoxDefaultButton.Button1) == DialogResult.OK)
+                    if (result.Rows.Count > 1 || result != null)
                     {
-                        if (tipoProcesoSelected == "TR" && tipoPesajeSelected == "01")
+
+                        LstParametros.Add(new Parametros("@ID_PESAJE", idPesajeSelected, SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@TIQUETE_BASCULA", tiqueteSelected, SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@CONDUCTOR", conductorSelected, SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@PESO_NETO", netoSelected, SqlDbType.Decimal));
+                        LstParametros.Add(new Parametros("@VALOR_EXCESO", 0, SqlDbType.Decimal));
+                        LstParametros.Add(new Parametros("@USUARIO_CONFIRMA", usuarioAD.GetCurrentUserAD(), SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@DOC_AJUSTE", "", SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@CONFIRMADO_SAP", "OK", SqlDbType.VarChar));
+
+                        var sendData = Datos.SPGetEscalar("SP_Confirmar_Pesajes", LstParametros);
+
+
+                        //XtraMessageBox.Show("CONFIRMACIÓN CORRECTA.", "CONFIRMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        if (XtraMessageBox.Show("CONFIRMACIÓN CORRECTA. ¿DESEA REALIZAR LA IMPRESIÓN DEL TIQUETE?", "CONFIRMACIÓN", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, (DevExpress.Utils.DefaultBoolean)MessageBoxDefaultButton.Button1) == DialogResult.OK)
                         {
-                            AgregarCLDestino(idPesajeSelected);
-                            //string consulta = $"SELECT [centroLogistico_destino] FROM [BASCULAS_SAP].[dbo].[TB_DATOS_ACTIVOS] WHERE id_pesaje = {idPesajeSelected}";
-                            //var dtRes = Datos.ObtenerDataTable(consulta);
-                            //if (dtRes.Rows.Count == 0)
-                            //}
+                            if (tipoProcesoSelected == "TR" && tipoPesajeSelected == "01")
+                            {
+                                AgregarCLDestino(idPesajeSelected);
+
+                            }
+
+                            var reporte = new XtraReport_EtiquetaBascula();
+                            reporte.Parameters["id_pesaje"].Value = idPesajeSelected;
+                            reporte.RequestParameters = false;
+                            var pt = new ReportPrintTool(reporte);
+                            pt.AutoShowParametersPanel = false;
+                            pt.ShowPreviewDialog();
+
                         }
 
-                        var reporte = new XtraReport_EtiquetaBascula();
-                        reporte.Parameters["id_pesaje"].Value = idPesajeSelected;
-                        reporte.RequestParameters = false;
-                        var pt = new ReportPrintTool(reporte);
-                        pt.AutoShowParametersPanel = false;
-                        pt.ShowPreviewDialog();
+
+                        string msgRes_dt;
+                        msgRes_dt = result.Rows[0]["MESSAGE"].ToString();
+                        XtraMessageBox.Show($"{msgRes_dt}", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LstParametros.Add(new Parametros("@ID_PESAJE", idPesajeSelected, SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@MENSAJE", msgRes_dt, SqlDbType.VarChar));
+                        var enviarResp = Datos.SPGetEscalar("SP_Guardar_log_ErroresRetorno", LstParametros);
+                    }
+                    else
+                    {
+                        LstParametros.Add(new Parametros("@ID_PESAJE", idPesajeSelected, SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@TIQUETE_BASCULA", tiqueteSelected, SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@CONDUCTOR", conductorSelected, SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@PESO_NETO", netoSelected, SqlDbType.Decimal));
+                        LstParametros.Add(new Parametros("@VALOR_EXCESO", 0, SqlDbType.Decimal));
+                        LstParametros.Add(new Parametros("@USUARIO_CONFIRMA", usuarioAD.GetCurrentUserAD(), SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@DOC_AJUSTE", "", SqlDbType.VarChar));
+                        LstParametros.Add(new Parametros("@CONFIRMADO_SAP", "OK", SqlDbType.VarChar));
+
+                        var sendData = Datos.SPGetEscalar("SP_Confirmar_Pesajes", LstParametros);
+
+
+                        //XtraMessageBox.Show("CONFIRMACIÓN CORRECTA.", "CONFIRMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        if (XtraMessageBox.Show("CONFIRMACIÓN CORRECTA. ¿DESEA REALIZAR LA IMPRESIÓN DEL TIQUETE?", "CONFIRMACIÓN", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, (DevExpress.Utils.DefaultBoolean)MessageBoxDefaultButton.Button1) == DialogResult.OK)
+                        {
+                            if (tipoProcesoSelected == "TR" && tipoPesajeSelected == "01")
+                            {
+                                AgregarCLDestino(idPesajeSelected);
+
+                            }
+
+                            var reporte = new XtraReport_EtiquetaBascula();
+                            reporte.Parameters["id_pesaje"].Value = idPesajeSelected;
+                            reporte.RequestParameters = false;
+                            var pt = new ReportPrintTool(reporte);
+                            pt.AutoShowParametersPanel = false;
+                            pt.ShowPreviewDialog();
+
+                        }
 
                     }
 
@@ -662,13 +796,13 @@ namespace Pry_Basculas_SAP
 
                             docAjuste = (ajusteInv.Rows[0]["MBLNR"] == DBNull.Value) ? "" : ajusteInv.Rows[0]["MBLNR"].ToString();
 
-                           
+
 
                             //Retornar datos de captura reales a SAP.
                             int valRetorno = 0;
                             DataTable result = new DataTable();
 
-                           
+
                             if (lfimg != "0,000" && meins != "" && pikmg != "0,000" && ump != "")
                             {                                                            //idpesaje      //tiqueteBascula  umb     ump
                                 (valRetorno, result) = metodosIntegracion.RetornarDatos(idPesajeSelected, tiqueteSelected, lfimg, netoSelected.ToString().Trim());
@@ -966,6 +1100,7 @@ namespace Pry_Basculas_SAP
         {
             frm_Report_Reportes_cerrados frm_repCerrados = new frm_Report_Reportes_cerrados();
             frm_repCerrados.Show(Owner);
+          
         }
 
 
@@ -979,6 +1114,7 @@ namespace Pry_Basculas_SAP
 
         }
 
+      
         //Mostrar información de los tipos de estados.
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -987,8 +1123,18 @@ namespace Pry_Basculas_SAP
 
         }
 
+        //llamar formulario para cambio de usuario
+        private void btn_cambiarUsr_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frm_CambiarUsuario_Aplicacion usrChance = new frm_CambiarUsuario_Aplicacion();
+            usrChance.ShowDialog(Owner);
+            // UsuarioSeleccionado(userAd);
+            //this.Close();
+        }
+
+
         /***llamar formulario para agregar CL de destino.**/
-        private void AgregarCLDestino( string idPesaje)
+        private void AgregarCLDestino(string idPesaje)
         {
             frm_Seleccionar_CLDestino clDestinos = new frm_Seleccionar_CLDestino(idPesaje);
 
