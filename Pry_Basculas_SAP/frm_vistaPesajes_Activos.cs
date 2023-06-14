@@ -141,7 +141,6 @@ namespace Pry_Basculas_SAP
 
 
 
-
             List<Parametros> LstParametros = new List<Parametros>();
             userAd = usuarioAD.GetCurrentUserAD();
 
@@ -160,10 +159,10 @@ namespace Pry_Basculas_SAP
                 if (acceso_total == "DIRECTOR DE LOGISTICA" || acceso_total == "SUPERVISOR TIPO B" || acceso_total == "DESARROLLADOR")
                 {
                     nombreUser = "USUARIO SUPERVISOR";
-                    //nombreUser = dt.Rows[0]["nombre_usuario"].ToString();
                     descBascula = "SUPERVISOR BÁSCULA";
-                    //numberBascula = "";
                     perfilUsuario = acceso_total;
+                    //nombreUser = dt.Rows[0]["nombre_usuario"].ToString();
+                    //numberBascula = "";
 
                     lblGetUsuario.Text = nombreUser;
                     //lblGetBascula.Text = string.Concat(numberBascula, "-", descBascula);
@@ -835,10 +834,7 @@ namespace Pry_Basculas_SAP
                                     if (tipoProcesoSelected == "TR" && tipoPesajeSelected == "01")
                                     {
                                         AgregarCLDestino(idPesajeSelected);
-                                        //string consulta = $"SELECT [centroLogistico_destino] FROM [BASCULAS_SAP].[dbo].[TB_DATOS_ACTIVOS] WHERE id_pesaje = {idPesajeSelected}";
-                                        //var dtRes = Datos.ObtenerDataTable(consulta);
-                                        //if (dtRes.Rows.Count == 0)
-                                        //}
+                                       
                                     }
 
 

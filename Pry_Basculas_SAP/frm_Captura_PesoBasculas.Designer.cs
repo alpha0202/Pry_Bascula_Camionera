@@ -115,7 +115,7 @@ namespace Pry_Basculas_SAP
             this.groupControl1.Controls.Add(this.btnCapturarPeso);
             this.groupControl1.Location = new System.Drawing.Point(12, 4);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(868, 413);
+            this.groupControl1.Size = new System.Drawing.Size(868, 418);
             this.groupControl1.TabIndex = 3;
             this.groupControl1.Text = "groupControl1";
             // 
@@ -485,7 +485,7 @@ namespace Pry_Basculas_SAP
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseTextOptions = true;
             this.labelControl1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.labelControl1.Location = new System.Drawing.Point(341, 8);
+            this.labelControl1.Location = new System.Drawing.Point(351, 8);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(166, 19);
             this.labelControl1.TabIndex = 4;
@@ -497,7 +497,7 @@ namespace Pry_Basculas_SAP
             this.txtPesoCapturado.Location = new System.Drawing.Point(47, 59);
             this.txtPesoCapturado.Name = "txtPesoCapturado";
             this.txtPesoCapturado.Properties.Appearance.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtPesoCapturado.Properties.Appearance.Font = new System.Drawing.Font("Cascadia Code", 52F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesoCapturado.Properties.Appearance.Font = new System.Drawing.Font("Cascadia Code", 56F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesoCapturado.Properties.Appearance.FontSizeDelta = 4;
             this.txtPesoCapturado.Properties.Appearance.Options.UseBackColor = true;
             this.txtPesoCapturado.Properties.Appearance.Options.UseFont = true;
@@ -508,7 +508,7 @@ namespace Pry_Basculas_SAP
             this.txtPesoCapturado.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtPesoCapturado.Properties.Mask.EditMask = "d";
             this.txtPesoCapturado.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtPesoCapturado.Size = new System.Drawing.Size(460, 100);
+            this.txtPesoCapturado.Size = new System.Drawing.Size(460, 108);
             this.txtPesoCapturado.TabIndex = 2;
             // 
             // btnCapturarPeso

@@ -134,6 +134,7 @@ namespace Pry_Basculas_SAP
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
             this.btn_CapManual = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_cambiarUsr = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.btn_AbrirReporte = new DevExpress.XtraBars.BarButtonItem();
             this.btn_AbrirCerrados = new DevExpress.XtraBars.BarButtonItem();
@@ -150,7 +151,6 @@ namespace Pry_Basculas_SAP
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.defaultBarAndDockingController1 = new DevExpress.XtraBars.DefaultBarAndDockingController(this.components);
-            this.btn_cambiarUsr = new DevExpress.XtraBars.BarButtonItem();
             this.xtraScrollableControl1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grc_ControlFiltrado)).BeginInit();
@@ -1316,6 +1316,15 @@ namespace Pry_Basculas_SAP
             this.btn_CapManual.Name = "btn_CapManual";
             this.btn_CapManual.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_CapManual_ItemClick);
             // 
+            // btn_cambiarUsr
+            // 
+            this.btn_cambiarUsr.Caption = "CAMBIAR USUARIO";
+            this.btn_cambiarUsr.Enabled = false;
+            this.btn_cambiarUsr.Id = 12;
+            this.btn_cambiarUsr.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_cambiarUsr.ImageOptions.Image")));
+            this.btn_cambiarUsr.Name = "btn_cambiarUsr";
+            this.btn_cambiarUsr.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_cambiarUsr_ItemClick);
+            // 
             // barSubItem1
             // 
             this.barSubItem1.Caption = "Reportes";
@@ -1433,14 +1442,6 @@ namespace Pry_Basculas_SAP
             // defaultBarAndDockingController1
             // 
             // 
-            // btn_cambiarUsr
-            // 
-            this.btn_cambiarUsr.Caption = "CAMBIAR USUARIO";
-            this.btn_cambiarUsr.Id = 12;
-            this.btn_cambiarUsr.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_cambiarUsr.ImageOptions.Image")));
-            this.btn_cambiarUsr.Name = "btn_cambiarUsr";
-            this.btn_cambiarUsr.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_cambiarUsr_ItemClick);
-            // 
             // frmVista_PesajesActivos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1453,9 +1454,10 @@ namespace Pry_Basculas_SAP
             this.Controls.Add(this.barDockControlTop);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.IconOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("frmVista_PesajesActivos.IconOptions.LargeImage")));
+            this.IconOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("frmVista_PesajesActivos.IconOptions.SvgImage")));
             this.Name = "frmVista_PesajesActivos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LISTADO PESAJES ACTIVOS EN SAP";
+            this.Text = "BASCULAS FAZENDA";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmVista_PesajesActivos_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
